@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="856.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.RSHitChance2Controller">
+   <children>
+      <Pane fx:id="equipmentPane" layoutY="57.0" prefHeight="455.0" prefWidth="408.0" style="-fx-background-color: blue;">
+         <children>
+            <ComboBox fx:id="helmetComboBox" layoutX="158.0" layoutY="53.0" onAction="#selectedHelmet" prefHeight="25.0" prefWidth="105.0" promptText="Helmet" />
+            <ComboBox fx:id="auraComboBox" layoutX="40.0" layoutY="53.0" onAction="#selectedAura" prefHeight="25.0" prefWidth="84.0" promptText="Aura" />
+            <ComboBox fx:id="pocketComboBox" layoutX="283.0" layoutY="53.0" onAction="#selectedPocket" prefHeight="25.0" prefWidth="105.0" promptText="Pocket" />
+            <ComboBox fx:id="sigilComboBox" layoutX="8.0" layoutY="224.0" onAction="#selectedSigil" prefHeight="25.0" prefWidth="94.0" promptText="Sigil" />
+            <ComboBox fx:id="amuletComboBox" layoutX="164.0" layoutY="111.0" onAction="#selectedAmulet" prefHeight="25.0" prefWidth="94.0" promptText="Amulet" />
+            <ComboBox fx:id="quiverComboBox" layoutX="288.0" layoutY="111.0" onAction="#selectedQuiver" prefHeight="25.0" prefWidth="94.0" promptText="Quiver" />
+            <ComboBox fx:id="mainHandComboBox" layoutX="35.0" layoutY="168.0" onAction="#selectedMainHand" prefHeight="25.0" prefWidth="94.0" promptText="Main Hand" />
+            <ComboBox fx:id="bodyComboBox" layoutX="164.0" layoutY="168.0" onAction="#selectedBody" prefHeight="25.0" prefWidth="94.0" promptText="Body" />
+            <ComboBox fx:id="offHandComboBox" layoutX="288.0" layoutY="162.0" onAction="#selectedOffHand" prefHeight="25.0" prefWidth="94.0" promptText="Off Hand" />
+            <ComboBox fx:id="legsComboBox" layoutX="152.0" layoutY="224.0" onAction="#selectedLegs" prefHeight="25.0" prefWidth="105.0" promptText="Legs" />
+            <ComboBox fx:id="glovesComboBox" layoutX="43.0" layoutY="288.0" onAction="#selectedGloves" prefHeight="25.0" prefWidth="105.0" promptText="Gloves" />
+            <ComboBox fx:id="bootsComboBox" layoutX="164.0" layoutY="288.0" onAction="#selectedBoots" prefHeight="25.0" prefWidth="94.0" promptText="Boots" />
+            <ComboBox fx:id="ringComboBox" layoutX="288.0" layoutY="288.0" onAction="#selectedRing" prefHeight="25.0" prefWidth="94.0" promptText="Ring" />
+            <Label fx:id="totalAccuracyLabel" layoutX="41.0" layoutY="377.0" text="Total Accuracy:" textFill="WHITE" />
+            <Label fx:id="TotalDefenseLabel" layoutX="213.0" layoutY="377.0" text="Total Defense:" textFill="WHITE" />
+            <Label fx:id="playerTotalAccuracyValueLabel" layoutX="131.0" layoutY="377.0" prefHeight="17.0" prefWidth="58.0" text="0" textFill="WHITE" />
+            <Label fx:id="playerToatlDefenseValueLabel" layoutX="308.0" layoutY="377.0" prefHeight="17.0" prefWidth="64.0" text="0" textFill="WHITE" />
+            <Label layoutX="39.0" layoutY="411.0" text="Affinities" textFill="WHITE" />
+            <ImageView fx:id="playerMeleeAffinityImageView" fitHeight="50.0" fitWidth="44.0" layoutX="89.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="playerRangedAffinityImageView" fitHeight="49.0" fitWidth="48.0" layoutX="189.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="playerMagicAffinityImageView" fitHeight="58.0" fitWidth="52.0" layoutX="304.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="playerMeleeAffinityValueLabel" layoutX="143.0" layoutY="406.0" text="00" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="playerRangedAffinityValueLabel" layoutX="248.0" layoutY="405.0" text="00" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="playerMagicAffinityValueLabel" layoutX="358.0" layoutY="403.0" text="00" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="playerCombatStyleImageView" fitHeight="51.0" fitWidth="46.0" layoutX="1.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+            <ComboBox fx:id="capeComboBox" layoutX="42.0" layoutY="111.0" onAction="#selectedCape" prefHeight="25.0" prefWidth="96.0" promptText="Cape" />
+            <HBox fx:id="playerBuffHBox" layoutX="70.0" layoutY="2.0" prefHeight="49.0" prefWidth="337.0" />
+            <Label layoutX="76.0" layoutY="342.0" text="Filter:" textFill="WHITE" />
+            <ComboBox fx:id="filterComboBox" layoutX="136.0" layoutY="338.0" onAction="#filterComboBoxSelected" prefWidth="150.0" />
+         </children>
+      </Pane>
+      <Label layoutX="8.0" prefHeight="48.0" prefWidth="337.0" text="Player" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="533.0" text="Attack Level" />
+      <Label fx:id="potionLabel" layoutX="177.0" layoutY="533.0" text="Potion" />
+      <Label fx:id="statPrayerLabel" layoutX="167.0" layoutY="582.0" prefHeight="17.0" prefWidth="112.0" text="Stat Boosting Prayer" />
+      <Label fx:id="familiarLabel" layoutX="97.0" layoutY="712.0" text="Familiar" />
+      <TextField fx:id="playerAttackLevelTextField" layoutX="89.0" layoutY="529.0" prefHeight="25.0" prefWidth="36.0" text="99" />
+      <ComboBox fx:id="potionComboBox" layoutX="223.0" layoutY="529.0" onAction="#selectedPlayerPotion" prefWidth="150.0" />
+      <ComboBox fx:id="statPrayerComboBox" layoutX="223.0" layoutY="602.0" onAction="#selectedPlayerPrayer" prefWidth="150.0" />
+      <ComboBox fx:id="familiarComboBox" layoutX="160.0" layoutY="708.0" onAction="#selectedPlayerFamiliar" prefWidth="150.0" />
+      <Pane fx:id="resultPane" layoutX="408.0" layoutY="58.0" prefHeight="255.0" prefWidth="200.0" style="-fx-background-color: yellow;">
+         <children>
+            <Label fx:id="hitChanceLabel" layoutX="25.0" layoutY="14.0" text="Hit Chance">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="playerHitChanceValueLabel" layoutX="25.0" layoutY="52.0" prefHeight="50.0" prefWidth="158.0" text="0%">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <Label fx:id="abilityDamageLabel" layoutX="14.0" layoutY="156.0" prefHeight="35.0" prefWidth="187.0" text="Ability Damage">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="playerAbilityDamageValue" layoutX="41.0" layoutY="191.0" prefHeight="50.0" prefWidth="94.0" text="0">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="102.0" text="MH Dmg" />
+            <Label layoutX="118.0" layoutY="102.0" text="OH Dmg" />
+            <Label fx:id="playerMHDamageValueLabel" layoutX="18.0" layoutY="124.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="playerOHDamageValueLabel" layoutX="118.0" layoutY="124.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Slider fx:id="prayerSlider" blockIncrement="1.0" layoutX="228.0" layoutY="636.0" majorTickUnit="1.0" max="4.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+      <Label fx:id="prayerSliderLabel" layoutX="177.0" layoutY="638.0" text="Stacks:" />
+      <Pane layoutX="608.0" layoutY="58.0" prefHeight="455.0" prefWidth="408.0" style="-fx-background-color: red;">
+         <children>
+            <ImageView fx:id="monsterImageView" fitHeight="284.0" fitWidth="408.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="monsterSpecialAffinityImageView" fitHeight="50.0" fitWidth="48.0" layoutX="318.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="monsterSpecialAffinityValueLabel" layoutX="366.0" layoutY="405.0" prefHeight="50.0" prefWidth="46.0" text="00">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="monsterChoiceComboBox" layoutY="-56.0" onAction="#selectedMonster" prefHeight="58.0" prefWidth="254.0" />
+            <ImageView fx:id="monsterMeleeAffinityImageView" fitHeight="50.0" fitWidth="46.0" layoutX="22.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="monsterMeleeAffinityValueLabel" layoutX="71.0" layoutY="416.0" text="00">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="monsterRangedAffinityImageView" fitHeight="50.0" fitWidth="46.0" layoutX="104.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="monsterRangedAffinityValueLabel" layoutX="165.0" layoutY="416.0" text="00">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="monsterMagicAffinityImageView" fitHeight="50.0" fitWidth="48.0" layoutX="208.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="monsterMagicAffinityValueLabel" layoutX="266.0" layoutY="416.0" text="00">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="13.0" layoutY="395.0" text="accuracy:" />
+            <Label layoutX="222.0" layoutY="395.0" text="defense:" />
+            <Label fx:id="monsterTotalAccuracyValueLabel" layoutX="73.0" layoutY="395.0" prefHeight="17.0" prefWidth="58.0" text="0" />
+            <Label fx:id="monsterTotalDefenseValueLabel" layoutX="289.0" layoutY="394.0" prefHeight="17.0" prefWidth="64.0" text="0" />
+            <Label layoutX="16.0" layoutY="361.0" text="Weaknesses" />
+            <ImageView fx:id="monsterCombatStyleImageView" fitHeight="71.0" fitWidth="64.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="monsterAttackLeftButton" layoutX="159.0" layoutY="23.0" mnemonicParsing="false" onAction="#monsterAttackLeftButtonPressed" prefHeight="25.0" prefWidth="34.0" text="&lt;" />
+            <Button fx:id="monsterAttackRightButton" layoutX="198.0" layoutY="23.0" mnemonicParsing="false" onAction="#monsterAttackRightButtonPressed" prefHeight="25.0" prefWidth="34.0" text="&gt;" />
+            <Label fx:id="monsterAttackNameLabel" layoutX="73.0" layoutY="6.0" prefHeight="17.0" prefWidth="84.0" text="Attack Name" />
+            <Label fx:id="monsterAttackMaxHitLabel" layoutX="73.0" layoutY="22.0" text="Max hit">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <HBox fx:id="monsterBuffHBox" layoutX="233.0" layoutY="2.0" prefHeight="51.0" prefWidth="174.0" />
+            <HBox fx:id="monsterWeaknessesHBox" layoutX="81.0" layoutY="346.0" prefHeight="49.0" prefWidth="305.0" />
+         </children>
+      </Pane>
+      <Button fx:id="monsterSubTypeLeftButton" layoutX="869.0" layoutY="17.0" mnemonicParsing="false" onAction="#monsterSubTypeLeftButtonPressed" prefHeight="25.0" prefWidth="34.0" text="&lt;" />
+      <Button fx:id="monsterSubTypeRightButton" layoutX="909.0" layoutY="17.0" mnemonicParsing="false" onAction="#monsterSubTypeRightButtonPressed" prefHeight="25.0" prefWidth="36.0" text="&gt;" />
+      <Label layoutX="697.0" layoutY="762.0" text="Blackstone arrows" />
+      <CheckBox fx:id="quakeCheckBox" layoutX="695.0" layoutY="590.0" mnemonicParsing="false" onAction="#clickedQuakeCheckBox" text="Quake" />
+      <CheckBox fx:id="guthixStaffSpecCheckBox" layoutX="695.0" layoutY="618.0" mnemonicParsing="false" onAction="#clickedGuthixStaffSpecCheckBox" text="Guthix Staff Spec" />
+      <CheckBox fx:id="swhSpecCheckBox" layoutX="695.0" layoutY="646.0" mnemonicParsing="false" onAction="#clickedSWHSpecCheckBox" text="Status Warhammer Spec" />
+      <Slider fx:id="blackstoneArrowSlider" blockIncrement="1.0" layoutX="697.0" layoutY="784.0" majorTickUnit="10.0" max="20.0" minorTickCount="9" prefHeight="38.0" prefWidth="234.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+      <Pane layoutX="408.0" layoutY="312.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;">
+         <children>
+            <Label layoutX="17.0" layoutY="14.0" text="Get Hit Chance">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="monsterHitChanceValueLabel" layoutX="22.0" layoutY="43.0" prefHeight="51.0" prefWidth="166.0" text="0%">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="100.0" text="Damage Recieved">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="monsterDamageValue" layoutX="41.0" layoutY="125.0" prefHeight="50.0" prefWidth="125.0" text="0">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="wikiLinkButton" layoutX="971.0" layoutY="-1.0" mnemonicParsing="false" onAction="#wikiButtonPressed" prefHeight="49.0" prefWidth="46.0" text="Button" />
+      <CheckBox fx:id="vulnerabilityCheckBox" layoutX="697.0" layoutY="686.0" mnemonicParsing="false" onAction="#clickedVulnerabilityCheckBox" text="Vulnerability" />
+      <CheckBox fx:id="enfeebleCheckBox" layoutX="697.0" layoutY="712.0" mnemonicParsing="false" onAction="#clickedEnfeebleCheckBox" text="Enfeeble" />
+      <CheckBox fx:id="staggerCheckBox" layoutX="697.0" layoutY="739.0" mnemonicParsing="false" onAction="#clickedStaggerCheckBox" text="Stagger" />
+      <Label fx:id="blackstoneArrowStackValueLabel" layoutX="935.0" layoutY="784.0" prefHeight="17.0" prefWidth="36.0" text="0" />
+      <Label layoutX="10.0" layoutY="561.0" text="Strength Level" />
+      <Label layoutX="11.0" layoutY="590.0" text="Defense Level" />
+      <TextField fx:id="playerStrengthLevelTextField" layoutX="89.0" layoutY="557.0" prefHeight="25.0" prefWidth="36.0" text="99" />
+      <TextField fx:id="playerDefenseLevelTextField" layoutX="89.0" layoutY="586.0" prefHeight="25.0" prefWidth="36.0" text="99" />
+      <Label layoutX="13.0" layoutY="618.0" text="Ranged Level" />
+      <Label layoutX="17.0" layoutY="646.0" text="Magic Level" />
+      <TextField fx:id="playerRangedLevelTextField" layoutX="89.0" layoutY="614.0" prefHeight="25.0" prefWidth="36.0" text="99" />
+      <TextField fx:id="playerMagicLevelTextField" layoutX="89.0" layoutY="642.0" prefHeight="25.0" prefWidth="36.0" text="99" />
+      <Label fx:id="reaperSliderLabel" layoutX="59.0" layoutY="804.0" text="Reaper Stacks:" />
+      <Slider fx:id="reaperSlider" blockIncrement="1.0" layoutX="153.0" layoutY="805.0" majorTickUnit="10.0" max="30.0" minorTickCount="9" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="30.0" />
+      <Label fx:id="reaperStackValueLabel" layoutX="310.0" layoutY="804.0" text="30" />
+   </children>
+</AnchorPane>

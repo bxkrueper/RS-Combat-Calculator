@@ -1,0 +1,84 @@
+Name,"Picture (if empty, uses images/equipment/[name]",Slot,Combat Style,Level,Damage,Armor,Damage Reduction,Buff
+Malevolent kiteshield,,OFF_HAND,Melee,90,0,491,0.09,None
+Vengeful kiteshield,,OFF_HAND,Ranged,90,0,491,0.09,None
+Merciless kiteshield,,OFF_HAND,Magic,90,0,491,0.09,None
+Divine spirit shield,,OFF_HAND,Melee,75,0,338,0.075,Spirit_Shield_Absorbsion
+Elysian spirit shield,,OFF_HAND,Ranged,75,0,338,0.075,Spirit_Shield_Absorbsion
+Arcane spirit shield,,OFF_HAND,Magic,75,0,338,0.075,Spirit_Shield_Absorbsion
+Trimmed masterwork helm,,HELMET,Melee,92,24,457.4,0,None
+Trimmed masterwork platebody,,BODY,Melee,92,36,526,0,None
+Trimmed masterwork platelegs,,LEGS,Melee,92,31,503.1,0,None
+Trimmed masterwork gloves,,GLOVES,Melee,92,15,114.3,0,None
+Trimmed masterwork boots,,BOOTS,Melee,92,15,114.3,0,None
+Masterwork helm,,HELMET,Melee,90,23.2,435.6,0,None
+Masterwork platebody,,BODY,Melee,90,34.8,500.9,0,None
+Masterwork platelegs,,LEGS,Melee,90,29,479.1,0,None
+Masterwork gloves,,GLOVES,Melee,90,14.5,108.9,0,None
+Masterwork boots,,BOOTS,Melee,90,14.5,108.9,0,None
+Achto Teralith Helmet,,HELMET,Melee,90,0,491,0.018,None
+Achto Teralith Cuirass,,BODY,Melee,90,0,565,0.018,None
+Achto Teralith Leggings,,LEGS,Melee,90,0,540,0.018,None
+Achto Teralith Gauntlets,,GLOVES,Melee,90,0,122,0.018,None
+Achto Teralith Boots,,BOOTS,Melee,90,0,122,0.018,None
+Torva full helm,,HELMET,Melee,80,20,338,0,None
+Torva platebody,,BODY,Melee,80,30,389,0,None
+Torva platelegs,,LEGS,Melee,80,25,372,0,None
+Torva gloves,,GLOVES,Melee,80,12,84,0,None
+Torva boots,,BOOTS,Melee,80,12,84,0,None
+Superior tetsu helm,,HELMET,Melee,85,0,435,0.017,None
+Superior tetsu body,,BODY,Melee,85,0,500,0.017,None
+Superior tetsu platelegs,,LEGS,Melee,85,0,479,0.017,None
+Superior tetsu kote,,GLOVES,Melee,85,0,108,0.017,None
+Superior tetsu kogake,,BOOTS,Melee,85,0,108,0.017,None
+Elite sirenic mask,,HELMET,Ranged,92,24,457,0,None
+Elite sirenic hauberk,,BODY,Ranged,92,36,526,0,None
+Elite sirenic chaps,,LEGS,Ranged,92,31,503,0,None
+Sirenic mask,,HELMET,Ranged,90,23,435,0,None
+Sirenic hauberk,,BODY,Ranged,90,34,500,0,None
+Sirenic chaps,,LEGS,Ranged,90,29,479,0,None
+Achto Tempest Cowl,,HELMET,Ranged,90,0,491,0.018,None
+Achto Tempest Body,,BODY,Ranged,90,0,565,0.018,None
+Achto Tempest Chaps,,LEGS,Ranged,90,0,540,0.018,None
+Achto Tempest Gloves,,GLOVES,Ranged,90,0,122,0.018,None
+Achto Tempest Boots,,BOOTS,Ranged,90,0,122,0.018,None
+Pernix cowl,,HELMET,Ranged,80,20,338,0,None
+Pernix body,,BODY,Ranged,80,30,389,0,None
+Pernix chaps,,LEGS,Ranged,80,25,372,0,None
+Pernix gloves,,GLOVES,Ranged,80,12,84,0,None
+Pernix boots,,BOOTS,Ranged,80,12,84,0,None
+Superior Death Lotus hood,,HELMET,Ranged,85,0,435,0.017,None
+Superior Death Lotus chestplate,,BODY,Ranged,85,0,500,0.017,None
+Superior Death Lotus chaps,,LEGS,Ranged,85,0,479,0.017,None
+Superior Death Lotus tekoh,,GLOVES,Ranged,85,0,108,0.017,None
+Superior Death Lotus tabi,,BOOTS,Ranged,85,0,108,0.017,None
+Elite tectonic mask,,HELMET,Magic,92,24,457,0,None
+Elite tectonic robe top,,BODY,Magic,92,36,526,0,None
+Elite tectonic robe bottom,,LEGS,Magic,92,31,503,0,None
+Tectonic mask,,HELMET,Magic,90,23,435,0,None
+Tectonic robe top,,BODY,Magic,90,34,500,0,None
+Tectonic robe bottom,,LEGS,Magic,90,29,479,0,None
+Achto Primeval Mask,,HELMET,Magic,90,0,491,0.018,None
+Achto Primeval robe top,,BODY,Magic,90,0,565,0.018,None
+Achto Primeval robe legs,,LEGS,Magic,90,0,540,0.018,None
+Achto Primeval Gloves,,GLOVES,Magic,90,0,122,0.018,None
+Achto Primeval Boots,,BOOTS,Magic,90,0,122,0.018,None
+Virtus mask,,HELMET,Magic,80,20,338,0,None
+Virtus robe top,,BODY,Magic,80,30,389,0,None
+Virtus robe legs,,LEGS,Magic,80,25,372,0,None
+Virtus gloves,,GLOVES,Magic,80,12,84,0,None
+Virtus boots,,BOOTS,Magic,80,12,84,0,None
+Superior seasinger's hood,,HELMET,Magic,85,0,435,0.017,None
+Superior seasinger's robe top,,BODY,Magic,85,0,500,0.017,None
+Superior seasinger's robe bottom,,LEGS,Magic,85,0,479,0.017,None
+Superior seasinger aonori,,GLOVES,Magic,85,0,108,0.017,None
+Superior seasinger asari,,BOOTS,Magic,85,0,108,0.017,None
+Cinderbane gloves,,GLOVES,Hybrid,85,11,74,0,None
+Black mask,,HELMET,Melee,10,0,40,0,Black_Mask
+Focus sight,,HELMET,Ranged,20,0,63,0,Focus_Sight
+Hexcrest,,HELMET,Magic,20,0,63,0,Hexcrest
+Slayer helmet,,HELMET,Melee,10,0,40,0,Black_Mask
+Full slayer helmet,,HELMET,All,25,0,40,0,Slayer_Helmet_All
+Reinforced slayer helmet,,HELMET,All,45,0,90,0,Reinforced_Slayer_Helmet
+Strong slayer helmet,,HELMET,All,65,0,170,0,Strong_Slayer_Helmet
+Mighty slayer helmet,,HELMET,All,70,0,297,0,Mighty_Slayer_Helmet
+Corrupted slayer helmet,,HELMET,All,85,0,297,0,Corrupted_Slayer_Helmet

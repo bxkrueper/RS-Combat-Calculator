@@ -1,0 +1,13 @@
+Name,"Picture (if empty, uses images/equipment/[name]",Combat Style,Min Level,Max Level,Buff
+Air surge,,Air,81,92,None
+Water Surge,,Water,85,92,None
+Earth Surge,,Earth,90,92,None
+Fire Surge,,Fire,95,92,None
+Smoke Barrage,,Air,86,92,None
+Shadow Barrage,,Earth,88,92,None
+Blood Barrage,,Fire,92,92,None
+Ice Barrage,,Water,94,92,None
+Smoke Blitz,,Air,74,80,None
+Shadow Blitz,,Earth,76,80,None
+Blood Blitz,,Fire,80,92,None
+Ice Blitz,,Water,82,92,None

@@ -1,0 +1,8 @@
+Name,"Picture (if empty, uses images/equipment/[name]",Combat Style,Level,Damage,Buff
+Araxyte arrows,,Arrows,90,864,None
+Black stone arrows,,Arrows,92,883,None
+Dragonbane arrows,,Arrows,60,576,Dragonbane_Arrows
+Bakriminel bolts (enchanted),Opal bakriminel bolts (enchanted),Bolts,95,912,None
+Blight bolts,,Bolts,92,883,None
+Ascension bolts,,Bolts,90,864,None
+Dragonbane bolts,,Bolts,60,576,Dragonbane_Bolts
