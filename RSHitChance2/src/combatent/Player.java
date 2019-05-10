@@ -1,5 +1,7 @@
 package combatent;
-
+/*
+ * stores the player's information
+ */
 import buff.BuffFlyweight;
 import buff.BuffName;
 import buff.Buffs;
@@ -16,7 +18,6 @@ import equipment.Slot;
 import equipment.WeaponInterface;
 import equipment.WornEquipment;
 
-//stores the player's information
 public class Player implements Combatent{
 
     private String name;
@@ -34,7 +35,7 @@ public class Player implements Combatent{
         this.vulnerabilities = new Vulnerabilities();
         
         this.allBuffs = new Buffs();
-        this.playerOtherBuffs = new Buffs();//added with the bottom interface (potions, prayers, ext)
+        this.playerOtherBuffs = new Buffs();//filled with stuff from the bottom interface (potions, prayers, ext)
         allBuffs.addBuff(wornEquipment.getEquipmentBuffs());//equipment buffs are automatically added and removed with equipment
         allBuffs.addBuff(playerOtherBuffs);
     }
@@ -53,12 +54,13 @@ public class Player implements Combatent{
         return wornEquipment;
     }
 
+    //offensive style depends on weapon
     @Override
     public OffensiveCombatStyle getCombatStyle() {
         return wornEquipment.getCombatStyle();
     }
 
-    //checks if the player can actually attack with the weapon (right bolts, spell, magic level for spell, not shield). If they can't, return Can't attack combat style
+    //checks if the player can actually attack with the weapon (right bolts, spell, magic level for spell, not shield).
     public boolean canAttackWithWeapon(WeaponInterface weapon,Combatent opponent) {
         
         PrimaryCombatStyle mainWeaponCombatStyle = (PrimaryCombatStyle) weapon.getCombatStyle();
@@ -160,8 +162,7 @@ public class Player implements Combatent{
     public int getAccuracyPenaltyFromWrongArmor() {
         return wornEquipment.getAccuracyPenaltyFromWrongArmor();
     }
-
-    /////promote to Combatent?
+    
     public double getNaturalAbsorbsion() {
         double damageRecievedMultiplier = 1.0-getStats().getBaseDefenseLevel()/1000.0;//for defense level
         damageRecievedMultiplier-=getWornEquipment().getDamageReduction();//for tank armor and shield

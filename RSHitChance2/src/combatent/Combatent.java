@@ -18,6 +18,7 @@ public interface Combatent {
     int getBasePowerLevel();//strength for melee, same as accuracy for range and mage
     int getBaseDefenseLevel();
     int getNaturalArmor();
+    double getNaturalAbsorbsion();//is applied separately and before buff damage modifiers. Value for 10% Absorbsion is .9
     Vulnerabilities getVulnerabilities();
     Buffs getBuffs();
     boolean canAttack(Combatent opponent);

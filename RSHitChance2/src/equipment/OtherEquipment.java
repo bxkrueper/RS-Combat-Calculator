@@ -1,5 +1,7 @@
 package equipment;
-
+/*
+ * for auras, pocket slot items, amulets, rings, capes, and sigils
+ */
 import buff.BuffFlyweight;
 import buff.Buff;
 import buff.BuffName;

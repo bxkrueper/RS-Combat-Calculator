@@ -1,5 +1,8 @@
 package combatent;
-
+/*
+ * the player's base stats. The interface can directly edit these values
+ * base values for players are determined by their weapon
+ */
 import combatStyle.Magic;
 import combatStyle.Melee;
 import combatStyle.OffensiveCombatStyle;
@@ -119,6 +122,7 @@ public class PlayerStats implements Stats{
         return -1;
     }
 
+    //players can only attack with primary combat styles
     public int getPowerLevel(OffensiveCombatStyle combatStyle) {
         if(combatStyle instanceof PrimaryCombatStyle){
             return getPowerLevel((PrimaryCombatStyle) combatStyle);

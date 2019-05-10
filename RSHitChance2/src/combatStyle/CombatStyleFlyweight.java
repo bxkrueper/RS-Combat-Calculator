@@ -1,5 +1,8 @@
 package combatStyle;
-
+/*
+ * maps strings to the combat style instances. Each combat style is a singleton,
+ * so you can access them from their class's get instance method or here
+ */
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -7,9 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//flyweight pattern.
-//the three main combat styles are Melee, Ranged, and Magic.
-//These each have more specific classes based on what weapon type or spell you are using
 public class CombatStyleFlyweight {
     
     private static Map<String,CombatStyle> cbsMap;

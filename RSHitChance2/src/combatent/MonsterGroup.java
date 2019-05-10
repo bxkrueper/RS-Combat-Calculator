@@ -10,13 +10,13 @@ import combatStyle.PrimaryCombatStyle;
 import javafx.scene.image.Image;
 
 
-public class MonsterGroup implements MonsterInterface{
+public class MonsterGroup implements Monster{
 
     private String groupName;
-    private Monster[] monsterArray;
+    private MonsterSingle[] monsterArray;
     private int selected;
     
-    public MonsterGroup(String groupName, Monster[] monsterArray){
+    public MonsterGroup(String groupName, MonsterSingle[] monsterArray){
         this.groupName = groupName;
         this.monsterArray = monsterArray;
         this.selected = 0;
@@ -119,6 +119,11 @@ public class MonsterGroup implements MonsterInterface{
     @Override
     public int getNaturalArmor() {
         return monsterArray[selected].getNaturalArmor();
+    }
+    
+    @Override
+    public double getNaturalAbsorbsion() {
+    	return monsterArray[selected].getNaturalAbsorbsion();
     }
     
     @Override

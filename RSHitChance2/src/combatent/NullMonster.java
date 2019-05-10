@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 import resources.ImageFlyweight;
 
 
-public class NullMonster implements MonsterInterface{
+public class NullMonster implements Monster{
     
     private Image image;
     private MonsterStats stats;
@@ -22,7 +22,7 @@ public class NullMonster implements MonsterInterface{
     private MonsterAffinityWeaknesses affinityWeaknesses;
     
     public NullMonster(){
-        this.image = ImageFlyweight.getImage("images/Monsters/Null Monster",Monster.IMAGE_WIDTH,Monster.IMAGE_HEIGHT,true,true);
+        this.image = ImageFlyweight.getImage("images/Monsters/Null Monster",MonsterSingle.IMAGE_WIDTH,MonsterSingle.IMAGE_HEIGHT,true,true);
         this.stats = new MonsterStats(0,0,0,0,0,0,0,0);
         this.link = "https://runescape.wiki/w/Boss";
         this.vulnerabilities = new Vulnerabilities();
@@ -105,6 +105,11 @@ public class NullMonster implements MonsterInterface{
     public int getNaturalArmor() {
         return 0;
     }
+    
+    @Override
+    public double getNaturalAbsorbsion() {
+    	return 1.0;
+    }
 
     @Override
     public int getBasePowerLevel() {
@@ -117,7 +122,7 @@ public class NullMonster implements MonsterInterface{
     }
     
     public Buffs getEditableBuffs() {
-        return Monster.editableBuffs;
+        return MonsterSingle.editableBuffs;
     }
 
     @Override

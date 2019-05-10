@@ -1,5 +1,7 @@
 package equipment;
-
+/*
+ * composite form of EquipmentFilter
+ */
 import java.util.LinkedList;
 import java.util.List;
 

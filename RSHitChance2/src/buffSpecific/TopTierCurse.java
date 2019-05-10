@@ -9,7 +9,7 @@ import buff.ConstantFillInStackBuff;
 import buff.OwnerUsingGeneralPrimaryCombatStyleCondition;
 import combatStyle.PrimaryCombatStyle;
 import combatent.Combatent;
-import combatent.MonsterInterface;
+import combatent.Monster;
 
 public class TopTierCurse extends ConstantFillInStackBuff{
     //stack is expected to be between 0 and 4 (inclusive)
@@ -82,7 +82,7 @@ public class TopTierCurse extends ConstantFillInStackBuff{
     @Override
     public double getDamageRecievedMultiplier(Combatent owner, Combatent opponent) {
         if(deBuffOpponentCondition.passes(owner, opponent)){
-            if(opponent instanceof MonsterInterface){
+            if(opponent instanceof Monster){
                 return 0.91-getStackValue()*0.015;
             }else{//instance of player
                 return 0.94-getStackValue()*0.01;

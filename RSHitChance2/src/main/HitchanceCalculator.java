@@ -1,5 +1,8 @@
 package main;
-
+/*
+ * takes into account all factors about that attacker and defender to determine the attacker's chance to hit.
+ * use the calculateHitchance method to update the fields, then use the getter methods to get the calculation you need
+ */
 import buff.Buff;
 import buff.Buffs;
 import combatStyle.AlwaysHits;
@@ -10,9 +13,11 @@ import combatent.Combatent;
 
 public class HitchanceCalculator {
     
+	//intermediary calculations
     private static int attackerTotalAccuracy;
     private static int defenderTotalDefense;
     private static int defenderAffinityRaise;
+    //final hit chance
     private static double hitChance;//100 and above always hits. not guaranteed to be between 0 and 100
 
     public static void calculateHitchance(Combatent attacker, Combatent defender) {

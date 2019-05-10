@@ -1,24 +1,21 @@
 package equipment;
-
+/*
+ * represents all of a player's equiped items
+ */
 import java.util.HashMap;
 import java.util.Map;
 
-import buff.BuffFlyweight;
 import buff.Buff;
-import buff.BuffName;
 import buff.Buffs;
 import buff.NullBuff;
 import combatStyle.All;
 import combatStyle.CombatStyle;
-import combatStyle.CombatStyleFlyweight;
 import combatStyle.DefensiveCombatStyle;
 import combatStyle.Hybrid;
 import combatStyle.Magic;
-import combatStyle.Melee;
 import combatStyle.None;
 import combatStyle.OffensiveCombatStyle;
 import combatStyle.PrimaryCombatStyle;
-import combatStyle.Ranged;
 
 public class WornEquipment{
     
@@ -34,6 +31,7 @@ public class WornEquipment{
         this.equipmentBuffs = new Buffs();
     }
 
+    //initially fills the map with the default Null Objects instead of null
     private void equipNullEquipment() {
         for(Slot slot:Slot.values()){
             slotEquipmentMap.put(slot, EquipmentFlyweight.getNullEquipmentForSlot(slot));
@@ -46,15 +44,15 @@ public class WornEquipment{
         return slotEquipmentMap.get(slot);
     }
     
+    //equips the item into its slot and adds its buff
+    //makes sure an off hand cannot be wielded with a two handed item and that there is only one clear primary weapon (either one handed or two handed)
     public void equip(Equipment equipment){
         Slot slot = equipment.getSlot();
         deEquip(slot);
         slotEquipmentMap.put(slot, equipment);
         
         Buff buff = equipment.getBuff();
-        if(buff!=NullBuff.getInstance()){
-            equipmentBuffs.addBuff(buff);
-        }
+        equipmentBuffs.addBuff(buff);
         
         if(slot == Slot.TWO_HAND){
             deEquip(Slot.OFF_HAND);
@@ -67,6 +65,7 @@ public class WornEquipment{
             deEquip(Slot.TWO_HAND);
         }
     }
+    //removes the item's buffs from the player and equips the Null Object for that slot
     public void deEquip(Slot slot){
         Buff buffToRemove = slotEquipmentMap.get(slot).getBuff();
         if(buffToRemove!=NullBuff.getInstance()){
@@ -75,6 +74,9 @@ public class WornEquipment{
         
         slotEquipmentMap.put(slot, EquipmentFlyweight.getNullEquipmentForSlot(slot));
     }
+    
+    
+    
     
     public Buffs getEquipmentBuffs(){
         return equipmentBuffs;
@@ -113,9 +115,7 @@ public class WornEquipment{
         int total = 0;
         for(Slot slot:Slot.values()){
             Equipment equipment = getEquipment(slot);
-            if(equipment!=null){
-                total+= equipment.getDamage();
-            }
+            total+= equipment.getDamage();
         }
         return total;
     }
@@ -127,9 +127,7 @@ public class WornEquipment{
                 continue;
             }
             Equipment equipment = getEquipment(slot);
-            if(equipment!=null){
-                total+= equipment.getDamage();
-            }
+            total+= equipment.getDamage();
         }
         return total;
     }
@@ -138,19 +136,19 @@ public class WornEquipment{
         int total = 0;
         for(Slot slot:Slot.values()){
             Equipment equipment = getEquipment(slot);
-            if(equipment!=null){
-                total+= equipment.getArmor();
-            }
+            total+= equipment.getArmor();
         }
         return total;
     }
 
+    /////////test
     public int getAffinityTo(PrimaryCombatStyle cbs) {
         int armor = getArmor();//total armor
         if(armor==0){
             return 55;
         }else{
-            int weightedAffinity = (int) ((45*getArmor(cbs.getWeakAgainst())+55*getArmor(cbs)+65*getArmor(cbs.getStrongAgainst())+55*getArmor(Hybrid.getInstance())+55*getArmor(All.getInstance())+55*getArmor(Hybrid.getInstance())+55*getArmor(None.getInstance())));
+        	//hybrid, none, and all are treated the same
+            int weightedAffinity = (int) ((45*getArmor(cbs.getWeakAgainst())+55*getArmor(cbs)+65*getArmor(cbs.getStrongAgainst())+55*getArmor(Hybrid.getInstance())+55*getArmor(All.getInstance())+55*getArmor(None.getInstance())));
             if(weightedAffinity==0){
                 return 55;
             }else{
@@ -166,10 +164,8 @@ public class WornEquipment{
         int total = 0;
         for(Slot slot:Slot.values()){
             Equipment equipment = getEquipment(slot);
-            if(equipment.getCombatStyle()==cbs){/////////////////////
-                if(equipment!=null){
-                    total+= equipment.getArmor();
-                }
+            if(equipment.getCombatStyle()==cbs){//assumes defensive styles don't have subclasses
+                total+= equipment.getArmor();
             }
         }
         return total;
@@ -205,10 +201,8 @@ public class WornEquipment{
         double total = 0;
         for(Slot slot:Slot.values()){
             Equipment equipment = getEquipment(slot);
-            if(equipment!=null){
-                if(equipment instanceof Armor){
-                    total+= ((Armor) equipment).getDamageReduction();
-                }
+            if(equipment instanceof Armor){
+                total+= ((Armor) equipment).getDamageReduction();
             }
         }
         return total;

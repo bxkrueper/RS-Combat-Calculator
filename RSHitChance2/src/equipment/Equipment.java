@@ -1,5 +1,7 @@
 package equipment;
-
+/*
+ * groups up data that all equipment has
+ */
 import buff.Buff;
 import combatStyle.CombatStyle;
 import combatStyle.CombatStyleFlyweight;

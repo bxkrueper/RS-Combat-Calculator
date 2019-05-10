@@ -1,5 +1,9 @@
 package combatent;
 
+/*
+ * Total Accuracy is calculated by = levelFunction(AccuracyLevel)+ naturalAccuracy. Similarly for defense
+ * Copies of these values may be modified separately by buffs beforehand
+ */
 import combatStyle.PrimaryCombatStyle;
 
 public interface Stats {
@@ -15,5 +19,5 @@ public interface Stats {
     
     int getAccuracyLevel(PrimaryCombatStyle cbs);
     int getAccuracy(PrimaryCombatStyle cbs);
-    int getPowerLevel(PrimaryCombatStyle combatStyle);
+    int getPowerLevel(PrimaryCombatStyle combatStyle);//players only for monsters, this just returns 0
 }

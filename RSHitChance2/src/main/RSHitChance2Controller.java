@@ -31,13 +31,13 @@ import combatStyle.Melee;
 import combatStyle.None;
 import combatStyle.Ranged;
 import combatent.Combatent;
-import combatent.Monster;
+import combatent.MonsterSingle;
 import combatent.MonsterFlyweight;
 import combatent.MonsterGroup;
-import combatent.MonsterInterface;
+import combatent.Monster;
 import combatent.Player;
 import combatent.PlayerStats;
-import combatent.SpecialAffinity;
+import combatent.MonsterSpecialAffinity;
 import combatent.MonsterStats;
 import combatent.NullMonster;
 import equipment.NotOtherPrimaryStyleFilter;
@@ -46,6 +46,10 @@ import equipment.EquipmentFilter;
 import equipment.EquipmentFilters;
 import equipment.EquipmentFlyweight;
 import equipment.Slot;
+import interfaceHelpers.BuffStringToImage;
+import interfaceHelpers.EquipmentStringToImage;
+import interfaceHelpers.PictureListCell;
+import interfaceHelpers.StringToImage;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
@@ -219,8 +223,8 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     
     private Player player;
-    private MonsterInterface currentMonster;
-    private List<MonsterInterface> monsterList;
+    private Monster currentMonster;
+    private List<Monster> monsterList;
     private Map<Slot,ComboBox<String>> equipmentComboBoxMap;
     private EquipmentFilters equipmentFilters;
     
@@ -364,7 +368,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
 
     private void setUpMonsterSelectionComboBox() {
         ObservableList<String> options = FXCollections.observableArrayList();
-        for(MonsterInterface monster:monsterList){
+        for(Monster monster:monsterList){
             options.add(monster.getName());
         }
         options.remove("Null Monster");

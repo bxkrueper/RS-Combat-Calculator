@@ -1,5 +1,7 @@
 package equipment;
-
+/*
+ * includes main hand, two handed, and off handed weapons. all weapons have a speed and accuracy, though off hand accuracy is not used
+ */
 import buff.BuffFlyweight;
 import buff.Buff;
 import buff.BuffName;

@@ -1,5 +1,7 @@
 package equipment;
-
+/*
+ * magic spells can scale their damage up to a certain level so that everyone don't have to use fire/ice spells to get the best damage
+ */
 import buff.BuffFlyweight;
 import buff.Buff;
 import buff.BuffName;

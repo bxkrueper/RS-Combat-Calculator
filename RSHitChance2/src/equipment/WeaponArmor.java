@@ -1,5 +1,7 @@
 package equipment;
-
+/*
+ * for defenders and shildbows, which are both weapons and armor
+ */
 import buff.BuffFlyweight;
 import buff.Buff;
 import buff.BuffName;

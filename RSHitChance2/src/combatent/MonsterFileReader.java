@@ -1,7 +1,8 @@
 package combatent;
 /*
  *reads monsters from Monsters.csv
- *lines that single the start of a group begin with the number of monsters in the first cell and have the group name in the next cell. The next n monsters are part of that group and are returned as one MonsterGroup
+ *lines that single the start of a group begin with the number of monsters in the first cell and have the group name in the next cell.
+ *The next n monsters are part of that group and are returned as one MonsterGroup
  */
 import java.io.FileNotFoundException;
 
@@ -44,7 +45,7 @@ public class MonsterFileReader extends ObjectFileReader{
             return MonsterFactory.readMonster(splitString);
         }else{//this monster is composed of multiple monsters
             String groupName = splitString[1];
-            Monster[] monsterArray = new Monster[groupCount];
+            MonsterSingle[] monsterArray = new MonsterSingle[groupCount];
             for(int i=0;i<groupCount;i++){
                 
                 String subMonsterRowString = nextLine();

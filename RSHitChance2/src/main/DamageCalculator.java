@@ -8,7 +8,7 @@ import combatStyle.Melee;
 import combatStyle.OffensiveCombatStyle;
 import combatStyle.PrimaryCombatStyle;
 import combatent.Combatent;
-import combatent.MonsterInterface;
+import combatent.Monster;
 import combatent.Player;
 import equipment.AmmoInterface;
 import equipment.Equipment;
@@ -17,7 +17,7 @@ import equipment.Slot;
 import equipment.WeaponInterface;
 import equipment.WeaponSpeed;
 import equipment.WornEquipment;
-
+/////////simplify
 public class DamageCalculator {
     
     /*
@@ -96,6 +96,11 @@ public class DamageCalculator {
         System.out.println("extra power level bonus: " + extraPowerLevels*8);
         abilityDamage+=extraPowerLevels*8;
         
+        System.out.println("ability damage before damage absorbsion: " + abilityDamage);
+        
+        //Apply monster natural absorbsion
+        abilityDamage*=defender.getNaturalAbsorbsion();
+        System.out.println("monster natural absorbsion: " + defender.getNaturalAbsorbsion());
         System.out.println("ability damage before mult buffs: " + abilityDamage);
         
         //apply multiplicative boosts
@@ -196,7 +201,7 @@ public class DamageCalculator {
     
     
     
-    public static int calculateAutoDamage(Player player, MonsterInterface currentMonster, boolean mainHand) {
+    public static int calculateAutoDamage(Player player, Monster currentMonster, boolean mainHand) {
         if(mainHand){
             return calculateAutoDamage(player, currentMonster, player.getWornEquipment().getMainWeapon());
         }else{
@@ -212,7 +217,7 @@ public class DamageCalculator {
 
     
     
-    private static int calculateAutoDamage(Player attacker, MonsterInterface defender, WeaponInterface weapon) {
+    private static int calculateAutoDamage(Player attacker, Monster defender, WeaponInterface weapon) {
         if(!attacker.canAttackWithWeapon(weapon,defender)){
             System.out.println(attacker + " Can't attack with " + weapon);
             return 0;
@@ -248,7 +253,12 @@ public class DamageCalculator {
         System.out.println("extra power level bonus: " + extraPowerLevels*8);
         autoDamage+=extraPowerLevels*8;
         
-        System.out.println("ability damage before mult buffs: " + autoDamage);
+        System.out.println("Auto damage before natural absorbsion: " + autoDamage);
+        
+        //Apply monster natural absorbsion
+        autoDamage*=defender.getNaturalAbsorbsion();
+        System.out.println("monster natural absorbsion: " + defender.getNaturalAbsorbsion());
+        System.out.println("auto damage before mult buffs: " + autoDamage);
         
         //apply multiplicative boosts
         System.out.println("damage mult from owner: " + attacker.getBuffs().getDamageMultiplier(attacker, defender));
@@ -269,7 +279,7 @@ public class DamageCalculator {
     
     
     //monster damage is simpler
-    public static int calculateAbilityDamage(MonsterInterface attacker, Player defender) {
+    public static int calculateAbilityDamage(Monster attacker, Player defender) {
         int damage = attacker.getAttacks().getAttack().getMaxHit();
         System.out.println("monster base damage: " + damage);
         

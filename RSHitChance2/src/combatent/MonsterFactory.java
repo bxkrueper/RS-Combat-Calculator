@@ -19,7 +19,7 @@ import combatStyle.PrimaryCombatStyle;
 public class MonsterFactory {
     
     
-    public static Monster readMonster(String[] splitString){
+    public static MonsterSingle readMonster(String[] splitString){
         
         String name = splitString[0];
         String pictureName = splitString[1].equals("")? name:splitString[1];//if there is nothing in this column, the picture name is the same as the name. File extensions are found by ResourceGetter
@@ -41,7 +41,7 @@ public class MonsterFactory {
         boolean weakToReflect = Boolean.parseBoolean(splitString[16]);
         boolean weakToStun = Boolean.parseBoolean(splitString[17]);
         boolean weakToDrain = Boolean.parseBoolean(splitString[18]);
-        SpecialAffinity specialAffinity =  getAffinityWeaknessFromString(splitString[19]);
+        MonsterSpecialAffinity specialAffinity =  getAffinityWeaknessFromString(splitString[19]);
         Vulnerabilities vulnerabilities = getVulnsFromString(splitString[20]);
         Buff naturalBuffs = getNaturalBuffsFromString(splitString[21]);
         
@@ -64,7 +64,7 @@ public class MonsterFactory {
         }
         
         
-        return new Monster(name,pictureName,wikiLink,monsterBaseStats,attacks,affinityWeaknesses,vulnerabilities,naturalBuffs);
+        return new MonsterSingle(name,pictureName,wikiLink,monsterBaseStats,attacks,affinityWeaknesses,vulnerabilities,naturalBuffs);
     }
     
     
@@ -116,7 +116,7 @@ public class MonsterFactory {
     }
 
     //format in file: either "None" or "<weakness> affinity value" ex: "Slash 90"
-    private static SpecialAffinity getAffinityWeaknessFromString(String str){
+    private static MonsterSpecialAffinity getAffinityWeaknessFromString(String str){
         String[] weaknessStrings = str.split(" ");
         
         CombatStyle cs = (CombatStyle) CombatStyleFlyweight.getCombatStyle(weaknessStrings[0]);
@@ -134,7 +134,7 @@ public class MonsterFactory {
             affinity = Integer.parseInt(weaknessStrings[1]);
         }
         
-        return new SpecialAffinity(pcs,affinity);
+        return new MonsterSpecialAffinity(pcs,affinity);
     }
     
     private static Buff getNaturalBuffsFromString(String string) {

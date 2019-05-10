@@ -8,7 +8,7 @@ public enum WeaponSpeed {
     Slowest(0,0),/////////?unknown
     NA(0,0);
     
-    private final double meleeMod;
+    private final double meleeMod;//used to balance melee with magic and ranged
     private final double speedMod;
     WeaponSpeed(double speedMod,double meleeMod){
         this.speedMod = speedMod;
@@ -19,7 +19,7 @@ public enum WeaponSpeed {
         return speedMod;
     }
     
-    public double meleeMod(){/////////range and mage use these values inversed fore auto attacks
+    public double meleeMod(){//range and mage use these values inversed fore auto attacks
         return meleeMod;
     }
     

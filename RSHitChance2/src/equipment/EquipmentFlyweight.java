@@ -1,5 +1,7 @@
 package equipment;
-
+/*
+ * data base for all equipment
+ */
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,14 +21,19 @@ public class EquipmentFlyweight {
 
     private static Map<String,Equipment> equipmentMap;
     private static Map<Slot,List<Equipment>> slotListMap;
-    private static Map<Slot,Equipment> nullEquipmentMap;
+    private static Map<Slot,Equipment> nullEquipmentMap;//equipment here represents having nothing in that slot
     
     private static void makeMaps() {
         equipmentMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);//case insensitive to make naming pictures easier. doesn't work with hash map
         nullEquipmentMap = new HashMap<>();
         makeEmptySlotListMap();
         
-        //add null equipment
+        addNullEquipment();
+        readInAllEquipmentFiles();
+    }
+
+	private static void addNullEquipment() {
+		//add null equipment
         ///////rangedammo?
         nullEquipmentMap.put(Slot.HELMET, new Armor("No Helmet", "No Helmet", Slot.HELMET, None.getInstance(), 0, 0,0,NullBuff.getInstance(),0));
         nullEquipmentMap.put(Slot.AURA, new OtherEquipment("No Aura", "No Aura", Slot.AURA, None.getInstance(), 0,0,NullBuff.getInstance()));
@@ -45,21 +52,16 @@ public class EquipmentFlyweight {
         for(Equipment nullEquipment:nullEquipmentMap.values()){
             addEquipment(nullEquipment);
         }
-        
-        readInFile(pathToEquipment+"Weapons.csv",Weapon.getEquipmentConverter());
+	}
+
+	private static void readInAllEquipmentFiles() {
+		readInFile(pathToEquipment+"Weapons.csv",Weapon.getEquipmentConverter());
         readInFile(pathToEquipment+"WeaponArmor.csv",WeaponArmor.getEquipmentConverter());
         readInFile(pathToEquipment+"Armor.csv",Armor.getEquipmentConverter());
         readInFile(pathToEquipment+"RangedAmmo.csv",RangedAmmo.getEquipmentConverter());
         readInFile(pathToEquipment+"MagicSpells.csv",MagicSpell.getEquipmentConverter());
         readInFile(pathToEquipment+"OtherEquipment.csv",OtherEquipment.getEquipmentConverter());
-        
-        
-        
-        
-        
-        
-        
-    }
+	}
 
     private static void readInFile(String fileName,EquipmentConverter converter) {
         EquipmentFileReader efr;
@@ -76,7 +78,7 @@ public class EquipmentFlyweight {
         }
     }
     
-    public static void addEquipment(Equipment equipment){
+    private static void addEquipment(Equipment equipment){
         equipmentMap.put(equipment.getName(), equipment);
         addToLists(equipment.getSlot(),equipment);
     }

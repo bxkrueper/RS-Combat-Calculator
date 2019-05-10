@@ -1,5 +1,8 @@
 package combatent;
-
+/*
+ * this is a list of buffs the monster is susceptible too (eg slayer mask)
+ * Buffs that affect everything like affinity raise do not check this class and there is no need to include them here
+ */
 import java.util.ArrayList;
 import java.util.List;
 

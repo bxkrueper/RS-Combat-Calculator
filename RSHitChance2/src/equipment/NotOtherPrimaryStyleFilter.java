@@ -1,5 +1,7 @@
 package equipment;
-
+/*
+ * example use: if cbs is melee, filters out ranged and magic but keeps others like hybrid
+ */
 import combatStyle.CombatStyle;
 import combatStyle.PrimaryCombatStyle;
 
@@ -16,7 +18,7 @@ public class NotOtherPrimaryStyleFilter implements EquipmentFilter{
         CombatStyle eCbs = equipment.getCombatStyle();
         if(eCbs instanceof PrimaryCombatStyle){
             PrimaryCombatStyle peCbs = (PrimaryCombatStyle) eCbs;
-            return cbs.getGeneralOffensiveStyle()==peCbs.getGeneralOffensiveStyle();
+            return cbs.getGeneralPrimaryStyle()==peCbs.getGeneralPrimaryStyle();
         }else{
             return true;
         }

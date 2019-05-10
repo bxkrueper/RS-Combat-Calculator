@@ -14,8 +14,8 @@ public class MonsterFlyweight {
     
     private static final String pathToMonsters = "data/monsters/";
     
-    private static Map<String,MonsterInterface> monsterMap;
-    private static List<MonsterInterface> monsterList;
+    private static Map<String,Monster> monsterMap;
+    private static List<Monster> monsterList;
     
     private static void makeMaps() {
         monsterMap = new HashMap<>();
@@ -25,7 +25,7 @@ public class MonsterFlyweight {
         try {
             obr = new MonsterFileReader(pathToMonsters+"Monsters.csv");
             for(Object o:obr){
-                MonsterInterface m = (MonsterInterface) o;
+                Monster m = (Monster) o;
                 
                 
                 if(m instanceof MonsterGroup){
@@ -53,21 +53,21 @@ public class MonsterFlyweight {
     
     
     private static void addNullMonster() {
-        MonsterInterface m = new NullMonster();
+        Monster m = new NullMonster();
         monsterMap.put(m.getName(), m);
         monsterList.add(m);
     }
 
 
 
-    public static MonsterInterface getMonster(String name){
+    public static Monster getMonster(String name){
         if(monsterMap==null){
             makeMaps();
         }
         return monsterMap.get(name);//////////////what if name is Araxxor (melee) and Araxxor group is on another selected version? shouldn't happen with current ui
     }
     
-    public static List<MonsterInterface> getListOfAllMonsters(){
+    public static List<Monster> getListOfAllMonsters(){
         if(monsterList==null){
             makeMaps();
         }

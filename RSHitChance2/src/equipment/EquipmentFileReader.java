@@ -1,5 +1,8 @@
 package equipment;
-
+/*
+ * reads in equipment from a equipment csv file.
+ * SET THE RIGHT CONVERTER BEFORE USING!
+ */
 import java.io.FileNotFoundException;
 
 import resources.ObjectFileReader;

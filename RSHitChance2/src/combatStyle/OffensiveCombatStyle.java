@@ -1,5 +1,7 @@
 package combatStyle;
-
+/*
+ * these include the primary combat styles as well as stuff like typeless and dragonfire
+ */
 import java.awt.Color;
 
 public interface OffensiveCombatStyle extends CombatStyle{

@@ -1,5 +1,7 @@
 package equipment;
-
+/*
+ * for head, body, legs, gloves, boots, shields
+ */
 import buff.BuffFlyweight;
 import buff.Buff;
 import buff.BuffName;
@@ -11,7 +13,7 @@ import combatStyle.DefensiveCombatStyle;
 public class Armor extends Equipment implements ArmorInterface{
     private static final EquipmentConverter equipmentConverter = new ArmorEquipmentConverter();
     
-    private double damageReduction;
+    private double damageReduction;//0 for non-tank armor, example values: level 90 shields: 0.09, raids armor: 0.018
     
     public Armor(String name, String imageName, Slot slot, DefensiveCombatStyle combatStyle, int level, int damage, int armor, Buff buff,double damageReduction) {
         super(name, imageName, slot, combatStyle, level, damage, armor, buff);

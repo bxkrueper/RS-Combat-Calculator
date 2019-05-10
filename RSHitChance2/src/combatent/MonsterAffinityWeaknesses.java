@@ -13,9 +13,9 @@ public class MonsterAffinityWeaknesses {
     private int meleeAffinity;
     private int rangedAffinity;
     private int magicAffinity;
-    private SpecialAffinity specialAffinity;//can be null (doesn't have an extreme weakness)   ex: a monster can be particularly weak against fire instead of just magic
+    private MonsterSpecialAffinity specialAffinity;//can be null (doesn't have an extreme weakness)   ex: a monster can be particularly weak against fire instead of just magic
     
-    public MonsterAffinityWeaknesses(int meleeAffinity, int rangedAffinity,int magicAffinity,SpecialAffinity affinityWeakness){
+    public MonsterAffinityWeaknesses(int meleeAffinity, int rangedAffinity,int magicAffinity,MonsterSpecialAffinity affinityWeakness){
         this.meleeAffinity = meleeAffinity;
         this.rangedAffinity = rangedAffinity;
         this.magicAffinity = magicAffinity;
