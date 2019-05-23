@@ -80,12 +80,15 @@ public class MonsterFactory {
 
 
     //attackString format: CombatStyle maxHit name     separated by space      name is optional    ex: Magic 10000            Typeless 9000 Frag_Nuke
-    private static Attack getAttackFromString(String attackString) {
+    private static MonsterAttack getAttackFromString(String attackString) {
         String[] strArray = attackString.split(" ");
+        OffensiveCombatStyle cbs = (OffensiveCombatStyle) CombatStyleFlyweight.getCombatStyle(strArray[0]);
+        int maxHit = Integer.parseInt(strArray[1]);
+        boolean isAuto = (cbs instanceof PrimaryCombatStyle);
         if(strArray.length==2){
-            return new Attack((OffensiveCombatStyle) CombatStyleFlyweight.getCombatStyle(strArray[0]),Integer.parseInt(strArray[1]));
+            return new MonsterAttack(cbs,maxHit,isAuto);
         }else{//name is included, so length = 3
-            return new Attack((OffensiveCombatStyle) CombatStyleFlyweight.getCombatStyle(strArray[0]),Integer.parseInt(strArray[1]),strArray[2]);
+            return new MonsterAttack(cbs,maxHit,isAuto,strArray[2]);
         }
     }
 

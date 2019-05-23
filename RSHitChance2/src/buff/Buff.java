@@ -1,9 +1,11 @@
 package buff;
+import java.util.List;
+
 /*
  * defines all methods for a general buff. Most buffs should only return a non-default number for some of the methods
  */
 import combatent.Combatent;
-import javafx.scene.image.Image;
+import main.Hit;
 import resources.Imageable;
 
 public interface Buff extends Imageable{
@@ -17,11 +19,11 @@ public interface Buff extends Imageable{
     
     //potions, prayers, ect
     double addAccuracyLevelsToOwner(Combatent owner,Combatent opponent);
-    double addPowerLevelsToOwner(Combatent owner,Combatent opponent);
+    double addPowerLevelsToOwner(Combatent owner,Combatent opponent);///////////don't need opponent?
     double addDefenseLevelsToOwner(Combatent owner,Combatent opponent);
     //opponent methods are expected to return a negative number   these are mainly for curse draining effects
     double addAccuracyLevelsToOpponent(Combatent owner,Combatent opponent);
-    double addPowerLevelsToOpponent(Combatent owner,Combatent opponent);
+    double addPowerLevelsToOpponent(Combatent owner,Combatent opponent);////////////delete?
     double addDefenseLevelsToOpponent(Combatent owner,Combatent opponent);
     
     int getOwnerAffinityDebuff(Combatent owner,Combatent opponent);//expect a positive number, do nothing is 0, guthix staff spec is 2
@@ -33,4 +35,7 @@ public interface Buff extends Imageable{
     double getArmorMultiplier(Combatent owner,Combatent opponent);//ex: blackstone arrows max: 15% reduction will return 0.85
     
     double addVisibleAccuracyLevelsToOwner(Combatent owner,Combatent opponent);//this is used to determine if a player can cast a spell at their magic level. Should usually be equal to addAccuracyLevelsToOwner except for prayers
+    
+    void affectOwnerBaseHitList(List<Hit> list,Combatent owner, Combatent opponent);
+    void affectOpponentFinalHitList(List<Hit> list,Combatent owner, Combatent opponent);
 }

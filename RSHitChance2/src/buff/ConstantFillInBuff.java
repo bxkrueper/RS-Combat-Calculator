@@ -1,8 +1,11 @@
 package buff;
 
+import java.util.List;
+
 //defines many default behaviors for buffs. Most buffs extend from this and only override one or two methods
 import combatent.Combatent;
 import javafx.scene.image.Image;
+import main.Hit;
 import resources.ImageFlyweight;
 
 public class ConstantFillInBuff implements Buff{
@@ -141,6 +144,14 @@ public class ConstantFillInBuff implements Buff{
     public double addVisibleAccuracyLevelsToOwner(Combatent owner, Combatent opponent) {
         return addVisibleAccuracyLevelsToOwner;
     }
+    
+    @Override
+    public void affectOwnerBaseHitList(List<Hit> list,Combatent owner, Combatent opponent) {
+    }
+    
+    @Override
+    public void affectOpponentFinalHitList(List<Hit> list,Combatent owner, Combatent opponent) {
+    }
 
     //setters. uses these instead of overriding the getters if the buff returns a constant for that method
     public void setAddAccuracyLevelsToOwner(double addAccuracyLevelsToOwner) {
@@ -205,6 +216,8 @@ public class ConstantFillInBuff implements Buff{
     public String toString() {
         return name.toString();
     }
+
+    
 
     
 

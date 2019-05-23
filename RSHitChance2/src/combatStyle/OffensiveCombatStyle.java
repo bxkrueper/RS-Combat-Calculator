@@ -8,7 +8,11 @@ public interface OffensiveCombatStyle extends CombatStyle{
     
     OffensiveCombatStyle getGeneralOffensiveStyle();//melee, ranged, magic,typeless,dragonfire,can't hit    not stab, crush, ect
     Color getColor();
-    default boolean isSameGeneralOffensiveStyleAs(OffensiveCombatStyle offensiveCombatStyle){
-        return getGeneralOffensiveStyle()==offensiveCombatStyle.getGeneralOffensiveStyle();
+    default boolean isSameGeneralOffensiveStyleAs(CombatStyle combatStyle){
+    	if(combatStyle instanceof OffensiveCombatStyle) {
+    		return getGeneralOffensiveStyle()==((OffensiveCombatStyle) combatStyle).getGeneralOffensiveStyle();
+    	}else {
+    		return false;
+    	}
     }
 }

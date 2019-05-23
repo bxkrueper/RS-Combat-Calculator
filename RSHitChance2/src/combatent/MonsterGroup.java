@@ -1,4 +1,5 @@
 package combatent;
+import abilities.Ability;
 /*
  * composite pattern for monster
  * acts like the monster that is currently selected
@@ -160,8 +161,15 @@ public class MonsterGroup implements Monster{
         return monsterArray[selected].canAttack(opponent);
     }
 
-    
-
+	@Override
+	public int getBaseDamage() {
+		return monsterArray[selected].getBaseDamage();
+	}
+	
+	@Override
+	public Attack getAttack() {
+		return monsterArray[selected].getAttack();
+	}
     
 
     

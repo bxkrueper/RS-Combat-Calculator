@@ -10,6 +10,7 @@ import java.util.List;
 
 import combatent.Combatent;
 import javafx.scene.image.Image;
+import main.Hit;
 import resources.ImageFlyweight;
 
 public class Buffs implements Buff, Iterable<BuffName>{
@@ -22,7 +23,7 @@ public class Buffs implements Buff, Iterable<BuffName>{
 
     //does not add buffs that implement DontAddToBuffs
     public void addBuff(Buff buff){
-        if(!(buff instanceof DontAddToBuffs)){
+        if(!(buff instanceof DontAddToBuffs) && buff!=null){
             buffList.add(buff);
         }
     }
@@ -35,6 +36,11 @@ public class Buffs implements Buff, Iterable<BuffName>{
                 break;
             }
         }
+    }
+    
+    //removes a buffs by its reference id
+    public void removeBuffs(Buffs buffs) {
+        buffList.remove(buffs);
     }
     
     public int getListSize(){
@@ -67,6 +73,7 @@ public class Buffs implements Buff, Iterable<BuffName>{
     public double addAccuracyLevelsToOwner(Combatent owner, Combatent opponent) {
         double total = 0;
         for(int i=0;i<buffList.size();i++){
+//            System.out.println("Buffs: i: " + i + " " + buffList.get(i));
             total+=buffList.get(i).addAccuracyLevelsToOwner(owner, opponent);
         }
         return total;
@@ -188,6 +195,20 @@ public class Buffs implements Buff, Iterable<BuffName>{
         }
         return total;
     }
+    
+    @Override
+    public void affectOwnerBaseHitList(List<Hit> list, Combatent owner, Combatent opponent) {
+        for(int i=0;i<buffList.size();i++){
+            buffList.get(i).affectOwnerBaseHitList(list,owner, opponent);
+        }
+    }
+    
+    @Override
+    public void affectOpponentFinalHitList(List<Hit> list,Combatent owner, Combatent opponent) {
+        for(int i=0;i<buffList.size();i++){
+            buffList.get(i).affectOpponentFinalHitList(list,owner, opponent);
+        }
+    }
 
     public boolean contains(BuffName buffName) {
         for(BuffName currentBuffName:this){
@@ -268,6 +289,10 @@ public class Buffs implements Buff, Iterable<BuffName>{
         }
         
     }
+
+    
+
+    
 
     
 

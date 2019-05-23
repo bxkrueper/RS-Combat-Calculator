@@ -21,7 +21,7 @@ public class CombatStyleFlyweight {
         
         CombatStyle cbs = cbsMap.get(str);
         if(cbs==null){
-            System.out.println("unrecognized combat style: " + str + " " + " Using None instead");
+            System.out.println("unrecognized combat style: " + str);
         }
         return cbs;
     }
@@ -40,7 +40,10 @@ public class CombatStyleFlyweight {
         cbs = Magic.getInstance();
         cbsMap.put(cbs.getName(),cbs);
         
-        cbs = Typeless.getInstance();
+        cbs = SoftTypeless.getInstance();
+        cbsMap.put(cbs.getName(),cbs);
+        
+        cbs = HardTypeless.getInstance();
         cbsMap.put(cbs.getName(),cbs);
         
         cbs = Dragonfire.getInstance();

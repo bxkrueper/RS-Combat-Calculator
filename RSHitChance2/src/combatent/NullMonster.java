@@ -1,4 +1,5 @@
 package combatent;
+import abilities.Ability;
 /*
  * this monster displayed when the program launches
  */
@@ -6,7 +7,7 @@ import buff.Buff;
 import buff.Buffs;
 import combatStyle.OffensiveCombatStyle;
 import combatStyle.PrimaryCombatStyle;
-import combatStyle.Typeless;
+import combatStyle.SoftTypeless;
 import javafx.scene.image.Image;
 import resources.ImageFlyweight;
 
@@ -27,7 +28,7 @@ public class NullMonster implements Monster{
         this.link = "https://runescape.wiki/w/Boss";
         this.vulnerabilities = new Vulnerabilities();
         this.nullBuffs = new Buffs();
-        this.attacks = new Attacks(new Attack(Typeless.getInstance(),0));
+        this.attacks = new Attacks(new MonsterAttack(SoftTypeless.getInstance(),0,false));
         this.affinityWeaknesses = new MonsterAffinityWeaknesses(0,0,0,null);
     }
 
@@ -135,6 +136,15 @@ public class NullMonster implements Monster{
         return false;
     }
 
+	@Override
+	public int getBaseDamage() {
+		return 0;
+	}
+	
+	@Override
+	public Attack getAttack() {
+		return getAttacks().getAttack();
+	}
     
 
     

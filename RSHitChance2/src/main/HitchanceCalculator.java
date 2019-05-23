@@ -8,7 +8,7 @@ import buff.Buffs;
 import combatStyle.AlwaysHits;
 import combatStyle.OffensiveCombatStyle;
 import combatStyle.PrimaryCombatStyle;
-import combatStyle.Typeless;
+import combatStyle.SoftTypeless;
 import combatent.Combatent;
 
 public class HitchanceCalculator {
@@ -28,7 +28,7 @@ public class HitchanceCalculator {
         }
         
         OffensiveCombatStyle attackerCombatStyle = attacker.getCombatStyle();
-        System.out.println(attackerCombatStyle);
+        System.out.println("Combat style: " + attackerCombatStyle);
         if((attackerCombatStyle instanceof AlwaysHits)){
             attackerTotalAccuracy = 0;
             setTotalAffinityRaise(attacker,defender);
@@ -93,7 +93,7 @@ public class HitchanceCalculator {
         Buff defenderBuffs = defender.getBuffs();
         int defenseLevel = defender.getBaseDefenseLevel();
         System.out.println("base defense Level: " + defenseLevel);
-        defenseLevel+=defenderBuffs.addDefenseLevelsToOwner(defender, attacker);//ex: pots, prayers, zerk aura
+        defenseLevel+=defenderBuffs.addDefenseLevelsToOwner(defender, attacker);//ex: pots, prayers, zerk aura,quake
         defenseLevel+=attackerBuffs.addDefenseLevelsToOpponent(attacker, defender);//ex: turmoil
         System.out.println("defenseLevel after buffs: " + defenseLevel);
         int naturalArmor = defender.getNaturalArmor();

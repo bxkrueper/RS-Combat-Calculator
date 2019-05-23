@@ -31,10 +31,12 @@ Amulet of Souls (or),,AMULET,None,48,0,None
 Amulet of Souls,,AMULET,None,46,0,None
 Reaper necklace (or),,AMULET,None,38,0,Reaper_Necklace
 Reaper necklace,,AMULET,None,38,0,Reaper_Necklace
-Dragon Rider amulet,,AMULET,None,30,0,None
+Dragon Rider amulet,,AMULET,None,30,0,Dragon_Rider_Amulet
 Brawler's blood necklace,,AMULET,Melee,44,0,None
 Farsight blood necklace,,AMULET,Ranged,44,0,None
 Arcane stream necklace,,AMULET,Magic,44,0,None
+Salve Amulet,,AMULET,None,0,0,Salve_Amulet
+Salve Amulet (e),,AMULET,None,0,0,Salve_Amulet_E
 Desert amulet 3,,AMULET,None,24,0,Desert_Amulet_3
 Desert amulet 4,,AMULET,None,30,0,Desert_Amulet_3
 Ring of death (i),Ring of death,RING,None,27,0,None
@@ -43,8 +45,9 @@ Asylum surgeon's ring (i),Asylum surgeon's ring,RING,None,23,0,None
 Asylum surgeon's ring,,RING,None,21,0,None
 Luck of the dwarves (i),Luck of the dwarves,RING,None,19,0,None
 Luck of the dwarves,,RING,None,17,0,None
-Completionist cape,,CAPE,All,43,65,None
-Max cape,,CAPE,All,26,44,None
+TokKul-Zo,,RING,All,2.4,2.2,TokKulZo
+Completionist cape,,CAPE,All,43,65,Strength_Cape_Perk
+Max cape,,CAPE,All,26,44,Strength_Cape_Perk
 TokHaar-Kal-Ket,,CAPE,Melee,31,44,None
 TokHaar-Kal-Xil,,CAPE,Ranged,31,44,None
 TokHaar-Kal-Mej,,CAPE,Magic,31,44,None

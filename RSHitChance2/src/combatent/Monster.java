@@ -8,7 +8,7 @@ public interface Monster extends Combatent{
     Image getImage();
     String getLink();
     Buff getNaturalBuffs();
-    public Buffs getEditableBuffs();//buffs applied by the player/interface
+    Buffs getEditableBuffs();//buffs applied by the player/interface
     MonsterAffinityWeaknesses getAffinityWeaknesses();
     Attacks getAttacks();
 }

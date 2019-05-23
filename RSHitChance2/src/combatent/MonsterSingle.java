@@ -1,4 +1,5 @@
 package combatent;
+import abilities.Ability;
 /*
  * a basic monster. Attacks can be cycled through
  */
@@ -139,6 +140,17 @@ public class MonsterSingle implements Monster{
     public boolean canAttack(Combatent opponent) {
         return getCombatStyle()!=CantAttack.getInstance();
     }
+
+	@Override
+	public int getBaseDamage() {
+		return ((MonsterAttack) (getAttacks().getAttack())).getMaxBaseHit();
+	}
+
+	@Override
+	public Attack getAttack() {
+		return attacks.getAttack();
+	}
+
 
     
 

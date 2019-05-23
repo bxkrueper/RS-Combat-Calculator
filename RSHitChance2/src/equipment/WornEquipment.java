@@ -9,6 +9,7 @@ import buff.Buff;
 import buff.Buffs;
 import buff.NullBuff;
 import combatStyle.All;
+import combatStyle.CantAttack;
 import combatStyle.CombatStyle;
 import combatStyle.DefensiveCombatStyle;
 import combatStyle.Hybrid;
@@ -85,7 +86,13 @@ public class WornEquipment{
     public OffensiveCombatStyle getCombatStyle(){
         PrimaryCombatStyle pcbsWeapon = (PrimaryCombatStyle) getMainWeapon().getCombatStyle();
         if(pcbsWeapon == Magic.getInstance()){//magic's combat style depends on the spell in the quiver
-            PrimaryCombatStyle pcbsSpell = (PrimaryCombatStyle) this.getEquipment(Slot.QUIVER).getCombatStyle();
+        	CombatStyle quiverCbs = this.getEquipment(Slot.QUIVER).getCombatStyle();
+            PrimaryCombatStyle pcbsSpell;
+            if(quiverCbs instanceof PrimaryCombatStyle) {
+            	pcbsSpell = (PrimaryCombatStyle) quiverCbs;
+            }else {
+            	return CantAttack.getInstance();
+            }
             if(pcbsSpell.getGeneralOffensiveStyle()==Magic.getInstance().getGeneralOffensiveStyle()){
                 return pcbsSpell;
             }else{
@@ -96,7 +103,7 @@ public class WornEquipment{
         }
     }
     
-    //returns what is in the main-hand/two hand slot. There should not be a real weapon in both
+    //returns what is in the main-hand/two hand slot. There should not be a real weapon in both. can return the default main weapon (fists)
     public WeaponInterface getMainWeapon() {
         if (getEquipment(Slot.MAIN_HAND)!=EquipmentFlyweight.getNullEquipmentForSlot(Slot.MAIN_HAND)){
             return (WeaponInterface) getEquipment(Slot.MAIN_HAND);
@@ -106,7 +113,17 @@ public class WornEquipment{
     }
     
 
-    //only gets accuracy from weapon
+    //returns null if the player cannot attack with the off hand slot (shield or fist)
+	public WeaponInterface getOffHandWeapon() {
+		Equipment offHand = getEquipment(Slot.OFF_HAND);
+		if((offHand instanceof WeaponInterface) && offHand!=EquipmentFlyweight.getNullEquipmentForSlot(Slot.OFF_HAND)) {//////////excluded off hand 5-18-19
+			return (WeaponInterface) offHand;
+		}else {
+			return null;
+		}
+	}
+
+	//only gets accuracy from weapon
     public int getMainWeaponAccuracy(){
         return getMainWeapon().getAccuracy();
     }
