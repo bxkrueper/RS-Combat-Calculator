@@ -2,18 +2,18 @@ package combatStyle;
 
 import java.awt.Color;
 
-public class Typeless implements OffensiveCombatStyle,AlwaysHits{
+public class HardTypeless implements OffensiveCombatStyle,AlwaysHits{
     
-    private static Typeless instance;
+    private static HardTypeless instance;
     private Color color;
     
-    private Typeless(){
+    private HardTypeless(){
         this.color = Color.BLACK; 
     }
     
-    public static Typeless getInstance(){
+    public static HardTypeless getInstance(){
         if(instance==null){
-            instance = new Typeless();
+            instance = new HardTypeless();
         }
         
         return instance;
@@ -21,7 +21,7 @@ public class Typeless implements OffensiveCombatStyle,AlwaysHits{
 
     @Override
     public String getName() {
-        return "Typeless";
+        return "Hard_Typeless";
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Typeless implements OffensiveCombatStyle,AlwaysHits{
     
     @Override
     public OffensiveCombatStyle getGeneralOffensiveStyle() {
-        return Typeless.getInstance();
+        return HardTypeless.getInstance();
     }
     
     @Override

@@ -18,18 +18,27 @@ import buffSpecific.DamageRecievedMultiplier;
 import buffSpecific.Defender;
 import buffSpecific.DefensePotion;
 import buffSpecific.DesertAmulet3;
+import buffSpecific.Dismember;
+import buffSpecific.DoubleDamageIfOpponentStunned;
+import buffSpecific.DragonBreath;
 import buffSpecific.DragonbaneAmmo;
+import buffSpecific.Equilibrium;
 import buffSpecific.FinalHitChanceAffect;
 import buffSpecific.Hexhunter;
 import buffSpecific.Keris;
 import buffSpecific.Overload;
 import buffSpecific.PowerPotion;
+import buffSpecific.Precise;
+import buffSpecific.Quake;
 import buffSpecific.Reaper;
 import buffSpecific.SalveAmulet;
 import buffSpecific.Silverlight;
+import buffSpecific.Slice;
+import buffSpecific.SoftDamageCap;
 import buffSpecific.SpiritShieldAbsorbsion;
 import buffSpecific.StyleAccuracyMultiplier;
 import buffSpecific.StyleDamageMultiplier;
+import buffSpecific.TokKulZo;
 import buffSpecific.TopTierCurse;
 import buffSpecific.TopTierPrayer;
 import buffSpecific.UpgradedSilverlight;
@@ -88,7 +97,7 @@ public class BuffFlyweight {
         buff = new AffinityRaise(BuffName.Status_Warhammer_Spec,5);
         buffMap.put(buff.getName(), buff);
         
-        buff = new AffinityRaise(BuffName.Quake,2);
+        buff = new Quake();
         buffMap.put(buff.getName(), buff);
         
         buff = new BlackStoneArrows();
@@ -382,17 +391,52 @@ public class BuffFlyweight {
         buff = new SpiritShieldAbsorbsion();
         buffMap.put(buff.getName(), buff);
         
-        //these are just here to make monster weaknesses show. The buff effects do nothing
-        buff = new ConstantFillInBuff(BuffName.Poison);
+        buff = new TokKulZo();
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new FinalHitChanceAffect(BuffName.Ultimate_Ability_Hit_Chance_Boost,25);
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new DragonBreath();
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new Dismember();
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new Precise();
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new Equilibrium();
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new ConstantFillInBuff(BuffName.Dragon_Rider_Amulet);//does nothing in this calculator but acts like a tag
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new ConstantFillInBuff(BuffName.Strength_Cape_Perk);//does nothing in this calculator but acts like a tag
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new DoubleDamageIfOpponentStunned();
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new Slice();
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new SoftDamageCap(BuffName.Nex_Soft_Damage_Cap_Phase1234,5000,0.5);
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new SoftDamageCap(BuffName.Nex_Soft_Damage_Cap_Phase5,2000,0.25);
+        buffMap.put(buff.getName(), buff);
+        
+        buff = new ConstantFillInBuff(BuffName.Poison);//does nothing in this calculator but acts like a tag
         buffMap.put(buff.getName(), buff);
         
         buff = new DamageRecievedMultiplier(BuffName.Reflect,0.5);
         buffMap.put(buff.getName(), buff);
         
-        buff = new ConstantFillInBuff(BuffName.Stun);
+        buff = new ConstantFillInBuff(BuffName.Stun);//does nothing in this calculator but acts like a tag
         buffMap.put(buff.getName(), buff);
         
-        buff = new ConstantFillInBuff(BuffName.Drain);
+        buff = new ConstantFillInBuff(BuffName.Drain);//does nothing in this calculator but acts like a tag to tell if the monster is weak to drain
         buffMap.put(buff.getName(), buff);
         
         

@@ -1,0 +1,70 @@
+Name,Category,Level,Type,Requirement,Cooldown,MechanicParameters,Buffs
+Slice,ATTACK,0,BASIC,MHCBS,3,Simple 30 120,Slice
+Kick,STRENGTH,3,BASIC,MHCBS,15,Simple 20 100,None
+Havoc,ATTACK,5,BASIC,DW,10,Simple 31.4 157,None
+Punish,STRENGTH,8,BASIC,MHCBS,3,Simple 18.8 94,Double_Damage_If_Opponent_Stunned
+Backhand,ATTACK,10,BASIC,MHCBS,15,Simple 20 100,None
+Dismember,STRENGTH,14,BASIC,MHCBS,15,Bleed 5 100 188,Dismember
+Smash,ATTACK,20,BASIC,2H,10,Simple 31.4 157,None
+Mutated Fury,STRENGTH,24,BASIC,MHCBS,5,Simple 31.4 157,None
+Fury,STRENGTH,24,BASIC,MHCBS,5,Channeled 3 15 75 16.4 82 17.8 89,None
+Barge,ATTACK,30,BASIC,MHCBS,20,Simple 25 125,None
+Sever,ATTACK,45,BASIC,MHCBS,15,Simple 37.6 188,None
+Cleave,STRENGTH,48,BASIC,2H,7,Simple 37.6 188,None
+Bladed Dive,ATTACK,65,BASIC,DW,20,Simple 25 125,None
+Decimate,STRENGTH,67,BASIC,DW,7,Simple 37.6 188,None
+Slaughter,ATTACK,1,THRESHOLD,MHCBS,30,Bleed 5 100 250,None
+Stomp,STRENGTH,3,THRESHOLD,MHCBS,15,Simple 40 200,None
+Forceful Backhand,ATTACK,15,THRESHOLD,MHCBS,15,Simple 40 200,None
+Flurry,ATTACK,37,THRESHOLD,DW,20,Channeled 4 18.8 94 18.8 94 18.8 94 18.8 94,None
+Mutated Flurry,ATTACK,37,THRESHOLD,DW,20,Channeled 4 31.4 157 31.4 157 31.4 157 31.4 157,None
+Destroy,STRENGTH,37,THRESHOLD,DW,20,Channeled 4 37.6 188 37.6 188 37.6 188 37.6 188,None
+Quake,STRENGTH,37,THRESHOLD,2H,20,Simple 43.8 219,None
+Hurricane,ATTACK,55,THRESHOLD,2H,20,DoubleHit 66 219 84 161,None
+Assault,STRENGTH,55,THRESHOLD,MHCBS,30,Channeled 4 43.8 219 43.8 219 43.8 219 43.8 219,None
+Blood Tendrils,ATTACK,75,THRESHOLD,MHCBS,45,BloodTendrils,None
+Overpower,ATTACK,2,ULTIMATE,MHCBS,30,Simple 200 400,Ultimate_Ability_Hit_Chance_Boost
+Massacre,ATTACK,66,ULTIMATE,DW,60,MassacreClass,Ultimate_Ability_Hit_Chance_Boost
+Meteor Strike,ATTACK,81,ULTIMATE,2H,60,Simple 250 350,Ultimate_Ability_Hit_Chance_Boost
+Pulverise,STRENGTH,81,ULTIMATE,2H,60,Simple 250 350,Ultimate_Ability_Hit_Chance_Boost
+Frenzy,STRENGTH,86,ULTIMATE,DW,60,Channeled 4 80 180 90 200 100 220 110 240,Ultimate_Ability_Hit_Chance_Boost
+Piercing Shot,RANGED,1,BASIC,MHCBS,3,Simple 18.8 94,Double_Damage_If_Opponent_Stunned
+Snipe,RANGED,5,BASIC,MHCBS,10,Simple 125 219,None
+Dazing Shot,RANGED,8,BASIC,2H,5,Simple 31.4 157,None
+Mutated Dazing Shot,RANGED,8,BASIC,2H,5,Simple 31.4 157,None
+Demoralise,RANGED,10,BASIC,MHCBS,15,Simple 20 100,None
+Binding Shot,RANGED,10,BASIC,MHCBS,15,Simple 20 100,None
+Needle Strike,RANGED,12,BASIC,DW,5,Simple 31.4 157,None
+Fragmentation Shot,RANGED,20,BASIC,MHCBS,15,Bleed 5 100 188,None
+Ricochet,RANGED,45,BASIC,MHCBS,10,Simple 20 100,None
+Corruption Shot,RANGED,70,BASIC,MHCBS,15,Corruption,None
+Snap Shot,RANGED,0,THRESHOLD,MHCBS,20,DoubleHit 100 120 100 210,None
+Tight Bindings,RANGED,15,THRESHOLD,MHCBS,15,Simple 40 200,None
+Rout,RANGED,15,THRESHOLD,MHCBS,15,Simple 40 200,None
+Rapid Fire,RANGED,37,THRESHOLD,MHCBS,20,Channeled 8 18.8 94 18.8 94 18.8 94 18.8 94 18.8 94 18.8 94 18.8 94 18.8 94,None
+Bombardment,RANGED,55,THRESHOLD,MHCBS,30,Simple 43.8 219,None
+Shadow Tendrils,RANGED,75,THRESHOLD,MHCBS,45,Simple 66 500,None
+Deadshot,RANGED,2,ULTIMATE,MHCBS,30,MassacreClass,Ultimate_Ability_Hit_Chance_Boost
+Incendiary Shot,RANGED,66,ULTIMATE,2H,60,Simple 250 350,Ultimate_Ability_Hit_Chance_Boost
+Unload,RANGED,81,ULTIMATE,DW,60,Channeled 4 80 180 90 200 100 220 110 240,Ultimate_Ability_Hit_Chance_Boost
+Wrack,MAGIC,1,BASIC,MHCBS,3,Simple 18.8 94,Double_Damage_If_Opponent_Stunned
+Dragon Breath,MAGIC,5,BASIC,MHCBS,10,Simple 37.6 188,Dragon_Breath
+Sonic Wave,MAGIC,8,BASIC,2H,5,Simple 31.4 157,None
+Shock,MAGIC,10,BASIC,MHCBS,15,Simple 20 100,None
+Impact,MAGIC,10,BASIC,MHCBS,15,Simple 20 100,None
+Concentrated Blast,MAGIC,12,BASIC,DW,5,Channeled 3 15 75 16.4 82 17.8 89,None
+Combust,MAGIC,20,BASIC,MHCBS,15,Bleed 5 100 188,None
+Chain,MAGIC,45,BASIC,MHCBS,10,Simple 20 100,None
+Corruption Blast,MAGIC,70,BASIC,MHCBS,15,Corruption,None
+Asphyxiate,MAGIC,2,THRESHOLD,MHCBS,20,Channeled 4 37.6 188 37.6 188 37.6 188 37.6 188,None
+Deep Impact,MAGIC,15,THRESHOLD,MHCBS,15,Simple 40 200,None
+Horror,MAGIC,15,THRESHOLD,MHCBS,15,Simple 40 200,None
+Wild Magic,MAGIC,55,THRESHOLD,MHCBS,20,DoubleHit 50 215 50 215,None
+Smoke Tendrils,MAGIC,75,THRESHOLD,MHCBS,45,Channeled 4 20 100 25 125 30 150 40 200,None
+Omnipower,MAGIC,2,ULTIMATE,MHCBS,30,Simple 200 400,Ultimate_Ability_Hit_Chance_Boost
+Tsunami,MAGIC,81,ULTIMATE,MHCBS,60,Simple 200 300,Ultimate_Ability_Hit_Chance_Boost
+Bash,DEFENSE,8,BASIC,SHIELD,15,Simple 20 100,None
+Debilitate,DEFENSE,55,THRESHOLD,NONE,30,Simple 20 100,None
+Sacrifice,CONSTITUTION,10,BASIC,NONE,30,Simple 20 100,None
+Tuska's Wrath,CONSTITUTION,50,BASIC,NONE,15,Simple 30 110,None
+Onslaught,CONSTITUTION,90,ULTIMATE,MH,120,Onslaught,None

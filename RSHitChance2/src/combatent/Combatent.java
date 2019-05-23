@@ -1,4 +1,5 @@
 package combatent;
+import abilities.Ability;
 /*
  * //anyone that plans on fighting. Intended subclasses are player and monster
  */
@@ -12,7 +13,7 @@ public interface Combatent {
     Stats getStats();
     OffensiveCombatStyle getCombatStyle();
     int getAffinityTo(PrimaryCombatStyle cbs);
-    int getBaseAccuracyLevel();
+    int getBaseAccuracyLevel();//attack, ranged, or magic level
     int getNaturalAccuracy();//for players, this is levelFunction(weapon)*2.5.   Monsters have this value directly
     int getAccuracyPenaltyFromWrongArmor();
     int getBasePowerLevel();//strength for melee, same as accuracy for range and mage
@@ -22,4 +23,6 @@ public interface Combatent {
     Vulnerabilities getVulnerabilities();
     Buffs getBuffs();
     boolean canAttack(Combatent opponent);
+	int getBaseDamage();
+	Attack getAttack();
 }

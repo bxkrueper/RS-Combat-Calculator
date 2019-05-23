@@ -1,12 +1,12 @@
-Name,Picture Name,RSWiki link,Attack Level,Ranged Level,Magic Level,Melee Accuracy,Ranged Accuracy,Magic Accuracy,Start Combat Style (should be a style in the next 4 columns that is not 0),Defense Level,Armour,Melee Affinity,Ranged Affinity,Magic Affinity,Weak to Poision,Weak to Reflect,Weak to Stun,Weak to Drain,Affinity Weakness,Other Vulnerabilities,Natural Buffs
+Name,Picture Name,RSWiki link,Attack Level,Ranged Level,Magic Level,Melee Accuracy,Ranged Accuracy,Magic Accuracy,Attacks,Defense Level,Armour,Melee Affinity,Ranged Affinity,Magic Affinity,Weak to Poision,Weak to Reflect,Weak to Stun,Weak to Drain,Affinity Weakness,Other Vulnerabilities,Natural Buffs
 2,Abomination,,,,,,,,,,,,,,,,,,,,
 Abomination,,https://runescape.wiki/w/Abomination#Normal,60,60,60,1102,1102,1102,Melee 1102,60,850,40,40,40,FALSE,FALSE,FALSE,FALSE,None,None,None
 Ragged Abomination,,https://runescape.wiki/w/Abomination#Ragged,1,1,1,1132,1132,1132,Melee 1102,1,850,40,40,40,FALSE,FALSE,FALSE,FALSE,None,None,None
-Ambassador,,https://runescape.wiki/w/The_Ambassador,85,85,85,2765,2765,2765,Ranged 2200;Melee 3300;Magic 10000;Typeless 9000 Frag_Nuke,75,1694,55,55,55,TRUE,TRUE,FALSE,TRUE,None,None,None
+Ambassador,,https://runescape.wiki/w/The_Ambassador,85,85,85,2765,2765,2765,Ranged 2200;Melee 3300;Magic 10000;Soft_Typeless 9000 Frag_Nuke,75,1694,55,55,55,TRUE,TRUE,FALSE,TRUE,None,None,None
 4,Araxxor,,,,,,,,,,,,,,,,,,,,
-Araxxor (melee),,https://runescape.wiki/w/Araxxor#Melee,99,99,99,2458,2458,2458,Melee 1341;Typeless 32767 Nuke_Spider,85,2458,50,40,55,FALSE,FALSE,FALSE,FALSE,None,None,None
-Araxxor (ranged),,https://runescape.wiki/w/Araxxor#Ranged,99,99,99,2458,2458,2458,Ranged 1341;Melee 1341;Typeless 32767 Nuke_Spider,85,2458,60,45,40,FALSE,FALSE,FALSE,FALSE,None,None,None
-Araxxor (magic),,https://runescape.wiki/w/Araxxor#Magic,99,99,99,2458,2458,2458,Magic 1341;Melee 1341;Typeless 32767 Nuke_Spider,85,2458,50,55,45,FALSE,FALSE,FALSE,FALSE,None,Hexhunter,None
+Araxxor (melee),,https://runescape.wiki/w/Araxxor#Melee,99,99,99,2458,2458,2458,Melee 1341;Soft_Typeless 32767 Nuke_Spider,85,2458,50,40,55,FALSE,FALSE,FALSE,FALSE,None,None,None
+Araxxor (ranged),,https://runescape.wiki/w/Araxxor#Ranged,99,99,99,2458,2458,2458,Ranged 1341;Melee 1341;Soft_Typeless 32767 Nuke_Spider,85,2458,60,45,40,FALSE,FALSE,FALSE,FALSE,None,None,None
+Araxxor (magic),,https://runescape.wiki/w/Araxxor#Magic,99,99,99,2458,2458,2458,Magic 1341;Melee 1341;Soft_Typeless 32767 Nuke_Spider,85,2458,50,55,45,FALSE,FALSE,FALSE,FALSE,None,Hexhunter,None
 Araxxi,,https://runescape.wiki/w/Araxxi,99,99,99,1653,1653,1653,Magic 1653;Ranged 1653;Melee 1653,80,1924,60,55,45,FALSE,FALSE,FALSE,FALSE,None,Hexhunter,None
 Astellarn,,https://runescape.wiki/w/Astellarn,95,95,95,2765,2765,2765,Magic 1368;Melee 1368,85,2178,55,55,55,TRUE,TRUE,TRUE,TRUE,None,Dragonbane Hexhunter Black_Mask,None
 8,Barrows Brothers,,,,,,,,,,,,,,,,,,,,
@@ -18,7 +18,7 @@ Torag the Corrupted,,https://runescape.wiki/w/Torag_the_Corrupted#Normal,70,1,1,
 Verac the Defiled,,https://runescape.wiki/w/Verac_the_Defiled#Normal,70,1,1,1566,0,0,Melee 1260,70,1299,55,45,65,TRUE,TRUE,TRUE,TRUE,Earth 90,None,None
 Akrisae the Doomed,,https://runescape.wiki/w/Akrisae_the_Doomed#Barrows,1,1,70,0,0,1486,Magic 2167,70,1486,45,65,55,TRUE,TRUE,TRUE,TRUE,Bolts 90,None,None
 Linza the Disgraced,,https://runescape.wiki/w/Linza_the_Disgraced#Barrows,75,1,1,1694,0,0,Melee 1200,75,1694,55,45,65,TRUE,TRUE,TRUE,TRUE,Fire 90,None,None
-Beastmaster Durzag,,https://runescape.wiki/w/Beastmaster_Durzag,85,85,85,2458,2458,2458,Melee 1788;Ranged 1788,95,2458,55,55,55,FALSE,TRUE,FALSE,FALSE,None,None,None
+Beastmaster Durzag,,https://runescape.wiki/w/Beastmaster_Durzag,85,85,85,2458,2458,2458,Melee 1788;Ranged 1788;Hard_Typeless 2000 Bomb,95,2458,55,55,55,FALSE,TRUE,FALSE,FALSE,None,None,None
 Black Stone Dragon,,https://runescape.wiki/w/Black_stone_dragon,95,95,95,2765,2765,2765,Magic 3000;Melee 3500;Ranged 2000,85,2178,55,55,55,TRUE,TRUE,FALSE,TRUE,None,Dragonbane Black_Mask,None
 Chaos Elemental,,https://runescape.wiki/w/Chaos_Elemental,1,1,69,1447,1447,2178,Magic 1104;Ranged 1104;Melee 1104,69,1447,45,65,55,TRUE,TRUE,FALSE,TRUE,Bolts 90,None,None
 2,Commander Zilyana,,,,,,,,,,,,,,,,,,,,
@@ -41,7 +41,7 @@ Giant mole (hard Mode),Giant mole,https://runescape.wiki/w/Giant_mole#Hard_Mode,
 Gregorovic,,https://runescape.wiki/w/Gregorovic#Normal_Mode,85,85,85,2178,2178,2178,Ranged 1152;Melee 1152,75,1694,55,55,55,TRUE,TRUE,FALSE,TRUE,None,None,None
 Gregorovic (challenge mode),Gregorovic,https://runescape.wiki/w/Gregorovic#Challenge_Mode,85,85,85,2178,2178,2178,Ranged 1152;Melee 1152,80,1924,55,55,55,FALSE,TRUE,FALSE,TRUE,None,None,None
 3,Har'Aken,,,,,,,,,,,,,,,,,,,,
-Har'Aken,,https://runescape.wiki/w/Har-Aken,80,80,80,1924,1924,1924,CantAttack 0,80,1924,40,40,40,TRUE,TRUE,FALSE,FALSE,None,None,None
+Har'Aken,,https://runescape.wiki/w/Har-Aken,80,80,80,1924,1924,1924,CantAttack 0,80,1924,40,40,40,TRUE,TRUE,FALSE,FALSE,None,TokKulZo,None
 Ranged Tentacle,Har'Aken_(Range_Tentacle),https://runescape.wiki/w/Har-Aken#Ranged_Tentacle,57,76,0,1040,1738,0,Ranged 1094;Melee 820,76,1738,65,55,45,TRUE,TRUE,FALSE,FALSE,Slash 90,None,None
 Magic Tentacle,Har'Aken_(Magic_Tentacle),https://runescape.wiki/w/Har-Aken#Magic_Tentacle,57,0,76,1040,0,1738,Magic 1094;Melee 820,76,1738,45,65,55,TRUE,TRUE,FALSE,FALSE,Thrown 90,None,None
 2,Helwyr,,,,,,,,,,,,,,,,,,,,
@@ -63,10 +63,10 @@ TokHaar-Jad,,https://runescape.wiki/w/TokHaar-Jad,79,79,79,1876,1876,1876,Melee 
 King Black Dragon,,https://runescape.wiki/w/King_Black_Dragon,60,60,60,1924,1132,1132,Melee 864;Magic 864;Dragonfire 4205,60,1132,40,40,40,TRUE,TRUE,FALSE,TRUE,None,Dragonbane Black_Mask,None
 2,Kree'arra,,,,,,,,,,,,,,,,,,,,
 Kree'arra,,https://runescape.wiki/w/Kree%27arra#Normal,75,75,75,1694,1694,1694,Melee 1676;Ranged 1080;Magic 1080,75,1299,10,70,70,FALSE,FALSE,FALSE,FALSE,None,Black_Mask,None
-Kree'arra (hard mode),Kree'arra,https://runescape.wiki/w/Kree%27arra#Hard_mode,75,75,75,1694,1694,1694,Melee 1500;Ranged 3000;Magic 700;Typeless 3000 Tornado,75,1694,50,60,70,FALSE,FALSE,FALSE,FALSE,None,Black_Mask,None
+Kree'arra (hard mode),Kree'arra,https://runescape.wiki/w/Kree%27arra#Hard_mode,75,75,75,1694,1694,1694,Melee 1500;Ranged 3000;Magic 700;Soft_Typeless 3000 Tornado,75,1694,50,60,70,FALSE,FALSE,FALSE,FALSE,None,Black_Mask,None
 2,K'ril Tsutsaroth,,,,,,,,,,,,,,,,,,,,
-K'ril Tsutsaroth,,https://runescape.wiki/w/K%27ril_Tsutsaroth#Normal,75,75,75,1486,0,1486,Melee 1500;Magic 1500;Typeless 6600 Rarg,75,1299,45,40,50,FALSE,FALSE,FALSE,FALSE,Fire 75,Black_Mask,None
-K'ril Tsutsaroth (hard mode),K'ril Tsutsaroth,https://runescape.wiki/w/K%27ril_Tsutsaroth#Hard_mode,75,75,75,1694,0,1694,Melee 1500;Magic 1500;Typeless 6600 Rarg,75,1694,70,80,60,FALSE,FALSE,FALSE,FALSE,None,Black_Mask,None
+K'ril Tsutsaroth,,https://runescape.wiki/w/K%27ril_Tsutsaroth#Normal,75,75,75,1486,0,1486,Melee 1500;Magic 1500;Soft_Typeless 6600 Rarg,75,1299,45,40,50,FALSE,FALSE,FALSE,FALSE,Fire 75,Black_Mask,None
+K'ril Tsutsaroth (hard mode),K'ril Tsutsaroth,https://runescape.wiki/w/K%27ril_Tsutsaroth#Hard_mode,75,75,75,1694,0,1694,Melee 1500;Magic 1500;Soft_Typeless 6600 Rarg,75,1694,70,80,60,FALSE,FALSE,FALSE,FALSE,None,Black_Mask,None
 6,Legios,,,,,,,,,,,,,,,,,,,,
 Legio Primus,,https://runescape.wiki/w/Legio_Primus,1,1,90,0,0,2458,Magic 1102,85,2178,7,70,15,FALSE,FALSE,FALSE,FALSE,Ranged 70,Hexhunter Black_Mask,None
 Legio Secundus,,https://runescape.wiki/w/Legio_Secundus,1,1,90,0,0,2458,Magic 1102,85,2178,7,70,15,FALSE,FALSE,FALSE,FALSE,Ranged 70,Hexhunter Black_Mask,None
@@ -78,11 +78,16 @@ Magister,,https://runescape.wiki/w/The_Magister,99,99,99,2577,2577,2577,Magic 25
 2,Masuta the Ascended,,,,,,,,,,,,,,,,,,,,
 Masuta the Ascended (phase 1),Masuta the Ascended,https://runescape.wiki/w/Masuta_the_Ascended#Phase_1,90,90,90,2458,2458,2458,Melee 1368;Ranged 1368;Magic 8000,85,2178,55,55,55,TRUE,TRUE,FALSE,TRUE,None,None,None
 Masuta the Ascended (phase 2),Masuta the Ascended,https://runescape.wiki/w/Masuta_the_Ascended#Phase_2,90,90,90,2458,2458,2458,Ranged 1368;Magic 8000,85,2178,40,40,20,TRUE,TRUE,FALSE,TRUE,None,None,None
-Nex,,https://runescape.wiki/w/Nex,80,80,80,2023,2023,2023,Melee 2500;Ranged 2500;Magic 2500,80,1924,40,40,40,FALSE,FALSE,FALSE,FALSE,None,None,None
+5,Nex,,,,,,,,,,,,,,,,,,,,
+Nex (Smoke Phase),Nex,https://runescape.wiki/w/Nex/Strategies#Smoke,80,80,80,2023,2023,2023,Melee 2500;Magic 2500;Soft_Typeless 5000 There is... NO ESCAPE!,80,1924,40,40,40,FALSE,FALSE,FALSE,FALSE,None,None,Nex_Soft_Damage_Cap_Phase1234
+Nex (Shadow Phase),Nex,https://runescape.wiki/w/Nex/Strategies#Shadow,80,80,80,2023,2023,2023,Melee 2500;Ranged 2500,80,1924,40,40,40,FALSE,FALSE,FALSE,FALSE,None,None,Nex_Soft_Damage_Cap_Phase1234
+Nex (Blood Phase),Nex,https://runescape.wiki/w/Nex/Strategies#Blood,80,80,80,2023,2023,2023,Melee 2500;Magic 2500,80,1924,40,40,40,FALSE,FALSE,FALSE,FALSE,None,None,Nex_Soft_Damage_Cap_Phase1234
+Nex (ice Phase),Nex,https://runescape.wiki/w/Nex/Strategies#Ice,80,80,80,2023,2023,2023,Melee 2500;Magic 2500,80,1924,40,40,40,FALSE,FALSE,FALSE,FALSE,None,None,Nex_Soft_Damage_Cap_Phase1234
+Nex (Zaros Phase),Nex,https://runescape.wiki/w/Nex/Strategies#Zaros,80,80,80,2023,2023,2023,Melee 5500;Magic 5500,80,1924,40,40,40,FALSE,FALSE,FALSE,FALSE,None,None,Nex_Soft_Damage_Cap_Phase5
 Nex Angel of Death,,https://runescape.wiki/w/Nex:_Angel_of_Death,90,90,90,2765,2765,2765,Melee 5000;Magic 5000,85,2765,55,55,55,FALSE,TRUE,FALSE,TRUE,None,None,None
 2,Nomad,,,,,,,,,,,,,,,,,,,,
-Nomad (Requiem),Nomad,https://runescape.wiki/w/Nomad#Nomad's_Requiem,75,75,75,1694,1694,1694,Typeless 1;Melee 1378;Typeless 7500 Soul_Blast,75,1694,40,40,40,FALSE,TRUE,FALSE,TRUE,None,None,None
-Nomad (Elegy),Nomad,https://runescape.wiki/w/Nomad#Nomad's_Elegy,95,83,83,2765,2765,2765,Typeless 1;Melee 2011;Typeless 9000 Soul_Blast,80,1924,55,55,55,TRUE,FALSE,FALSE,TRUE,None,Hexhunter,None
+Nomad (Requiem),Nomad,https://runescape.wiki/w/Nomad#Nomad's_Requiem,75,75,75,1694,1694,1694,Soft_Typeless 1;Melee 1378;Soft_Typeless 7500 Soul_Blast,75,1694,40,40,40,FALSE,TRUE,FALSE,TRUE,None,None,None
+Nomad (Elegy),Nomad,https://runescape.wiki/w/Nomad#Nomad's_Elegy,95,83,83,2765,2765,2765,Soft_Typeless 1;Melee 2011;Soft_Typeless 9000 Soul_Blast,80,1924,55,55,55,TRUE,FALSE,FALSE,TRUE,None,Hexhunter,None
 Queen Black Dragon,,https://runescape.wiki/w/Queen_Black_Dragon,80,80,80,1924,1924,1924,Ranged 2990;Melee 2031;Dragonfire 2500,80,2074,50,50,50,FALSE,FALSE,FALSE,TRUE,None,Dragonbane Black_Mask,None
 6,Rise of the Six,,,,,,,,,,,,,,,,,,,,
 Ahrim (RotS),,https://runescape.wiki/w/Ahrim_the_Blighted#Rise_of_the_Six,1,1,90,0,0,2458,Magic 864,90,2458,40,40,40,FALSE,FALSE,FALSE,FALSE,None,None,None
@@ -100,7 +105,7 @@ Skeletal Horror (missing both arms),,https://runescape.wiki/w/Skeletal_horror#Mi
 Skeletal Horror (missing arms and tail),,https://runescape.wiki/w/Skeletal_horror#Missing_both_arms_and_tail,58,58,58,1070,1070,1070,Melee 348,58,1070,55,55,55,TRUE,TRUE,FALSE,FALSE,None,None,None
 Solak,,https://runescape.wiki/w/Solak,95,95,95,2764,2764,2764,Melee 4000;Ranged 4000,70,1486,55,55,55,TRUE,TRUE,FALSE,TRUE,None,None,None
 Taraket the Necromancer,,https://runescape.wiki/w/Taraket_the_Necromancer,90,90,90,2765,2765,2765,Magic 2500;Ranged 2500,85,1694,55,55,55,TRUE,TRUE,FALSE,TRUE,None,Salve_Amulet,None
-Telos,,https://runescape.wiki/w/Telos;_the_Warden,92,92,92,2577,2577,2577,Melee 1324;Magic 1324;Typeless 5555 SMP,80,1924,40,40,40,TRUE,TRUE,TRUE,TRUE,None,None,None
+Telos,,https://runescape.wiki/w/Telos;_the_Warden,92,92,92,2577,2577,2577,Melee 1324;Magic 1324;Soft_Typeless 5555 SMP,80,1924,40,40,40,TRUE,TRUE,TRUE,TRUE,None,None,None
 2,Twin Furies,,,,,,,,,,,,,,,,,,,,
 Twin Furies,,https://runescape.wiki/w/Avaryss;_the_Unceasing#Normal_Mode,85,85,85,2178,2178,2178,Melee 816,70,1486,40,40,40,TRUE,TRUE,FALSE,TRUE,None,None,None
 Twin Furies (challenge mode),Twin Furies,https://runescape.wiki/w/Avaryss;_the_Unceasing#Challenge_Mode,90,90,90,2458,2458,2458,Melee 864,75,1486,40,40,40,TRUE,TRUE,FALSE,TRUE,None,None,None
@@ -114,18 +119,18 @@ Gorvek (challenge mode),Gorvek,https://runescape.wiki/w/Gorvek,85,85,1,2178,2178
 2,Vorago,,,,,,,,,,,,,,,,,,,,
 Vorago,,https://runescape.wiki/w/Vorago,90,90,90,2458,0,2458,Melee 5000;Magic 5000,90,2178,40,40,40,FALSE,FALSE,FALSE,FALSE,None,None,None
 Vorago (hard mode),Vorago,https://runescape.wiki/w/Vorago/Strategies/Hard_mode,90,90,90,2458,0,2458,Melee 5000;Magic 5000,90,2178,40,40,40,FALSE,FALSE,FALSE,FALSE,None,None,None
-Yakamaru,,https://runescape.wiki/w/Yakamaru,99,99,99,2458,2458,2458,Ranged 1653;Magic 1653;Typeless 5000 Shockwave,99,2765,55,55,55,FALSE,TRUE,FALSE,TRUE,None,Hexhunter,None
+Yakamaru,,https://runescape.wiki/w/Yakamaru,99,99,99,2458,2458,2458,Ranged 1653;Magic 1653;Soft_Typeless 5000 Shockwave,99,2765,55,55,55,FALSE,TRUE,FALSE,TRUE,None,Hexhunter,None
 Acheron Mammoth,,https://runescape.wiki/w/Acheron_mammoth,99,1,1,3031,0,0,Melee 3361;Ranged 4412 Rock_Throw,95,2765,65,45,55,TRUE,TRUE,TRUE,TRUE,Stab 90,Black_Mask,None
 2,Airut,,,,,,,,,,,,,,,,,,,,
 Airut (melee),Airut,https://runescape.wiki/w/Airut#Melee,85,85,1,2178,0,0,Melee 816,90,2458,55,45,65,FALSE,TRUE,TRUE,TRUE,None,Black_Mask,None
 Airut (ranged),Airut,https://runescape.wiki/w/Airut#Ranged,85,85,1,0,2178,0,Ranged 816,90,2458,65,55,45,FALSE,TRUE,TRUE,TRUE,None,Black_Mask,None
-Camel Warrior,,https://runescape.wiki/w/Camel_Warrior,95,95,95,2765,2765,2765,Magic 931;Typeless 2678 Sandstorm,90,2458,65,55,45,TRUE,TRUE,TRUE,TRUE,Crush 90,Black_Mask,None
+Camel Warrior,,https://runescape.wiki/w/Camel_Warrior,95,95,95,2765,2765,2765,Magic 931;Soft_Typeless 2678 Sandstorm,90,2458,65,55,45,TRUE,TRUE,TRUE,TRUE,Crush 90,Black_Mask,None
 2,Edimmu,,,,,,,,,,,,,,,,,,,,
 Edimmu,,https://runescape.wiki/w/Edimmu,90,1,90,2458,0,2458,Magic 350;Melee 350,85,2178,30,65,50,TRUE,TRUE,TRUE,TRUE,Slash 90,Black_Mask Salve_Amulet,None
 Elite Edimmu,,https://runescape.wiki/w/Edimmu_(elite),95,1,95,2765,0,2765,Magic 1050;Melee 1050,90,2458,30,65,50,TRUE,TRUE,TRUE,TRUE,None,Black_Mask Salve_Amulet,None
 2,Ripper Demon,,,,,,,,,,,,,,,,,,,,
-Ripper Demon,,https://runescape.wiki/w/Ripper_Demon,99,1,1,3031,0,0,Melee 1330;Typeless 32000 Shadow_Leap,90,2458,55,45,65,TRUE,TRUE,FALSE,TRUE,Earth 90,Black_Mask Silverlight,None
-Slasher Demon,Ripper Demon,https://runescape.wiki/w/Slasher_Demon,99,1,1,3031,0,0,Melee 979;Typeless 32000 Shadow_Leap,99,3031,55,45,65,TRUE,TRUE,FALSE,TRUE,Earth 90,Black_Mask Silverlight,None
+Ripper Demon,,https://runescape.wiki/w/Ripper_Demon,99,1,1,3031,0,0,Melee 1330;Soft_Typeless 32000 Shadow_Leap,90,2458,55,45,65,TRUE,TRUE,FALSE,TRUE,Earth 90,Black_Mask Silverlight,None
+Slasher Demon,Ripper Demon,https://runescape.wiki/w/Slasher_Demon,99,1,1,3031,0,0,Melee 979;Soft_Typeless 32000 Shadow_Leap,99,3031,55,45,65,TRUE,TRUE,FALSE,TRUE,Earth 90,Black_Mask Silverlight,None
 2,Wyvern,,,,,,,,,,,,,,,,,,,,
 Wyvern,,https://runescape.wiki/w/Wyvern,91,91,91,2517,2517,2517,Melee 1310;Ranged 1310;Magic 1310,91,2517,55,45,65,TRUE,TRUE,TRUE,TRUE,Fire 90,Black_Mask,None
 Elite Wyvern,Wyvern,https://runescape.wiki/w/Wyvern_(elite),93,93,93,2639,2639,2639,Melee 1339;Ranged 1339;Magic 1339,93,2639,55,45,65,TRUE,TRUE,TRUE,TRUE,Fire 90,Black_Mask,None

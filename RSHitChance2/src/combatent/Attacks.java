@@ -26,6 +26,10 @@ public class Attacks {
         return index;
     }
     
+    public void setIndex(int index) {
+        this.index = index;
+    }
+    
     public void next(){
         index++;
         if(index>=attackList.size()){

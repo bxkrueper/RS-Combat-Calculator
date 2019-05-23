@@ -1,35 +1,17 @@
 package combatent;
 
-/*
- * describes a monster's attack
- */
-import combatStyle.OffensiveCombatStyle;
+import java.util.List;
 
-public class Attack {
-    
-    private OffensiveCombatStyle combatStyle;
-    private int maxHit;
-    private String name;//can be null (if an attack is just a normal auto attack)
-    ////add a buff to each attack?
-    
-    public Attack(OffensiveCombatStyle combatStyle, int maxHit) {
-        this(combatStyle,maxHit,null);
-    }
-    public Attack(OffensiveCombatStyle combatStyle, int maxHit,String name) {
-        this.combatStyle = combatStyle;
-        this.maxHit = maxHit;
-        this.name = name;
-    }
-    
-    public OffensiveCombatStyle getCombatStyle() {
-        return combatStyle;
-    }
-    public int getMaxHit() {
-        return maxHit;
-    }
-    //can be null
-    public String getName(){
-        return name;
-    }
-    
+import combatStyle.OffensiveCombatStyle;
+import main.DamageMode;
+import main.Hit;
+
+public interface Attack {
+	OffensiveCombatStyle getCombatStyle();
+    String getName();
+	List<Hit> generateBaseDamageHitList();
+//	double getMultiplierToBaseHit(int hitNumber,DamageMode damageMode);
+//	boolean canApplyEffects(int hitNumber);//multiplication boosts and add from boosted levels
+//    boolean canApplyAutoAttackEffectMultiplier(int hitNumber);//for things that only affect auto attacks like balmung
+//    int getBaseDamage();//max hit for autos, 100% ability damage for abilities
 }

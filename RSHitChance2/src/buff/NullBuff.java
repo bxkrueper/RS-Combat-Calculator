@@ -1,7 +1,10 @@
 package buff;
 
+import java.util.List;
+
 import combatent.Combatent;
 import javafx.scene.image.Image;
+import main.Hit;
 import resources.ImageFlyweight;
 
 //null buff returns default values for buffs and does not affect combat at all
@@ -104,6 +107,14 @@ public class NullBuff implements Buff, DontAddToBuffs{
     @Override
     public double addVisibleAccuracyLevelsToOwner(Combatent owner, Combatent opponent) {
         return 0;
+    }
+
+    @Override
+    public void affectOwnerBaseHitList(List<Hit> list, Combatent owner, Combatent opponent) {
+    }
+    
+    @Override
+    public void affectOpponentFinalHitList(List<Hit> list,Combatent owner, Combatent opponent) {
     }
 
     

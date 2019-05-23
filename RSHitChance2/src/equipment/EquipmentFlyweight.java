@@ -129,6 +129,7 @@ public class EquipmentFlyweight {
     
 
 
+    //TWO_HAND AND MAIN_HAND share one object
     public static Equipment getNullEquipmentForSlot(Slot slot) {
         if(equipmentMap==null){
             makeMaps();

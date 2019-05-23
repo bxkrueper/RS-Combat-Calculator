@@ -13,10 +13,8 @@ import combatStyle.DefensiveCombatStyle;
 public class OtherEquipment extends Equipment{
     private static final EquipmentConverter equipmentConverter = new OtherEquipmentConverter();
     
-    public OtherEquipment(String name, String imageName, Slot slot, CombatStyle combatStyle, int damage,
-            int armor, Buff buff) {
+    public OtherEquipment(String name, String imageName, Slot slot, CombatStyle combatStyle, int damage,int armor, Buff buff) {
         super(name, imageName, slot, combatStyle, 0, damage, armor, buff);
-        // TODO Auto-generated constructor stub
     }
 
 
