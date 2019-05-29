@@ -11,11 +11,11 @@ import abilities.BaseAbility;
 import abilities.PercentageRange;
 import abilities.PercentageRangeFlyweight;
 import buff.Buff;
+import calculations.BleedHitSlantedAverage;
+import calculations.Hit;
 import combatStyle.OffensiveCombatStyle;
 import combatent.Combatent;
-import main.BleedHitSlantedAverage;
 import main.DamageMode;
-import main.Hit;
 
 public class BloodTendrils extends BaseAbility{
 
@@ -45,7 +45,7 @@ public class BloodTendrils extends BaseAbility{
     }
 
     @Override
-    public List<Hit> generateBaseDamageHitList(int baseDamage, OffensiveCombatStyle combatStyle) {
+    public List<Hit> generateBaseDamageHitList(double baseDamage, OffensiveCombatStyle combatStyle) {
         List<Hit> hitList = new ArrayList<>(4);
         hitList.add(new BleedHitSlantedAverage(combatStyle,(baseDamage*range.getMin()),(baseDamage*range.getMax())));
         for(int i=0;i<3;i++) {

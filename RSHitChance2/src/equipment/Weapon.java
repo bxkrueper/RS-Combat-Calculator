@@ -15,7 +15,7 @@ public class Weapon extends Equipment implements WeaponInterface{
     private int accuracy;
     private WeaponSpeed weaponSpeed;
     
-    public Weapon(String name, String imageName, Slot slot, OffensiveCombatStyle combatStyle, int level, int damage, Buff buff,int accuracy,WeaponSpeed weaponSpeed) {
+    public Weapon(String name, String imageName, Slot slot, OffensiveCombatStyle combatStyle, int level, double damage, Buff buff,int accuracy,WeaponSpeed weaponSpeed) {
         super(name, imageName, slot, combatStyle, level, damage, 0, buff);
         this.accuracy = accuracy;
         this.weaponSpeed = weaponSpeed;
@@ -43,7 +43,7 @@ public class Weapon extends Equipment implements WeaponInterface{
             OffensiveCombatStyle combatStyle = (OffensiveCombatStyle) CombatStyleFlyweight.getCombatStyle(strArray[3]);
             int level = Integer.parseInt(strArray[4]);
             int accuracy = Integer.parseInt(strArray[5]);
-            int damage = (int) Double.parseDouble(strArray[6]);
+            double damage = Double.parseDouble(strArray[6]);
             WeaponSpeed speed = WeaponSpeed.valueOf(strArray[7]);
             String buffString = strArray[8];
             Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString));

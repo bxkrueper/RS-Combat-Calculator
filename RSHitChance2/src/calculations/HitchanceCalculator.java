@@ -1,4 +1,4 @@
-package main;
+package calculations;
 /*
  * takes into account all factors about that attacker and defender to determine the attacker's chance to hit.
  * use the calculateHitchance method to update the fields, then use the getter methods to get the calculation you need
@@ -14,8 +14,8 @@ import combatent.Combatent;
 public class HitchanceCalculator {
     
 	//intermediary calculations
-    private static int attackerTotalAccuracy;
-    private static int defenderTotalDefense;
+    private static double attackerTotalAccuracy;
+    private static double defenderTotalDefense;
     private static int defenderAffinityRaise;
     //final hit chance
     private static double hitChance;//100 and above always hits. not guaranteed to be between 0 and 100
@@ -37,7 +37,7 @@ public class HitchanceCalculator {
             return;
         }
         
-        int defenderAffinity = defender.getAffinityTo((PrimaryCombatStyle) attacker.getCombatStyle());
+        double defenderAffinity = defender.getAffinityTo((PrimaryCombatStyle) attacker.getCombatStyle());
         setTotalAffinityRaise(attacker,defender);
         defenderAffinity+=defenderAffinityRaise;
         System.out.println("defenderAffinity: " + defenderAffinity);
@@ -82,7 +82,7 @@ public class HitchanceCalculator {
         
         attackerTotalAccuracy = levelFunction(accuracyLevel)+ naturalAccuracy;
         
-        int accuracyPenalty = attacker.getAccuracyPenaltyFromWrongArmor();
+        double accuracyPenalty = attacker.getAccuracyPenaltyFromWrongArmor();
         System.out.println("accuracyPenalty: " + accuracyPenalty);
         
         attackerTotalAccuracy-=accuracyPenalty;
@@ -96,7 +96,7 @@ public class HitchanceCalculator {
         defenseLevel+=defenderBuffs.addDefenseLevelsToOwner(defender, attacker);//ex: pots, prayers, zerk aura,quake
         defenseLevel+=attackerBuffs.addDefenseLevelsToOpponent(attacker, defender);//ex: turmoil
         System.out.println("defenseLevel after buffs: " + defenseLevel);
-        int naturalArmor = defender.getNaturalArmor();
+        double naturalArmor = defender.getNaturalArmor();
         System.out.println("naturalArmor: " + naturalArmor);
         naturalArmor*=defenderBuffs.getArmorMultiplier(defender, attacker);
         
@@ -109,11 +109,11 @@ public class HitchanceCalculator {
         return (int) (0.0008 *Math.pow(level, 3)) + 4 * level + 40;
     }
 
-    public static int getAttackerTotalAccuracy() {
+    public static double getAttackerTotalAccuracy() {
         return attackerTotalAccuracy;
     }
 
-    public static int getDefenderTotalDefense() {
+    public static double getDefenderTotalDefense() {
         return defenderTotalDefense;
     }
 

@@ -15,7 +15,7 @@ public class MagicSpell extends Equipment implements AmmoInterface{
 
     private int maxLevel;//level where the spell stops scaling
     
-    public MagicSpell(String name, String imageName, Slot slot, DefensiveCombatStyle combatStyle, int minLevel, int damage, int armor, Buff buff,int maxLevel) {
+    public MagicSpell(String name, String imageName, Slot slot, DefensiveCombatStyle combatStyle, int minLevel, double damage, double armor, Buff buff,int maxLevel) {
         super(name, imageName, slot, combatStyle, minLevel, damage, armor, buff);
         this.maxLevel = maxLevel;
     }
@@ -25,7 +25,7 @@ public class MagicSpell extends Equipment implements AmmoInterface{
     }
     
     @Override
-    public int getDamage(int playerMagicLevel) {
+    public double getDamage(int playerMagicLevel) {
         
         int scaledSpellLevel;
         if(playerMagicLevel<getMinLevel()){
@@ -36,7 +36,7 @@ public class MagicSpell extends Equipment implements AmmoInterface{
             scaledSpellLevel = playerMagicLevel;
         }
         System.out.println("playerMagicLevel: " + playerMagicLevel + " maxSpellLevel: " + getMaxLevel() + " minSpellLevel: " + getMinLevel() + " scaledLevel: " + scaledSpellLevel);
-        return (int) (9.6*scaledSpellLevel);
+        return 9.6*scaledSpellLevel;
     }
     
     public int getMinLevel(){
@@ -61,7 +61,7 @@ public class MagicSpell extends Equipment implements AmmoInterface{
 
             
             
-            return new MagicSpell(name, imageName, Slot.QUIVER, combatStyle, minLevel, (int) (minLevel*9.6),0, buff,maxLevel);////////////damage field not needed?
+            return new MagicSpell(name, imageName, Slot.QUIVER, combatStyle, minLevel, minLevel*9.6,0, buff,maxLevel);////////////damage field not needed?
         }
         
     }

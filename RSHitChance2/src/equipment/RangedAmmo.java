@@ -11,7 +11,7 @@ import combatStyle.DefensiveCombatStyle;
 public class RangedAmmo extends Equipment implements AmmoInterface{
     private static final EquipmentConverter equipmentConverter = new RangedAmmoEquipmentConverter();
 
-    public RangedAmmo(String name, String imageName, Slot slot, DefensiveCombatStyle combatStyle, int level, int damage, int armor, Buff buff) {
+    public RangedAmmo(String name, String imageName, Slot slot, DefensiveCombatStyle combatStyle, int level, double damage, double armor, Buff buff) {
         super(name, imageName, slot, combatStyle, level, damage, armor, buff);
     }
     
@@ -21,7 +21,7 @@ public class RangedAmmo extends Equipment implements AmmoInterface{
     }
     
     @Override
-    public int getDamage(int playerMagicLevel) {
+    public double getDamage(int playerMagicLevel) {
         return getDamage();//arrows do not scale with level
     }
     
@@ -33,7 +33,7 @@ public class RangedAmmo extends Equipment implements AmmoInterface{
             String imageName = strArray[1].equals("")?name:strArray[1];
             DefensiveCombatStyle combatStyle = (DefensiveCombatStyle) CombatStyleFlyweight.getCombatStyle(strArray[2]);
             int level = Integer.parseInt(strArray[3]);
-            int damage = (int) Double.parseDouble(strArray[4]);
+            double damage = Double.parseDouble(strArray[4]);
             String buffString = strArray[5];
             Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString));
 

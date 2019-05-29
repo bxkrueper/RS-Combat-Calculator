@@ -3,11 +3,11 @@ package combatent;
 import java.util.ArrayList;
 import java.util.List;
 
+import calculations.AutoAttackHit;
+import calculations.Hit;
 import combatStyle.OffensiveCombatStyle;
 import equipment.WeaponInterface;
-import main.AutoAttackHit;
 import main.DamageMode;
-import main.Hit;
 
 public class PlayerOffHandAttack implements Attack{
     
@@ -40,7 +40,7 @@ public class PlayerOffHandAttack implements Attack{
         if(offHand==null) {
             return hitList;
         }
-        int maxHit = player.calculateBaseAutoDamage(offHand);
+        double maxHit = player.calculateBaseAutoDamage(offHand);
         System.out.println("Player Off Hand base max hit: " + maxHit);
         hitList.add(new AutoAttackHit(player.getCombatStyle(),1,maxHit));
         return hitList;

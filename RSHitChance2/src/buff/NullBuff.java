@@ -2,9 +2,9 @@ package buff;
 
 import java.util.List;
 
+import calculations.Hit;
 import combatent.Combatent;
 import javafx.scene.image.Image;
-import main.Hit;
 import resources.ImageFlyweight;
 
 //null buff returns default values for buffs and does not affect combat at all
@@ -35,8 +35,12 @@ public class NullBuff implements Buff, DontAddToBuffs{
 
     @Override
     public String getNiceName() {
-        // TODO Auto-generated method stub
         return getName().toString().replace('_', ' ');
+    }
+    
+    @Override
+    public String getDescription() {
+        return "does nothing";
     }
     
     @Override
@@ -116,6 +120,8 @@ public class NullBuff implements Buff, DontAddToBuffs{
     @Override
     public void affectOpponentFinalHitList(List<Hit> list,Combatent owner, Combatent opponent) {
     }
+
+    
 
     
     

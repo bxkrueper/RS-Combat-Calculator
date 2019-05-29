@@ -1,4 +1,4 @@
-package main;
+package calculations;
 
 import combatStyle.OffensiveCombatStyle;
 
@@ -10,7 +10,7 @@ public class BleedHitSlantedAverage extends BleedHit{
         this.chanceOfHittingMin = minDamage/maxDamage;
     }
 
-    @Override
+    @Override//bleeds do not crit
     public double getAveDamage() {
         double nonMinChance = 1-chanceOfHittingMin;
         return (getMinDamage()*chanceOfHittingMin+((getMinDamage()+getMaxDamage())/2)*nonMinChance);

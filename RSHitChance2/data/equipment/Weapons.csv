@@ -1,26 +1,26 @@
 Name,"Picture (if empty, uses images/equipment/[name]",Slot,Combat Style,Level,Accuracy,Damage,Speed,Buff
-Zaros godsword,,TWO_HAND,Slash,92,2577,2056,Average,None
-Noxious scythe,,TWO_HAND,Slash,90,2458,2011,Average,None
-Khopesh of Tumeken,,MAIN_HAND,Stab,92,2577,883,Fastest,None
-Khopesh of Elidinis,,OFF_HAND,Stab,92,2577,441,Fastest,None
+Zaros godsword,,TWO_HAND,Slash,92,2577,2056.2,Average,None
+Noxious scythe,,TWO_HAND,Slash,90,2458,2011.5,Average,None
+Khopesh of Tumeken,,MAIN_HAND,Stab,92,2577,883.2,Fastest,None
+Khopesh of Elidinis,,OFF_HAND,Stab,92,2577,441.6,Fastest,None
 Drygore mace,,MAIN_HAND,Crush,90,2458,864,Fastest,None
 Off-hand drygore mace,,OFF_HAND,Crush,90,2458,432,Fastest,None
-Tetsu katana,,MAIN_HAND,Slash,85,2178,1041,Fast,None
-Tetsu wakizashi,,OFF_HAND,Stab,85,2178,520,Fast,None
-Enhanced Excalibur,,OFF_HAND,Slash,70,1486,345,Fastest,None
-Seren godbow,,TWO_HAND,Arrows,92,2577,2056,Average,Chargebow
+Tetsu katana,,MAIN_HAND,Slash,85,2178,1041.3,Fast,None
+Tetsu wakizashi,,OFF_HAND,Stab,85,2178,520.6,Fast,None
+Enhanced Excalibur,,OFF_HAND,Slash,70,1486,345.6,Fastest,None
+Seren godbow,,TWO_HAND,Arrows,92,2577,2056.2,Average,Chargebow
 Eldritch crossbow,,TWO_HAND,Bolts,92,2577,1173,Average,None
-Noxious Longbow,,TWO_HAND,Arrows,90,2458,1147,Average,None
+Noxious Longbow,,TWO_HAND,Arrows,90,2458,1147.5,Average,None
 Blightbound crossbow,,MAIN_HAND,Bolts,92,2577,0,Fastest,None
 off-hand blightbound crossbow,,OFF_HAND,Bolts,92,2577,0,Fastest,None
 Ascension crossbow,,MAIN_HAND,Bolts,90,2458,0,Fastest,None
 off-hand Ascension crossbow,,OFF_HAND,Bolts,90,2458,0,Fastest,None
-Elite Death Lotus dart,,MAIN_HAND,Thrown,88,2343,844,Fastest,None
-Off-hand Elite Death Lotus dart,,OFF_HAND,Thrown,88,2343,422,Fastest,None
+Elite Death Lotus dart,,MAIN_HAND,Thrown,88,2343,844.8,Fastest,None
+Off-hand Elite Death Lotus dart,,OFF_HAND,Thrown,88,2343,422.4,Fastest,None
 Death Lotus dart,,MAIN_HAND,Thrown,85,2178,816,Fastest,None
 Off-hand Death Lotus dart,,OFF_HAND,Thrown,85,2178,408,Fastest,None
 Zaryte bow,,TWO_HAND,Arrows,80,1924,1470,Fast,Chargebow
-Sunspear (ranged),,TWO_HAND,Thrown,78,1829,1743,Average,Chargebow
+Sunspear (ranged),,TWO_HAND,Thrown,78,1829,1743.3,Average,Chargebow
 Staff of Sliske,,TWO_HAND,Magic,92,2577,0,Average,None
 Noxious staff,,TWO_HAND,Magic,90,2458,0,Average,None
 Wand of the praesul,,MAIN_HAND,Magic,92,2577,0,Fastest,None
@@ -32,9 +32,9 @@ Elite seasinger makigai,,OFF_HAND,Magic,88,2343,0,Fastest,None
 Sunspear (magic),,TWO_HAND,Magic,78,1829,0,Average,None
 Hexhunter,,TWO_HAND,Arrows,80,1924,384,Fastest,Hexhunter
 Balmung,,TWO_HAND,Slash,60,1132,1341,Average,Balmung
-Upgraded Balmung,,TWO_HAND,Slash,70,1599,1486,Average,Upgraded_Balmung
+Upgraded Balmung,,TWO_HAND,Slash,70,1486,1599.5,Average,Upgraded_Balmung
 Keris,,MAIN_HAND,Stab,50,850,480,Fastest,Keris
-Silverlight,,MAIN_HAND,Slash,6,160,74,Fast,Silverlight
+Silverlight,,MAIN_HAND,Slash,6,160,73.5,Fast,Silverlight
 Darklight,,MAIN_HAND,Slash,20,316,245,Fast,Silverlight
 Upgraded Darklight,Darklight,MAIN_HAND,Slash,20,316,245,Fast,Upgraded_Silverlight
-Sunspear (melee),,TWO_HAND,Stab,78,1829,1743,Average,None
+Sunspear (melee),,TWO_HAND,Stab,78,1829,1743.3,Average,None

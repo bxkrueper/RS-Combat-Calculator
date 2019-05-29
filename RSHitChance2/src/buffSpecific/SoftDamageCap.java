@@ -4,8 +4,8 @@ import java.util.List;
 
 import buff.BuffName;
 import buff.ConstantFillInBuff;
+import calculations.Hit;
 import combatent.Combatent;
-import main.Hit;
 
 public class SoftDamageCap extends ConstantFillInBuff{
 

@@ -5,11 +5,11 @@ import java.util.List;
 import buff.BuffName;
 import buff.ConstantFillInBuff;
 import buff.DontShowOnBuffBar;
+import calculations.BleedHit;
+import calculations.Hit;
+import calculations.PossiblyDidntLandHit;
 import combatStyle.OffensiveCombatStyle;
 import combatent.Combatent;
-import main.BleedHit;
-import main.Hit;
-import main.PossiblyDidntLandHit;
 
 public class DragonBreath extends ConstantFillInBuff implements DontShowOnBuffBar{
 

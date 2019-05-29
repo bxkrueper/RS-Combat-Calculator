@@ -63,7 +63,7 @@ public class NullMonster implements Monster{
     }
     
     @Override
-    public int getAffinityTo(PrimaryCombatStyle cbs) {
+    public double getAffinityTo(PrimaryCombatStyle cbs) {
         return 0;
     }
     
@@ -93,8 +93,8 @@ public class NullMonster implements Monster{
     }
     
     @Override
-    public int getAccuracyPenaltyFromWrongArmor() {
-        return 0;
+    public double getAccuracyPenaltyFromWrongArmor() {
+        return 0.0;
     }
 
     @Override
@@ -103,8 +103,8 @@ public class NullMonster implements Monster{
     }
 
     @Override
-    public int getNaturalArmor() {
-        return 0;
+    public double getNaturalArmor() {
+        return 0.0;
     }
     
     @Override
@@ -137,8 +137,8 @@ public class NullMonster implements Monster{
     }
 
 	@Override
-	public int getBaseDamage() {
-		return 0;
+	public double getBaseDamage() {
+		return 0.0;
 	}
 	
 	@Override

@@ -1,11 +1,11 @@
 package buff;
 import java.util.List;
 
+import calculations.Hit;
 /*
  * defines all methods for a general buff. Most buffs should only return a non-default number for some of the methods
  */
 import combatent.Combatent;
-import main.Hit;
 import resources.Imageable;
 
 public interface Buff extends Imageable{
@@ -15,6 +15,7 @@ public interface Buff extends Imageable{
     
     BuffName getName();
     String getNiceName();
+    String getDescription();
     
     
     //potions, prayers, ect

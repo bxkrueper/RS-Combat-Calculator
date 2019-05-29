@@ -1,30 +1,33 @@
-package main;
+package calculations;
 
 import combatStyle.OffensiveCombatStyle;
 
-//flat hit with no range that is not affected by any effects
-public class ConstantHit extends Hit{
+public class BleedHit extends Hit{
+    private double minDamage;
+    private double maxDamage;
+    private double chanceOfHittingMin;
     
-    private double damage;
-    
-    public ConstantHit(OffensiveCombatStyle cbs, double damage) {
+    public BleedHit(OffensiveCombatStyle cbs, double minDamage, double maxDamage) {
         super(cbs);
-        this.damage = damage;
+        this.minDamage = minDamage;
+        this.maxDamage = maxDamage;
+        this.chanceOfHittingMin = minDamage/maxDamage;
     }
 
     @Override
     public double getMaxDamage() {
-        return damage;
+        return maxDamage;
     }
 
-    @Override
+    
+    @Override//bleeds do not crit
     public double getAveDamage() {
-        return damage;
+        return (minDamage+maxDamage)/2;
     }
 
     @Override
     public double getMinDamage() {
-        return damage;
+        return minDamage;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class ConstantHit extends Hit{
     @Override
     public void applyDamageFromExtraPowerLevels(int extraPowerLevels) {//no effect
     }
-    
+
     @Override
     public void multiplyMaxHit(double maxHitMultiplier) {//no effect
     }
@@ -48,17 +51,17 @@ public class ConstantHit extends Hit{
     }
     
     @Override
-    public String toString() {
-        return "Constant Hit: " + damage;
-    }
-
-    @Override
     public void setMinDamage(double minDamage) {
-        this.damage = minDamage;
+        this.minDamage = minDamage;
     }
 
     @Override
     public void setMaxDamage(double maxDamage) {
-        this.damage = maxDamage;
+        this.maxDamage = maxDamage;
+    }
+    
+    @Override
+    public String toString() {
+        return "Bleed Hit: min " + minDamage + ",max " + maxDamage;
     }
 }

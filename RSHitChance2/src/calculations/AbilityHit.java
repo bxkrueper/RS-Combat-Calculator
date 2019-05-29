@@ -1,8 +1,9 @@
-package main;
+package calculations;
 
 import combatStyle.OffensiveCombatStyle;
+import main.DamageMode;
 
-//standard ability hit with separate min and max damabe
+//standard ability hit with separate min and max damage
 public class AbilityHit extends Hit{
 
     private double minDamage;
@@ -17,11 +18,6 @@ public class AbilityHit extends Hit{
     @Override
     public double getMaxDamage() {
         return maxDamage;
-    }
-
-    @Override
-    public double getAveDamage() {
-        return ((minDamage+maxDamage)/2);
     }
 
     @Override
@@ -68,6 +64,6 @@ public class AbilityHit extends Hit{
     
     @Override
     public String toString() {
-        return "Ability Hit: min " + minDamage + ",max " + maxDamage;
+        return "Ability Hit: min " + minDamage + ",max " + maxDamage + " critChance: " + getCritChance();
     }
 }

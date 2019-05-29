@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import abilities.Ability;
+import calculations.AbilityHit;
+import calculations.AutoAttackHit;
+import calculations.ConstantHit;
+import calculations.Hit;
 import combatStyle.OffensiveCombatStyle;
-import main.AbilityHit;
-import main.AutoAttackHit;
-import main.ConstantHit;
 import main.DamageMode;
-import main.Hit;
 
 public class PlayerMainHandAttack implements Attack{
     
@@ -32,7 +32,7 @@ public class PlayerMainHandAttack implements Attack{
     @Override
     public List<Hit> generateBaseDamageHitList() {
         List<Hit> hitList = new ArrayList<>(1);
-        int maxHit = player.calculateBaseAutoDamage(player.getWornEquipment().getMainWeapon());
+        double maxHit = player.calculateBaseAutoDamage(player.getWornEquipment().getMainWeapon());
         System.out.println("Player Main Hand base max hit: " + maxHit);
         hitList.add(new AutoAttackHit(player.getCombatStyle(),1,maxHit));
         return hitList;

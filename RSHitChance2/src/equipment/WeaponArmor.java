@@ -19,7 +19,7 @@ public class WeaponArmor extends Equipment implements WeaponInterface, ArmorInte
     private WeaponSpeed weaponSpeed;
     private double damageReduction;
     
-    public WeaponArmor(String name, String imageName, Slot slot, OffensiveCombatStyle combatStyle, int level, int damage, int armor,Buff buff, int accuracy,WeaponSpeed weaponSpeed,double damageReduction) {
+    public WeaponArmor(String name, String imageName, Slot slot, OffensiveCombatStyle combatStyle, int level, double damage, double armor,Buff buff, int accuracy,WeaponSpeed weaponSpeed,double damageReduction) {
         super(name, imageName, slot, combatStyle, level, damage, armor, buff);
         this.accuracy = accuracy;
         this.weaponSpeed = weaponSpeed;
@@ -51,8 +51,8 @@ public class WeaponArmor extends Equipment implements WeaponInterface, ArmorInte
             OffensiveCombatStyle combatStyle = (OffensiveCombatStyle) CombatStyleFlyweight.getCombatStyle(strArray[3]);
             int level = Integer.parseInt(strArray[4]);
             int accuracy = Integer.parseInt(strArray[5]);
-            int damage = (int) Double.parseDouble(strArray[6]);
-            int armor = (int) Double.parseDouble(strArray[7]);
+            double damage = Double.parseDouble(strArray[6]);
+            double armor = Double.parseDouble(strArray[7]);
             double damageReduction = Double.parseDouble(strArray[8]);
             WeaponSpeed speed = WeaponSpeed.valueOf(strArray[9]);
             String buffString = strArray[10];

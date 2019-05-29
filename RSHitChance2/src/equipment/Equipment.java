@@ -25,13 +25,13 @@ public abstract class Equipment implements EquipmentInterface{
     private Slot slot;
     private CombatStyle combatStyle;
     private int level;
-    private int damage;
-    private int armor;
+    private double damage;
+    private double armor;
     
     
     private Buff buff;
     private int sortingId;//this is the order the items were in in Equipment.csv
-    public Equipment(String name, String imageName, Slot slot, CombatStyle combatStyle, int level,int damage, int armor,Buff buff) {
+    public Equipment(String name, String imageName, Slot slot, CombatStyle combatStyle, int level,double damage, double armor,Buff buff) {
         this.name = name;
         this.imageName = imageName;
         this.slot = slot;
@@ -67,10 +67,10 @@ public abstract class Equipment implements EquipmentInterface{
     public int getLevel() {
         return level;
     }
-    public int getDamage() {
+    public double getDamage() {
         return damage;
     }
-    public int getArmor() {
+    public double getArmor() {
         return armor;
     }
     

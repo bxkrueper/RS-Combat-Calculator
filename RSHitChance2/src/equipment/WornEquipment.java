@@ -128,8 +128,8 @@ public class WornEquipment{
         return getMainWeapon().getAccuracy();
     }
     //only adds damage for current combat style (melee,range,magic)
-    public int getDamage(){
-        int total = 0;
+    public double getDamage(){
+        double total = 0;
         for(Slot slot:Slot.values()){
             Equipment equipment = getEquipment(slot);
             total+= equipment.getDamage();
@@ -137,8 +137,8 @@ public class WornEquipment{
         return total;
     }
     //gets damage bonuses from non-weapon or ammoslots
-    public int getNonWeaponStrengthBonuses() {
-        int total = 0;
+    public double getNonWeaponStrengthBonuses() {
+        double total = 0;
         for(Slot slot:Slot.values()){
             if(slot==Slot.MAIN_HAND || slot==Slot.OFF_HAND || slot==Slot.TWO_HAND || slot==Slot.QUIVER){
                 continue;
@@ -149,8 +149,8 @@ public class WornEquipment{
         return total;
     }
     //totals all armor values
-    public int getArmor(){
-        int total = 0;
+    public double getArmor(){
+        double total = 0;
         for(Slot slot:Slot.values()){
             Equipment equipment = getEquipment(slot);
             total+= equipment.getArmor();
@@ -160,7 +160,7 @@ public class WornEquipment{
 
     /////////test
     public int getAffinityTo(PrimaryCombatStyle cbs) {
-        int armor = getArmor();//total armor
+        double armor = getArmor();//total armor
         if(armor==0){
             return 55;
         }else{
@@ -177,8 +177,8 @@ public class WornEquipment{
     }
     
     //totals all armor values from equipment that matches the given combat style
-    private int getArmor(DefensiveCombatStyle cbs) {
-        int total = 0;
+    private double getArmor(DefensiveCombatStyle cbs) {
+        double total = 0;
         for(Slot slot:Slot.values()){
             Equipment equipment = getEquipment(slot);
             if(equipment.getCombatStyle()==cbs){//assumes defensive styles don't have subclasses
@@ -193,7 +193,7 @@ public class WornEquipment{
         return slotEquipmentMap.values().toString();
     }
 
-    public int getAccuracyPenaltyFromWrongArmor() {
+    public double getAccuracyPenaltyFromWrongArmor() {
         PrimaryCombatStyle pcbs;
         CombatStyle cbs = getMainWeapon().getCombatStyle();
         if(cbs instanceof PrimaryCombatStyle){
@@ -211,7 +211,7 @@ public class WornEquipment{
                 total+=equipment.getArmor()*0.8;
             }
         }
-        return (int) total;
+        return total;
     }
 
     public double getDamageReduction() {

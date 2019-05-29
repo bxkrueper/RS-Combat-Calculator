@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import calculations.Hit;
 import combatent.Combatent;
 import javafx.scene.image.Image;
-import main.Hit;
 import resources.ImageFlyweight;
 
 public class Buffs implements Buff, Iterable<BuffName>{
@@ -61,6 +61,12 @@ public class Buffs implements Buff, Iterable<BuffName>{
     @Override
     public String getNiceName() {
         return "Buff Group";
+    }
+    
+    ///this should be no need to call this
+    @Override
+    public String getDescription() {
+        return "this is a Buff Group";
     }
 
     ///this shouldn't be used
@@ -289,6 +295,8 @@ public class Buffs implements Buff, Iterable<BuffName>{
         }
         
     }
+
+    
 
     
 

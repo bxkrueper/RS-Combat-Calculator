@@ -11,13 +11,13 @@ import abilities.BaseAbility;
 import abilities.PercentageRange;
 import abilities.PercentageRangeFlyweight;
 import buff.Buff;
+import calculations.BleedHit;
+import calculations.BleedHitSlantedAverage;
+import calculations.ConstantHit;
+import calculations.Hit;
 import combatStyle.OffensiveCombatStyle;
 import combatent.Combatent;
-import main.BleedHit;
-import main.BleedHitSlantedAverage;
-import main.ConstantHit;
 import main.DamageMode;
-import main.Hit;
 
 public class Corruption extends BaseAbility{
     
@@ -43,7 +43,7 @@ public class Corruption extends BaseAbility{
     }
 
     @Override
-    public List<Hit> generateBaseDamageHitList(int baseDamage, OffensiveCombatStyle combatStyle) {
+    public List<Hit> generateBaseDamageHitList(double baseDamage, OffensiveCombatStyle combatStyle) {
         List<Hit> hitList = new ArrayList<>(5);
         for(int i=0;i<5;i++) {
             hitList.add(new BleedHit(combatStyle,baseDamage*range.getMin()*(1-i*.2),baseDamage*range.getMax()*(1-i*.2)));

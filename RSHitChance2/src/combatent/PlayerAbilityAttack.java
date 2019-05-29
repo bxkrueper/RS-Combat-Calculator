@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import abilities.Ability;
+import calculations.AbilityHit;
+import calculations.AutoAttackHit;
+import calculations.Hit;
 import combatStyle.OffensiveCombatStyle;
-import main.AbilityHit;
-import main.AutoAttackHit;
 import main.DamageMode;
-import main.Hit;
 
 /*
  * uses the player's ability to fill the hit list
@@ -34,7 +34,7 @@ public class PlayerAbilityAttack implements Attack{
     @Override
     public List<Hit> generateBaseDamageHitList() {
         Ability ability = player.getAbility();
-        int baseDamage = player.getBaseDamage();
+        double baseDamage = player.getBaseDamage();
         System.out.println("base ability damage: " + baseDamage);
         return ability.generateBaseDamageHitList(baseDamage,player.getCombatStyle());
     }
