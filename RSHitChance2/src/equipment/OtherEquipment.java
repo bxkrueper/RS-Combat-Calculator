@@ -13,7 +13,7 @@ import combatStyle.DefensiveCombatStyle;
 public class OtherEquipment extends Equipment{
     private static final EquipmentConverter equipmentConverter = new OtherEquipmentConverter();
     
-    public OtherEquipment(String name, String imageName, Slot slot, CombatStyle combatStyle, int damage,int armor, Buff buff) {
+    public OtherEquipment(String name, String imageName, Slot slot, CombatStyle combatStyle, double damage,double armor, Buff buff) {
         super(name, imageName, slot, combatStyle, 0, damage, armor, buff);
     }
 
@@ -34,8 +34,8 @@ public class OtherEquipment extends Equipment{
             String imageName = strArray[1].equals("")?name:strArray[1];
             Slot slot = Slot.valueOf(strArray[2]);
             DefensiveCombatStyle combatStyle = (DefensiveCombatStyle) CombatStyleFlyweight.getCombatStyle(strArray[3]);
-            int damage = (int) Double.parseDouble(strArray[4]);
-            int armor = (int) Double.parseDouble(strArray[5]);
+            double damage = Double.parseDouble(strArray[4]);
+            double armor = Double.parseDouble(strArray[5]);
             String buffString = strArray[6];
             Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString));
 

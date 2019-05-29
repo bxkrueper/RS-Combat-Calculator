@@ -1,4 +1,4 @@
-package main;
+package calculations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,7 @@ import combatent.Combatent;
 import combatent.Player;
 import equipment.Slot;
 import equipment.WeaponInterface;
+import main.DamageMode;
 
 public class DamageCalculator {
 
@@ -41,15 +42,17 @@ public class DamageCalculator {
             hitList.get(i).applyAutoAttackMultiplier(autoAttackMultiplier);
         }
 		System.out.println("Hits after multiplication effects: " + hitList.toString());
+		//stat boosts apply 4-8 extra damage per level above base
 		for(int i=0;i<hitList.size();i++) {
 		    hitList.get(i).applyDamageFromExtraPowerLevels(extraPowerLevels);
         }
 		System.out.println("Hits after damage from extra power levels: " + hitList.toString());
+		//apply precise and equilibrium. This is not done in the buff's methods because precise must be applied first and there is no guarantee it is in the right order
 		for(int i=0;i<hitList.size();i++) {
             int precise = ((StackBuff) BuffFlyweight.getBuff(BuffName.Precise)).getStackValue();
             int equilibrium = ((StackBuff) BuffFlyweight.getBuff(BuffName.Equilibrium)).getStackValue();
-            double minBeforePE = hitList.get(i).getMinDamage();//////////this is cast to int
-            double maxBeforePE = hitList.get(i).getMaxDamage();//////////this is cast to int
+            double minBeforePE = hitList.get(i).getMinDamage();
+            double maxBeforePE = hitList.get(i).getMaxDamage();
             double minMultiplier = minDamageWithPreciseEquilibriumMultiplier(precise,equilibrium,minBeforePE,maxBeforePE);
             double maxMultiplier = maxDamageWithPreciseEquilibriumMultiplier(precise,equilibrium,minBeforePE,maxBeforePE);
             hitList.get(i).multiplyMinHit(minMultiplier);

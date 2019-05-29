@@ -1,4 +1,4 @@
-package main;
+package calculations;
 
 import combatStyle.OffensiveCombatStyle;
 //min damage is 0
@@ -18,7 +18,7 @@ public class PossiblyDidntLandHit extends Hit{
         return maxDamage;
     }
 
-    @Override
+    @Override//theses bleeds do not crit
     public double getAveDamage() {
         return maxDamage*chanceOfLanding;
     }

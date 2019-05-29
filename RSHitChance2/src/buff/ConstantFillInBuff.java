@@ -2,16 +2,17 @@ package buff;
 
 import java.util.List;
 
+import calculations.Hit;
 //defines many default behaviors for buffs. Most buffs extend from this and only override one or two methods
 import combatent.Combatent;
 import javafx.scene.image.Image;
-import main.Hit;
 import resources.ImageFlyweight;
 
 public class ConstantFillInBuff implements Buff{
     
     private BuffName name;
     private String pictureName;//may be null
+    private String description;//may be null
     
     //these are initialized to their default (no effect) values in the constructor
     //to change, use a setter after object initialization
@@ -59,6 +60,16 @@ public class ConstantFillInBuff implements Buff{
     public String getNiceName() {
         return name.toString().replace('_', ' ');
     }
+    
+    //defaults to nice name if description not set
+    @Override
+    public String getDescription() {
+        if(description==null) {
+            return this.getNiceName();
+        }else {
+            return this.getNiceName() + ": " + description;
+        }
+    }
 
     //if picture name was set, uses that, otherwise default to the picture with the same name as name
     @Override
@@ -72,6 +83,10 @@ public class ConstantFillInBuff implements Buff{
     
     public void setPictureName(String newPictureName){
         this.pictureName = newPictureName;
+    }
+    
+    public void setDescription(String description){
+        this.description = description;
     }
     
     //getters
@@ -216,13 +231,6 @@ public class ConstantFillInBuff implements Buff{
     public String toString() {
         return name.toString();
     }
-
-    
-
-    
-
-    
-
     
     
 }

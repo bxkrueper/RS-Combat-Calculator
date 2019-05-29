@@ -5,12 +5,12 @@ import java.util.List;
 import buff.BuffName;
 import buff.ConstantFillInBuff;
 import buff.DontShowOnBuffBar;
+import calculations.BleedHit;
+import calculations.BleedHitSlantedAverage;
+import calculations.Hit;
 import combatStyle.CombatStyle;
 import combatStyle.OffensiveCombatStyle;
 import combatent.Combatent;
-import main.BleedHit;
-import main.BleedHitSlantedAverage;
-import main.Hit;
 
 public class Dismember extends ConstantFillInBuff implements DontShowOnBuffBar{
 

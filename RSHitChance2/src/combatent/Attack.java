@@ -2,9 +2,9 @@ package combatent;
 
 import java.util.List;
 
+import calculations.Hit;
 import combatStyle.OffensiveCombatStyle;
 import main.DamageMode;
-import main.Hit;
 
 public interface Attack {
 	OffensiveCombatStyle getCombatStyle();

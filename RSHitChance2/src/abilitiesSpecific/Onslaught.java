@@ -11,11 +11,11 @@ import abilities.BaseAbility;
 import abilities.PercentageRange;
 import abilities.PercentageRangeFlyweight;
 import buff.Buff;
+import calculations.AbilityHit;
+import calculations.Hit;
 import combatStyle.OffensiveCombatStyle;
 import combatent.Combatent;
-import main.AbilityHit;
 import main.DamageMode;
-import main.Hit;
 
 public class Onslaught extends BaseAbility{
 
@@ -44,7 +44,7 @@ public class Onslaught extends BaseAbility{
     }
 
     @Override
-    public List<Hit> generateBaseDamageHitList(int baseDamage, OffensiveCombatStyle combatStyle) {
+    public List<Hit> generateBaseDamageHitList(double baseDamage, OffensiveCombatStyle combatStyle) {
         List<Hit> hitList = new ArrayList<>(MAX_NUMBER_OF_HITS);
         for(int i=0;i<MAX_NUMBER_OF_HITS;i++) {
             double minMultiplier = baseRange.getMin()+increaseRange.getMin()*i;

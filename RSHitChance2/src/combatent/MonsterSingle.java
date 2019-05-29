@@ -73,7 +73,7 @@ public class MonsterSingle implements Monster{
         return affinityWeaknesses;
     }
     @Override
-    public int getAffinityTo(PrimaryCombatStyle cbs) {
+    public double getAffinityTo(PrimaryCombatStyle cbs) {
         return affinityWeaknesses.getAffinityTo(cbs);
     }
     @Override
@@ -106,8 +106,8 @@ public class MonsterSingle implements Monster{
     }
     
     @Override
-    public int getAccuracyPenaltyFromWrongArmor() {
-        return 0;//monsters don't wear armor
+    public double getAccuracyPenaltyFromWrongArmor() {
+        return 0.0;//monsters don't wear armor
     }
 
     @Override
@@ -116,7 +116,7 @@ public class MonsterSingle implements Monster{
     }
 
     @Override
-    public int getNaturalArmor() {
+    public double getNaturalArmor() {
         return baseStats.getBaseArmour();
     }
     
@@ -142,7 +142,7 @@ public class MonsterSingle implements Monster{
     }
 
 	@Override
-	public int getBaseDamage() {
+	public double getBaseDamage() {
 		return ((MonsterAttack) (getAttacks().getAttack())).getMaxBaseHit();
 	}
 

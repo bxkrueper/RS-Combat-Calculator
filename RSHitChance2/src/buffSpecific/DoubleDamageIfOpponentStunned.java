@@ -5,10 +5,10 @@ import java.util.List;
 import buff.BuffName;
 import buff.ConstantFillInBuff;
 import buff.DontShowOnBuffBar;
+import calculations.BleedHitSlantedAverage;
+import calculations.Hit;
 import combatStyle.OffensiveCombatStyle;
 import combatent.Combatent;
-import main.BleedHitSlantedAverage;
-import main.Hit;
 
 public class DoubleDamageIfOpponentStunned extends ConstantFillInBuff {///implements DontShowOnBuffBar
 

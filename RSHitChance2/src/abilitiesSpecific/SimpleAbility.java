@@ -11,11 +11,11 @@ import abilities.BaseAbility;
 import abilities.PercentageRange;
 import abilities.PercentageRangeFlyweight;
 import buff.Buff;
+import calculations.AbilityHit;
+import calculations.Hit;
 import combatStyle.OffensiveCombatStyle;
 import combatent.Combatent;
-import main.AbilityHit;
 import main.DamageMode;
-import main.Hit;
 
 public class SimpleAbility extends BaseAbility{
 
@@ -44,7 +44,7 @@ public class SimpleAbility extends BaseAbility{
     }
     
     @Override
-    public List<Hit> generateBaseDamageHitList(int baseDamage, OffensiveCombatStyle combatStyle) {
+    public List<Hit> generateBaseDamageHitList(double baseDamage, OffensiveCombatStyle combatStyle) {
         List<Hit> hitList = new ArrayList<>(1);
         hitList.add(new AbilityHit(combatStyle,baseDamage*range.getMin(),baseDamage*range.getMax()));
         return hitList;

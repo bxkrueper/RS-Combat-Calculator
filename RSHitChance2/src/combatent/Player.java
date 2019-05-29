@@ -154,7 +154,7 @@ public class Player implements Combatent{
     }
 
     @Override
-    public int getAffinityTo(PrimaryCombatStyle cbs) {
+    public double getAffinityTo(PrimaryCombatStyle cbs) {
         return wornEquipment.getAffinityTo(cbs);
     }
     
@@ -181,7 +181,7 @@ public class Player implements Combatent{
 
     //natural armor is from equipment only
     @Override
-    public int getNaturalArmor() {
+    public double getNaturalArmor() {
         return wornEquipment.getArmor();
     }
     
@@ -209,7 +209,7 @@ public class Player implements Combatent{
     }
 
     @Override
-    public int getAccuracyPenaltyFromWrongArmor() {
+    public double getAccuracyPenaltyFromWrongArmor() {
         return wornEquipment.getAccuracyPenaltyFromWrongArmor();
     }
     
@@ -258,7 +258,7 @@ public class Player implements Combatent{
     
     //for abilities
 	@Override
-	public int getBaseDamage() {
+	public double getBaseDamage() {
 		WornEquipment wornEquipment = getWornEquipment();
         
         WeaponInterface mainWeapon = wornEquipment.getMainWeapon();
@@ -275,15 +275,15 @@ public class Player implements Combatent{
         int currentPowerLevel = getCurrentPowerLevel();
         System.out.println("current power Level: " + currentPowerLevel);
         
-        int bonuses = wornEquipment.getNonWeaponStrengthBonuses();
+        double bonuses = wornEquipment.getNonWeaponStrengthBonuses();
         System.out.println("non weapon bonuses: " + bonuses);
         
-        int abilityDamage = (int) getBaseDamageFromWeapon(currentPowerLevel,mainWeapon,bonuses,(AmmoInterface) wornEquipment.getEquipment(Slot.QUIVER),true);
+        double abilityDamage = getBaseDamageFromWeapon(currentPowerLevel,mainWeapon,bonuses,(AmmoInterface) wornEquipment.getEquipment(Slot.QUIVER),true);
         System.out.println("damage from main hand: " + abilityDamage);
         
         if(offHand!=null && offHand!=EquipmentFlyweight.getEquipment("No Off Hand") && ((OffensiveCombatStyle) offHand.getCombatStyle()).isSameGeneralOffensiveStyleAs(mainWeaponCombatStyle)){
             //add off hand damage
-            int offHandDamage = getBaseDamageFromWeapon(currentPowerLevel,offHand,bonuses,(AmmoInterface) wornEquipment.getEquipment(Slot.QUIVER),true);
+            double offHandDamage = getBaseDamageFromWeapon(currentPowerLevel,offHand,bonuses,(AmmoInterface) wornEquipment.getEquipment(Slot.QUIVER),true);
             System.out.println("damage from off hand: " + offHandDamage);
             abilityDamage += offHandDamage;
         }
@@ -294,7 +294,7 @@ public class Player implements Combatent{
     
 	
 
-	public int calculateBaseAutoDamage(WeaponInterface weapon) {
+	public double calculateBaseAutoDamage(WeaponInterface weapon) {
 		  WornEquipment wornEquipment = this.getWornEquipment();
 		  
 		  
@@ -307,10 +307,10 @@ public class Player implements Combatent{
 		  int currentPowerLevel = getCurrentPowerLevel();
 		  System.out.println("current power Level: " + currentPowerLevel);
 		  
-		  int bonuses = wornEquipment.getNonWeaponStrengthBonuses();
+		  double bonuses = wornEquipment.getNonWeaponStrengthBonuses();
 		  System.out.println("non weapon bonuses: " + bonuses);
 		  
-		  int autoDamage = (int) getBaseDamageFromWeapon(currentPowerLevel,weapon,bonuses,(AmmoInterface) wornEquipment.getEquipment(Slot.QUIVER),false);
+		  double autoDamage = getBaseDamageFromWeapon(currentPowerLevel,weapon,bonuses,(AmmoInterface) wornEquipment.getEquipment(Slot.QUIVER),false);
 		  
 		  return autoDamage;
     }
@@ -320,13 +320,13 @@ public class Player implements Combatent{
     
 	
 	//stat damage + weapon damage + bonus damage
-    private static int getBaseDamageFromWeapon(int level,WeaponInterface weapon, int bonuses, AmmoInterface quiverItem,boolean useingAbilities) {
+    private static double getBaseDamageFromWeapon(int level,WeaponInterface weapon, double bonuses, AmmoInterface quiverItem,boolean useingAbilities) {
         double handiness = weapon.getHandinessMultiplier();
         System.out.println("handiness mult:" + handiness);
         
-        int statPart = (int) (2.5*handiness*level);
-        int weaponPart = (int) getWeaponDamage(weapon,quiverItem,level,useingAbilities);
-        int bonusPart = (int) (handiness*bonuses);
+        double statPart = 2.5*handiness*level;
+        double weaponPart = getWeaponDamage(weapon,quiverItem,level,useingAbilities);
+        double bonusPart = handiness*bonuses;
         
         if(!useingAbilities){
             double speedMod = weapon.getWeaponSpeed().speedMod();
@@ -352,7 +352,7 @@ public class Player implements Combatent{
             }
             
         }else{//range or magic//////////////////////////////////what about typeless and can't hit?
-            int ammoDamage;
+            double ammoDamage;
             if(weapon.getCombatStyle()==CombatStyleFlyweight.getCombatStyle("Thrown")){
                 ammoDamage = weapon.getDamage();
             }else{
@@ -381,6 +381,7 @@ public class Player implements Combatent{
     }
     
     private int getCurrentPowerLevel() {
+        //power level is multiplied as a double while calculating buffs, then cast to int
 		return getBasePowerLevel()+(int) getBuffs().addPowerLevelsToOwner(this, null);///////opponents can't drain power level?
 	}
 

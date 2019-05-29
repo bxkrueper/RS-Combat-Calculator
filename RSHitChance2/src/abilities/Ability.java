@@ -3,6 +3,7 @@ package abilities;
 import java.util.List;
 
 import buff.Buff;
+import calculations.Hit;
 import combatStyle.CombatStyle;
 import combatStyle.Magic;
 import combatStyle.Melee;
@@ -12,7 +13,6 @@ import combatStyle.Ranged;
 import combatent.Player;
 import javafx.scene.image.Image;
 import main.DamageMode;
-import main.Hit;
 import resources.ImageFlyweight;
 import resources.Imageable;
 
@@ -29,7 +29,7 @@ public interface Ability extends Imageable{
 	int getLevel();
 	int getNumberOfHits(DamageMode damageMode);
 	double getMultiplierToBaseHit(int hitNumber, DamageMode damageMode);
-	List<Hit> generateBaseDamageHitList(int baseDamage, OffensiveCombatStyle combatStyle);
+	List<Hit> generateBaseDamageHitList(double baseDamage, OffensiveCombatStyle combatStyle);
 	Buff getBuff();
 	
 	

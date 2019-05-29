@@ -4,6 +4,6 @@ package equipment;
  */
 public interface AmmoInterface extends EquipmentInterface{
 
-    int getDamage(int powerLevel);
+    double getDamage(int powerLevel);
 
 }

@@ -28,6 +28,9 @@ import buff.StackBuff;
 import buff.StackValueReference;
 import buffSpecific.BlackStoneArrows;
 import buffSpecific.Reaper;
+import calculations.DamageCalculator;
+import calculations.Hit;
+import calculations.HitchanceCalculator;
 import combatStyle.CantAttack;
 import combatStyle.Magic;
 import combatStyle.Melee;
@@ -45,6 +48,7 @@ import combatent.MonsterSpecialAffinity;
 import combatent.MonsterStats;
 import combatent.NullMonster;
 import equipment.NotOtherPrimaryStyleFilter;
+import equipment.AmmoInterface;
 import equipment.Equipment;
 import equipment.EquipmentFilter;
 import equipment.EquipmentFilters;
@@ -248,11 +252,12 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     private ComboBox<String> preciseComboBox;
     @FXML
     private ComboBox<String> equilibriumComboBox;
+    @FXML
+    private ComboBox<String> bitingComboBox;
     
     
     private Player player;
     private Monster currentMonster;
-    private List<Monster> monsterList;
     private Map<Slot,ComboBox<String>> equipmentComboBoxMap;
     private EquipmentFilters equipmentFilters;
     
@@ -266,6 +271,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     private StackValueReference blackStoneStackValueReference;
     private StackValueReference preciseStackValueReference;
     private StackValueReference equilibriumStackValueReference;
+    private StackValueReference bitingStackValueReference;
     
     private EquipmentFilter meleeFilter;
     private EquipmentFilter rangedFilter;
@@ -276,24 +282,17 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     //this optional method is called when the FXML file is loaded
     public void initialize(URL arg0, ResourceBundle arg1){
         System.out.println("initializing");
-        this.disableComboBoxTrigger = false;
-        this.monsterList = MonsterFlyweight.getListOfAllMonsters();
-        
-        this.player = makePlayer();
-        setMonster("Null Monster");
-        
-        equipmentFilters = new EquipmentFilters();
-        meleeFilter = new NotOtherPrimaryStyleFilter(Melee.getInstance());
-        rangedFilter = new NotOtherPrimaryStyleFilter(Ranged.getInstance());
-        magicFilter = new NotOtherPrimaryStyleFilter(Magic.getInstance());
-        
-        
+        makeCombatents();
         fillInterfaces();
         setSupportFields();
         
-        player.setCurrentAbility(AbilityFlyweight.getAbility(AbilityComboBox.getValue()));
     }
     
+    private void makeCombatents() {
+        this.player = makePlayer();
+        setMonster("Null Monster");
+    }
+
     private void fillInterfaces() {
         fillInitialImageViews();
         makeEquipmentComboBoxMaps();
@@ -301,38 +300,74 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
         fillBuffComboBoxes();
         fillFilterComboBox();
         fillAbilityComboBox();
-        fillPreciseEquilibriumComboBoxs();
+        fillPreciseEquilibriumBitingComboBoxs();
         setUpMonsterSelectionComboBox();
         fillTextFields();
         setSliderMethods();
-        setSliderVisablility();
+        setInitialSliderVisablility();
     }
 
     
 
-	private void fillPreciseEquilibriumComboBoxs() {
-	    ObservableList<String> pOptions = preciseComboBox.getItems();
-        for(int i=0;i<=5;i++){
-            pOptions.add(Integer.toString(i));
-        }
-        preciseComboBox.setItems(pOptions);
-        preciseComboBox.getSelectionModel().select("0");
+	private void setSupportFields() {
+        this.disableComboBoxTrigger = false;
         
-        ObservableList<String> eOptions = equilibriumComboBox.getItems();
-        for(int i=0;i<=3;i++){
-            eOptions.add(Integer.toString(i));
-        }
-        equilibriumComboBox.setItems(eOptions);
-        equilibriumComboBox.getSelectionModel().select("0");
+        potionBuff = NullBuff.getInstance();
+        prayerBuff = NullBuff.getInstance();
+        familiarBuff = NullBuff.getInstance();
+        
+        curseStackValueReference = new StackValueReference((int) prayerSlider.getValue());
+        reaperStackValueReference = new StackValueReference((int) reaperSlider.getValue());
+        blackStoneStackValueReference = new StackValueReference((int) blackstoneArrowSlider.getValue());
+        preciseStackValueReference = new StackValueReference(Integer.parseInt(preciseComboBox.getValue()));
+        equilibriumStackValueReference = new StackValueReference(Integer.parseInt(equilibriumComboBox.getValue()));
+        bitingStackValueReference = new StackValueReference(Integer.parseInt(bitingComboBox.getValue()));
+        
+        StackBuff malevolence = (StackBuff) BuffFlyweight.getBuff(BuffName.Malevolence);
+        StackBuff desolation = (StackBuff) BuffFlyweight.getBuff(BuffName.Desolation);
+        StackBuff affliction = (StackBuff) BuffFlyweight.getBuff(BuffName.Affliction);
+        StackBuff turmoil = (StackBuff) BuffFlyweight.getBuff(BuffName.Turmoil);
+        StackBuff anguish = (StackBuff) BuffFlyweight.getBuff(BuffName.Anguish);
+        StackBuff torment = (StackBuff) BuffFlyweight.getBuff(BuffName.Torment);
+        StackBuff reaperBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Reaper_Necklace);
+        StackBuff blackStoneArrowBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Black_Stone_Arrows);
+        StackBuff preciseStoneArrowBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Precise);
+        StackBuff equilibriumStoneArrowBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Equilibrium);
+        StackBuff bitingBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Biting);
+        
+        malevolence.setStackReference(curseStackValueReference);
+        desolation.setStackReference(curseStackValueReference);
+        affliction.setStackReference(curseStackValueReference);
+        turmoil.setStackReference(curseStackValueReference);
+        anguish.setStackReference(curseStackValueReference);
+        torment.setStackReference(curseStackValueReference);
+        reaperBuff.setStackReference(reaperStackValueReference);
+        blackStoneArrowBuff.setStackReference(blackStoneStackValueReference);
+        preciseStoneArrowBuff.setStackReference(preciseStackValueReference);
+        equilibriumStoneArrowBuff.setStackReference(equilibriumStackValueReference);
+        bitingBuff.setStackReference(bitingStackValueReference);
     }
 
-    private void fillFilterComboBox() {
-        ObservableList<String> options = this.filterComboBox.getItems();
-        options.add("None");
-        options.add("Melee");
-        options.add("Ranged");
-        options.add("Magic");
-        filterComboBox.getSelectionModel().select("None");
+    private Player makePlayer() {
+        int attackLevel = Integer.parseInt(playerAttackLevelTextField.getText());
+        int rangedLevel = Integer.parseInt(playerRangedLevelTextField.getText());
+        int magicLevel = Integer.parseInt(playerMagicLevelTextField.getText());
+        int strengthLevel = Integer.parseInt(playerStrengthLevelTextField.getText());
+        int defenseLevel = Integer.parseInt(playerDefenseLevelTextField.getText());
+        Player player = new Player("World Guardian", new PlayerStats(attackLevel,rangedLevel,magicLevel,strengthLevel,defenseLevel));
+        
+        return player;
+    }
+
+    private void fillInitialImageViews() {
+        playerMeleeAffinityImageView.setImage(Melee.getInstance().getImage());
+        playerRangedAffinityImageView.setImage(Ranged.getInstance().getImage());
+        playerMagicAffinityImageView.setImage(Magic.getInstance().getImage());
+        monsterMeleeAffinityImageView.setImage(Melee.getInstance().getImage());
+        monsterRangedAffinityImageView.setImage(Ranged.getInstance().getImage());
+        monsterMagicAffinityImageView.setImage(Magic.getInstance().getImage());
+        wikiLinkButton.setGraphic(new ImageView(ImageFlyweight.getImage("images/Wiki", 50, 50, true, true)));
+        playerCombatStyleImageView.setImage(player.getCombatStyle().getImage());
     }
 
     private void makeEquipmentComboBoxMaps() {
@@ -355,6 +390,142 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
         
     }
 
+    private void fillEquipmentComboBoxes() {
+        List<Equipment> mainHandOneTwoList = new ArrayList<>();
+        mainHandOneTwoList.addAll(EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.MAIN_HAND));
+        mainHandOneTwoList.addAll(EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.TWO_HAND));
+        Collections.sort(mainHandOneTwoList, (Equipment o1, Equipment o2) -> o1.getSortingId() - o2.getSortingId());
+    
+        StringToImage stringToImage = new EquipmentStringToImage();
+        fillEquipmentComboBox(Slot.HELMET,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.HELMET),stringToImage);
+        fillEquipmentComboBox(Slot.AURA,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.AURA),stringToImage);
+        fillEquipmentComboBox(Slot.POCKET,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.POCKET),stringToImage);
+        fillEquipmentComboBox(Slot.SIGIL,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.SIGIL),stringToImage);
+        fillEquipmentComboBox(Slot.AMULET,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.AMULET),stringToImage);
+        fillEquipmentComboBox(Slot.QUIVER,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.QUIVER),stringToImage);
+        fillEquipmentComboBox(Slot.MAIN_HAND,mainHandOneTwoList,stringToImage);
+        fillEquipmentComboBox(Slot.BODY,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.BODY),stringToImage);
+        fillEquipmentComboBox(Slot.OFF_HAND,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.OFF_HAND),stringToImage);
+        fillEquipmentComboBox(Slot.LEGS,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.LEGS),stringToImage);
+        fillEquipmentComboBox(Slot.GLOVES,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.GLOVES),stringToImage);
+        fillEquipmentComboBox(Slot.BOOTS,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.BOOTS),stringToImage);
+        fillEquipmentComboBox(Slot.RING,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.RING),stringToImage);
+        fillEquipmentComboBox(Slot.CAPE,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.CAPE),stringToImage);
+    }
+
+    private void fillBuffComboBoxes() {
+        List<Buff> potionBuffs = makeListOfPotions();
+        List<Buff> prayerBuffs = makeListOfPrayers();
+        List<Buff> familiarBuffs = makeListOffamiliars();
+        
+        BuffStringToImage buffStringToImage = new BuffStringToImage(Buff.IMAGE_WIDTH,Buff.IMAGE_HEIGHT);
+        fillBuffComboBox(potionComboBox,potionBuffs,buffStringToImage);
+        fillBuffComboBox(this.statPrayerComboBox,prayerBuffs,buffStringToImage);
+        fillBuffComboBox(this.familiarComboBox,familiarBuffs,buffStringToImage);
+    }
+
+    private void fillEquipmentComboBox(Slot slot, List<Equipment> equipmentList,StringToImage stringToImage) {
+        ComboBox<String> comboBox = equipmentComboBoxMap.get(slot);
+        ObservableList<String> options = comboBox.getItems();
+        for(Equipment equipment: equipmentList){
+            options.add(equipment.getName());
+        }
+        comboBox.setCellFactory(c -> new PictureListCell(stringToImage));
+        comboBox.setButtonCell(new PictureListCell(stringToImage));
+        comboBox.setItems(options);
+        comboBox.getSelectionModel().select(player.getWornEquipment().getEquipment(slot).getName());
+    }
+
+    private void fillFilterComboBox() {
+        equipmentFilters = new EquipmentFilters();
+        meleeFilter = new NotOtherPrimaryStyleFilter(Melee.getInstance());
+        rangedFilter = new NotOtherPrimaryStyleFilter(Ranged.getInstance());
+        magicFilter = new NotOtherPrimaryStyleFilter(Magic.getInstance());
+        
+        ObservableList<String> options = this.filterComboBox.getItems();
+        options.add("None");
+        options.add("Melee");
+        options.add("Ranged");
+        options.add("Magic");
+        filterComboBox.getSelectionModel().select("None");
+    }
+
+    private void fillAbilityComboBox() {
+        ObservableList<String> options = AbilityComboBox.getItems();
+        for(Ability ability: AbilityFlyweight.getAllAbilitiesList()){
+        	if(ability.canBeUsedByPlayer(player)) {
+        		options.add(ability.getName());
+        	}
+        }
+        AbilityStringToImage abilityStringToImage = new AbilityStringToImage();
+        AbilityComboBox.setCellFactory(c -> new PictureListCell(abilityStringToImage));
+        AbilityComboBox.setButtonCell(new PictureListCell(abilityStringToImage));
+        AbilityComboBox.setItems(options);
+        AbilityComboBox.getSelectionModel().select(player.getAbility().getName());//sacrfice is the default, as it requires no weapon and has a max of 100% ability damage
+    }
+
+    private void fillPreciseEquilibriumBitingComboBoxs() {
+        //precise
+	    ObservableList<String> pOptions = preciseComboBox.getItems();
+        for(int i=0;i<=5;i++){
+            pOptions.add(Integer.toString(i));
+        }
+        preciseComboBox.setItems(pOptions);
+        preciseComboBox.getSelectionModel().select("0");
+        
+        //equilibrium
+        ObservableList<String> eOptions = equilibriumComboBox.getItems();
+        for(int i=0;i<=3;i++){
+            eOptions.add(Integer.toString(i));
+        }
+        equilibriumComboBox.setItems(eOptions);
+        equilibriumComboBox.getSelectionModel().select("0");
+        
+        //biting
+        ObservableList<String> bOptions = bitingComboBox.getItems();
+        for(int i=0;i<=3;i++){
+            bOptions.add(Integer.toString(i));
+        }
+        bitingComboBox.setItems(bOptions);
+        bitingComboBox.getSelectionModel().select("0");
+    }
+
+    private void setUpMonsterSelectionComboBox() {
+        ObservableList<String> options = FXCollections.observableArrayList();
+        for(Monster monster:MonsterFlyweight.getListOfAllMonsters()){
+            options.add(monster.getName());
+        }
+        options.remove("Null Monster");
+        monsterChoiceComboBox.setItems(options);
+    }
+
+    private void fillTextFields() {
+        playerAttackLevelTextField.textProperty().addListener((obj, oldVal, newVal) -> {
+            player.getStats().setBaseAttackLevel(getInputIntegerFromText(playerAttackLevelTextField.getText()));
+            reCalculate();
+        });
+        
+        playerStrengthLevelTextField.textProperty().addListener((obj, oldVal, newVal) -> {
+            player.getStats().setBaseStrengthLevel(getInputIntegerFromText(playerStrengthLevelTextField.getText()));
+            reCalculate();
+        });
+        
+        playerDefenseLevelTextField.textProperty().addListener((obj, oldVal, newVal) -> {
+            player.getStats().setBaseDefenseLevel(getInputIntegerFromText(playerDefenseLevelTextField.getText()));
+            reCalculate();
+        });
+        
+        playerRangedLevelTextField.textProperty().addListener((obj, oldVal, newVal) -> {
+            player.getStats().setBaseRangedLevel(getInputIntegerFromText(playerRangedLevelTextField.getText()));
+            reCalculate();
+        });
+        
+        playerMagicLevelTextField.textProperty().addListener((obj, oldVal, newVal) -> {
+            player.getStats().setBaseMagicLevel(getInputIntegerFromText(playerMagicLevelTextField.getText()));
+            reCalculate();
+        });
+    }
+    
     //scene builder methods not behaving how I want. Used this instead
     private void setSliderMethods() {
         blackstoneArrowSlider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -378,59 +549,76 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
             }
         });
     }
+    
+    //////put in csv file?
+    private List<Buff> makeListOffamiliars() {
+        List<Buff> list = new ArrayList<>();
+        list.add(BuffFlyweight.getBuff(BuffName.No_Familiar));
+        list.add(BuffFlyweight.getBuff(BuffName.Blood_Nihil));
+        list.add(BuffFlyweight.getBuff(BuffName.Shadow_Nihil));
+        list.add(BuffFlyweight.getBuff(BuffName.Smoke_Nihil));
+        list.add(BuffFlyweight.getBuff(BuffName.Ice_Nihil));
+        
+        return list;
+    }
 
-    private void setSliderVisablility() {
+    //////put in csv file?
+    private List<Buff> makeListOfPrayers() {
+        List<Buff> list = new ArrayList<>();
+        list.add(BuffFlyweight.getBuff(BuffName.No_Prayer));
+        list.add(BuffFlyweight.getBuff(BuffName.Malevolence));
+        list.add(BuffFlyweight.getBuff(BuffName.Desolation));
+        list.add(BuffFlyweight.getBuff(BuffName.Affliction));
+        list.add(BuffFlyweight.getBuff(BuffName.Turmoil));
+        list.add(BuffFlyweight.getBuff(BuffName.Anguish));
+        list.add(BuffFlyweight.getBuff(BuffName.Torment));
+        list.add(BuffFlyweight.getBuff(BuffName.Piety));
+        list.add(BuffFlyweight.getBuff(BuffName.Rigour));
+        list.add(BuffFlyweight.getBuff(BuffName.Augury));
+        list.add(BuffFlyweight.getBuff(BuffName.Chivalry));
+        
+        return list;
+    }
+
+    //////put in csv file?
+    private List<Buff> makeListOfPotions() {
+        List<Buff> list = new ArrayList<>();
+        list.add(BuffFlyweight.getBuff(BuffName.No_Potion));
+        list.add(BuffFlyweight.getBuff(BuffName.Supreme_Overload));
+        list.add(BuffFlyweight.getBuff(BuffName.Overload));
+        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Attack_Potion));
+        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Strength_Potion));
+        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Defense_Potion));
+        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Ranging_Potion));
+        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Magic_Potion));
+        
+        return list;
+    }
+
+    void setInitialSliderVisablility() {
         setPrayerSliderVisible(false);
         setReaperSliderVisible(false);
+    }
+    
+    
+/*_____________________________________________________________________________________________________________________
+    updater methods
+    ___________________________________________________________________________________________________________________
+*/
+
+    
+    
+    
+
+    private void setPrayerSliderVisible(boolean visable) {
+        prayerSlider.setVisible(visable);
+        prayerSliderLabel.setVisible(visable);
     }
 
     private void setReaperSliderVisible(boolean visable) {
         reaperSlider.setVisible(visable);
         reaperSliderLabel.setVisible(visable);
         reaperStackValueLabel.setVisible(visable);
-    }
-
-    private void setSupportFields() {
-        potionBuff = NullBuff.getInstance();
-        prayerBuff = NullBuff.getInstance();
-        familiarBuff = NullBuff.getInstance();
-        
-        curseStackValueReference = new StackValueReference((int) prayerSlider.getValue());
-        reaperStackValueReference = new StackValueReference((int) reaperSlider.getValue());
-        blackStoneStackValueReference = new StackValueReference((int) blackstoneArrowSlider.getValue());
-        preciseStackValueReference = new StackValueReference(Integer.parseInt(preciseComboBox.getValue()));
-        equilibriumStackValueReference = new StackValueReference(Integer.parseInt(equilibriumComboBox.getValue()));
-        
-        StackBuff malevolence = (StackBuff) BuffFlyweight.getBuff(BuffName.Malevolence);
-        StackBuff desolation = (StackBuff) BuffFlyweight.getBuff(BuffName.Desolation);
-        StackBuff affliction = (StackBuff) BuffFlyweight.getBuff(BuffName.Affliction);
-        StackBuff turmoil = (StackBuff) BuffFlyweight.getBuff(BuffName.Turmoil);
-        StackBuff anguish = (StackBuff) BuffFlyweight.getBuff(BuffName.Anguish);
-        StackBuff torment = (StackBuff) BuffFlyweight.getBuff(BuffName.Torment);
-        StackBuff reaperBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Reaper_Necklace);
-        StackBuff blackStoneArrowBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Black_Stone_Arrows);
-        StackBuff preciseStoneArrowBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Precise);
-        StackBuff equilibriumStoneArrowBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Equilibrium);
-        
-        malevolence.setStackReference(curseStackValueReference);
-        desolation.setStackReference(curseStackValueReference);
-        affliction.setStackReference(curseStackValueReference);
-        turmoil.setStackReference(curseStackValueReference);
-        anguish.setStackReference(curseStackValueReference);
-        torment.setStackReference(curseStackValueReference);
-        reaperBuff.setStackReference(reaperStackValueReference);
-        blackStoneArrowBuff.setStackReference(blackStoneStackValueReference);
-        preciseStoneArrowBuff.setStackReference(preciseStackValueReference);
-        equilibriumStoneArrowBuff.setStackReference(equilibriumStackValueReference);
-    }
-
-    private void setUpMonsterSelectionComboBox() {
-        ObservableList<String> options = FXCollections.observableArrayList();
-        for(Monster monster:monsterList){
-            options.add(monster.getName());
-        }
-        options.remove("Null Monster");
-        monsterChoiceComboBox.setItems(options);
     }
 
     private void setMonster(String string) {
@@ -490,11 +678,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
             if(!(buff instanceof DontShowOnBuffBar)){
                 Label label = new Label();
                 label.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                String toolTipText = buff.getNiceName();
-                if(buff instanceof StackBuff) {
-                    StackBuff stackBuff = (StackBuff) buff;
-                    toolTipText+=": " + stackBuff.getStackValue();
-                }
+                String toolTipText = buff.getDescription();
                 label.setTooltip(new Tooltip(toolTipText));
                 ImageView imageView = new ImageView(buff.getImage());
                 label.setGraphic(imageView);
@@ -514,7 +698,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
             monsterAttackNameLabel.setText(attackName);
             monsterAttackNameLabel.setVisible(true);
         }
-        monsterAttackMaxHitLabel.setText(Integer.toString(currentMonster.getBaseDamage()));
+        monsterAttackMaxHitLabel.setText(Integer.toString((int) currentMonster.getBaseDamage()));
         if(currentMonster.getAttacks().numberOfAttacks()>1){
             monsterAttackLeftButton.setVisible(true);
             monsterAttackRightButton.setVisible(true);
@@ -524,40 +708,6 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
         }
     }
 
-    private void setPrayerSliderVisible(boolean visable) {
-        prayerSlider.setVisible(visable);
-        prayerSliderLabel.setVisible(visable);
-    }
-    
-    
-
-    private void fillTextFields() {
-        playerAttackLevelTextField.textProperty().addListener((obj, oldVal, newVal) -> {
-            player.getStats().setBaseAttackLevel(getInputIntegerFromText(playerAttackLevelTextField.getText()));
-            reCalculate();
-        });
-        
-        playerStrengthLevelTextField.textProperty().addListener((obj, oldVal, newVal) -> {
-            player.getStats().setBaseStrengthLevel(getInputIntegerFromText(playerStrengthLevelTextField.getText()));
-            reCalculate();
-        });
-        
-        playerDefenseLevelTextField.textProperty().addListener((obj, oldVal, newVal) -> {
-            player.getStats().setBaseDefenseLevel(getInputIntegerFromText(playerDefenseLevelTextField.getText()));
-            reCalculate();
-        });
-        
-        playerRangedLevelTextField.textProperty().addListener((obj, oldVal, newVal) -> {
-            player.getStats().setBaseRangedLevel(getInputIntegerFromText(playerRangedLevelTextField.getText()));
-            reCalculate();
-        });
-        
-        playerMagicLevelTextField.textProperty().addListener((obj, oldVal, newVal) -> {
-            player.getStats().setBaseMagicLevel(getInputIntegerFromText(playerMagicLevelTextField.getText()));
-            reCalculate();
-        });
-    }
-    
     private int getInputIntegerFromText(String text) {
         int num;
         try{
@@ -567,122 +717,6 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
         }
         
         return num;
-    }
-
-    private void fillInitialImageViews() {
-        playerMeleeAffinityImageView.setImage(Melee.getInstance().getImage());
-        playerRangedAffinityImageView.setImage(Ranged.getInstance().getImage());
-        playerMagicAffinityImageView.setImage(Magic.getInstance().getImage());
-        monsterMeleeAffinityImageView.setImage(Melee.getInstance().getImage());
-        monsterRangedAffinityImageView.setImage(Ranged.getInstance().getImage());
-        monsterMagicAffinityImageView.setImage(Magic.getInstance().getImage());
-        wikiLinkButton.setGraphic(new ImageView(ImageFlyweight.getImage("images/Wiki", 50, 50, true, true)));
-        playerCombatStyleImageView.setImage(player.getCombatStyle().getImage());
-    }
-
-    private void fillEquipmentComboBoxes() {
-        List<Equipment> mainHandOneTwoList = new ArrayList<>();
-        mainHandOneTwoList.addAll(EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.MAIN_HAND));
-        mainHandOneTwoList.addAll(EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.TWO_HAND));
-        Collections.sort(mainHandOneTwoList, (Equipment o1, Equipment o2) -> o1.getSortingId() - o2.getSortingId());
-
-        StringToImage stringToImage = new EquipmentStringToImage();
-        fillEquipmentComboBox(Slot.HELMET,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.HELMET),stringToImage);
-        fillEquipmentComboBox(Slot.AURA,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.AURA),stringToImage);
-        fillEquipmentComboBox(Slot.POCKET,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.POCKET),stringToImage);
-        fillEquipmentComboBox(Slot.SIGIL,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.SIGIL),stringToImage);
-        fillEquipmentComboBox(Slot.AMULET,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.AMULET),stringToImage);
-        fillEquipmentComboBox(Slot.QUIVER,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.QUIVER),stringToImage);
-        fillEquipmentComboBox(Slot.MAIN_HAND,mainHandOneTwoList,stringToImage);
-        fillEquipmentComboBox(Slot.BODY,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.BODY),stringToImage);
-        fillEquipmentComboBox(Slot.OFF_HAND,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.OFF_HAND),stringToImage);
-        fillEquipmentComboBox(Slot.LEGS,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.LEGS),stringToImage);
-        fillEquipmentComboBox(Slot.GLOVES,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.GLOVES),stringToImage);
-        fillEquipmentComboBox(Slot.BOOTS,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.BOOTS),stringToImage);
-        fillEquipmentComboBox(Slot.RING,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.RING),stringToImage);
-        fillEquipmentComboBox(Slot.CAPE,EquipmentFlyweight.getListOfAllEquipmentInSlot(Slot.CAPE),stringToImage);
-    }
-
-    private void fillEquipmentComboBox(Slot slot, List<Equipment> equipmentList,StringToImage stringToImage) {
-        ComboBox<String> comboBox = equipmentComboBoxMap.get(slot);
-        ObservableList<String> options = comboBox.getItems();
-        for(Equipment equipment: equipmentList){
-            options.add(equipment.getName());
-        }
-        comboBox.setCellFactory(c -> new PictureListCell(stringToImage));
-        comboBox.setButtonCell(new PictureListCell(stringToImage));
-        comboBox.setItems(options);
-        comboBox.getSelectionModel().select(player.getWornEquipment().getEquipment(slot).getName());
-    }
-    
-    private void fillAbilityComboBox() {
-        ObservableList<String> options = AbilityComboBox.getItems();
-        for(Ability ability: AbilityFlyweight.getAllAbilitiesList()){
-        	if(ability.canBeUsedByPlayer(player)) {
-        		options.add(ability.getName());
-        	}
-        }
-        AbilityStringToImage abilityStringToImage = new AbilityStringToImage();
-        AbilityComboBox.setCellFactory(c -> new PictureListCell(abilityStringToImage));
-        AbilityComboBox.setButtonCell(new PictureListCell(abilityStringToImage));
-        AbilityComboBox.setItems(options);
-        AbilityComboBox.getSelectionModel().select("Sacrifice");//sacrfice is the default, as it requires no weapon and has a max of 100% ability damage
-	}
-    
-    private void fillBuffComboBoxes() {
-        List<Buff> potionBuffs = makeListOfPotions();
-        List<Buff> prayerBuffs = makeListOfPrayers();
-        List<Buff> familiarBuffs = makeListOffamiliars();
-        
-        BuffStringToImage buffStringToImage = new BuffStringToImage(Buff.IMAGE_WIDTH,Buff.IMAGE_HEIGHT);
-        fillBuffComboBox(potionComboBox,potionBuffs,buffStringToImage);
-        fillBuffComboBox(this.statPrayerComboBox,prayerBuffs,buffStringToImage);
-        fillBuffComboBox(this.familiarComboBox,familiarBuffs,buffStringToImage);
-    }
-    
-    //////put in csv file?
-    private List<Buff> makeListOffamiliars() {
-        List<Buff> list = new ArrayList<>();
-        list.add(BuffFlyweight.getBuff(BuffName.No_Familiar));
-        list.add(BuffFlyweight.getBuff(BuffName.Blood_Nihil));
-        list.add(BuffFlyweight.getBuff(BuffName.Shadow_Nihil));
-        list.add(BuffFlyweight.getBuff(BuffName.Smoke_Nihil));
-        list.add(BuffFlyweight.getBuff(BuffName.Ice_Nihil));
-        
-        return list;
-    }
-
-    //////put in csv file?
-    private List<Buff> makeListOfPrayers() {
-        List<Buff> list = new ArrayList<>();
-        list.add(BuffFlyweight.getBuff(BuffName.No_Prayer));
-        list.add(BuffFlyweight.getBuff(BuffName.Malevolence));
-        list.add(BuffFlyweight.getBuff(BuffName.Desolation));
-        list.add(BuffFlyweight.getBuff(BuffName.Affliction));
-        list.add(BuffFlyweight.getBuff(BuffName.Turmoil));
-        list.add(BuffFlyweight.getBuff(BuffName.Anguish));
-        list.add(BuffFlyweight.getBuff(BuffName.Torment));
-        list.add(BuffFlyweight.getBuff(BuffName.Piety));
-        list.add(BuffFlyweight.getBuff(BuffName.Rigour));
-        list.add(BuffFlyweight.getBuff(BuffName.Augury));
-        list.add(BuffFlyweight.getBuff(BuffName.Chivalry));
-        
-        return list;
-    }
-
-    //////put in csv file?
-    private List<Buff> makeListOfPotions() {
-        List<Buff> list = new ArrayList<>();
-        list.add(BuffFlyweight.getBuff(BuffName.No_Potion));
-        list.add(BuffFlyweight.getBuff(BuffName.Supreme_Overload));
-        list.add(BuffFlyweight.getBuff(BuffName.Overload));
-        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Attack_Potion));
-        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Strength_Potion));
-        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Defense_Potion));
-        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Ranging_Potion));
-        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Magic_Potion));
-        
-        return list;
     }
 
     private void fillBuffComboBox(ComboBox<String> comboBox, List<Buff> buffList,StringToImage stringToImage) {
@@ -696,81 +730,6 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
         comboBox.getSelectionModel().select(buffList.get(0).getNiceName());
     }
 
-    private Player makePlayer() {
-        int attackLevel = Integer.parseInt(playerAttackLevelTextField.getText());
-        int rangedLevel = Integer.parseInt(playerRangedLevelTextField.getText());
-        int magicLevel = Integer.parseInt(playerMagicLevelTextField.getText());
-        int strengthLevel = Integer.parseInt(playerStrengthLevelTextField.getText());
-        int defenseLevel = Integer.parseInt(playerDefenseLevelTextField.getText());
-        Player player = new Player("World Guardian", new PlayerStats(attackLevel,rangedLevel,magicLevel,strengthLevel,defenseLevel));
-        
-        return player;
-    }
-
-    private void reCalculate(){
-        updatePlayerCombatStyleImageView();//////////////////////move
-        
-        System.out.println("\n\n_____________________________________________________________________________________________\nrecalculating player attack");
-        System.out.println("player buffs: " + player.getBuffs());
-        System.out.println("monster buffs: " + currentMonster.getBuffs());
-        System.out.println("monster vulnerabilities: " + currentMonster.getVulnerabilities());
-        
-        
-        
-        //calculate hitchance
-        System.out.println();
-        System.out.println("Calculating player hit chance");
-        HitchanceCalculator.calculateHitchance(player,currentMonster);
-        playerTotalAccuracyValueLabel.setText(Integer.toString(HitchanceCalculator.getAttackerTotalAccuracy()));
-        monsterTotalDefenseValueLabel.setText(Integer.toString(HitchanceCalculator.getDefenderTotalDefense()));
-        monsterMeleeAffinityValueLabel.setText(Integer.toString(currentMonster.getAffinityTo(Melee.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
-        monsterRangedAffinityValueLabel.setText(Integer.toString(currentMonster.getAffinityTo(Ranged.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
-        monsterMagicAffinityValueLabel.setText(Integer.toString(currentMonster.getAffinityTo(Magic.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
-        monsterSpecialAffinityValueLabel.setText(Integer.toString(currentMonster.getAffinityWeaknesses().getSpecialAffinityWeaknessValue()+HitchanceCalculator.getDefenderAffinityRaise()));
-        playerHitChanceValueLabel.setText(String.format("%.2f%%",HitchanceCalculator.getHitChance()));
-        
-        //main hand auto
-        System.out.println();
-        System.out.println("Calculating player main hand damage");
-        player.setAttackToMainHand();
-        List<Hit> hitList = DamageCalculator.calculateDamage(player, currentMonster);
-        setLabelWithSingleHit(playerMHDamageValueLabel,hitList,getMode());
-        
-        //off hand auto
-        System.out.println();
-        System.out.println("Calculating player off hand damage");
-        player.setAttackToOffHand();
-        hitList = DamageCalculator.calculateDamage(player, currentMonster);
-        setLabelWithSingleHit(playerOHDamageValueLabel,hitList,getMode());
-        	
-        //ability damage
-        System.out.println();
-        System.out.println("Calculating player ability damage");
-    	player.setAttackToAbility();
-    	hitList = DamageCalculator.calculateDamage(player, currentMonster);
-    	updateAbilityDamageLabels(hitList,getMode());
-        
-        
-        
-        
-        //monster hit chance
-        System.out.println();
-        System.out.println("recalculating monster hit chance");
-        HitchanceCalculator.calculateHitchance(currentMonster,player);
-        monsterTotalAccuracyValueLabel.setText(Integer.toString(HitchanceCalculator.getAttackerTotalAccuracy()));
-        playerToatlDefenseValueLabel.setText(Integer.toString(HitchanceCalculator.getDefenderTotalDefense()));
-        playerMeleeAffinityValueLabel.setText(Integer.toString(player.getAffinityTo(Melee.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
-        playerRangedAffinityValueLabel.setText(Integer.toString(player.getAffinityTo(Ranged.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
-        playerMagicAffinityValueLabel.setText(Integer.toString(player.getAffinityTo(Magic.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
-        monsterHitChanceValueLabel.setText(String.format("%.2f%%",HitchanceCalculator.getHitChance()));
-        //monster damage
-        System.out.println();
-        System.out.println("recalculating monster damage");
-        hitList = DamageCalculator.calculateDamage(currentMonster,player);
-        setLabelWithSingleHit(monsterDamageValue,hitList,getMode());
-        
-    }
-    
     private void updateAbilityDamageLabels(List<Hit> hitList,DamageMode mode) {
         ObservableList<Node> list = abilityDamageVBox.getChildren();
         list.clear();
@@ -778,7 +737,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
         for(int i=0;i<hitList.size();i++){
             double damage = hitList.get(i).getDamage(mode);
             if(damage<=0) {//this if block was originally put here for the extra hits of dragon breath with the dragon rider amulet during minimum hit mode when they didn't land
-                continue;
+                continue;//don't even show
             }
             Label label = new Label(String.format("%,d",(int) damage));//round down
             label.setFont(new Font(label.getFont().getName(),textSize));
@@ -793,51 +752,18 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
             playerAbilityDamageValue.setVisible(false);
         }else {
             playerAbilityDamageValue.setVisible(true);
-            playerAbilityDamageValue.setText(String.format("(%,d)", getTotalDamage(hitList,mode)));
-        }
-    }
-
-    private Object getTotalDamage(List<Hit> hitList,DamageMode mode) {
-        int total = 0;
-        for(int i=0;i<hitList.size();i++) {
-            total+=hitList.get(i).getDamage(mode);
-        }
-        return total;
-    }
-
-    private int getAbilityLabelTextSize(int numberOfHits) {
-        if(numberOfHits<=5) {
-            return 26;
-        }else if(numberOfHits<=8) {
-            return 18;
-        }else if(numberOfHits<=12) {
-            return 13;
-        }else {
-            return 8;
+            playerAbilityDamageValue.setText(String.format("(%,d)", (int) getTotalDamage(hitList,mode)));
         }
     }
 
     private void setLabelWithSingleHit(Label label,List<Hit> hitList,DamageMode mode) {
         if(hitList.size()==1) {
-            label.setText(String.format("%,d",(int) hitList.get(0).getDamage(mode)));//round down
+            label.setText(String.format("%,d", (int) hitList.get(0).getDamage(mode)));//round down
         }else {
             label.setText("-");
         }
     }
     
-    private DamageMode getMode() {
-        if(maxAbilityRadioButton.isSelected()) {
-            return DamageMode.MAX;
-        }else if(aveAbilityRadioButton.isSelected()) {
-            return DamageMode.AVE;
-        }else if(minAbilityRadioButton.isSelected()) {
-            return DamageMode.MIN;
-        }else {
-            System.out.println("unknown radio button selected for hit mode!");
-            return DamageMode.MAX;
-        }
-    }
-
     private void monsterSubTypeButtonPressed(boolean left){
         if(currentMonster instanceof MonsterGroup){
             MonsterGroup mg = (MonsterGroup) currentMonster;
@@ -920,6 +846,35 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
         reCalculate();
     }
     
+    //if player can't attack with current ammo, finds the first ammo in the list that works and selects it
+    private void updateQuiver() {
+        if(player.canAttack(currentMonster)) {
+            return;
+        }
+        
+        Equipment originalAmmo = player.getWornEquipment().getEquipment(Slot.QUIVER);
+        
+        //find an ammo that works
+        Equipment ammoThatWorks = null;
+        ObservableList<String> options = quiverComboBox.getItems();
+        for(String ammoString:options) {
+            Equipment ammo = EquipmentFlyweight.getEquipment(ammoString);
+            player.getWornEquipment().equip(ammo);
+            if(player.canAttack(currentMonster)) {
+                ammoThatWorks = ammo;
+                break;
+            }
+        }
+        
+        if(ammoThatWorks==null) {
+            //couldn't find anything. Re-equip original ammo
+            player.getWornEquipment().equip(originalAmmo);
+            return;
+        }
+        
+        quiverComboBox.getSelectionModel().select(ammoThatWorks.getName());
+    }
+    
     //deletes and re-adds abilities that pass the player can use
     private void updateAbilityComboBox() {
     	
@@ -961,6 +916,114 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     
     
+
+    void reCalculate(){
+        updatePlayerCombatStyleImageView();//////////////////////move
+        
+        System.out.println("\n\n_____________________________________________________________________________________________\nrecalculating player attack");
+        System.out.println("player buffs: " + player.getBuffs());
+        System.out.println("monster buffs: " + currentMonster.getBuffs());
+        System.out.println("monster vulnerabilities: " + currentMonster.getVulnerabilities());
+        
+        
+        
+        //calculate hitchance
+        System.out.println();
+        System.out.println("Calculating player hit chance");
+        HitchanceCalculator.calculateHitchance(player,currentMonster);
+        playerTotalAccuracyValueLabel.setText(String.format("%.1f", HitchanceCalculator.getAttackerTotalAccuracy()));
+        monsterTotalDefenseValueLabel.setText(String.format("%.1f", HitchanceCalculator.getDefenderTotalDefense()));
+        monsterMeleeAffinityValueLabel.setText(String.format("%.1f", currentMonster.getAffinityTo(Melee.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
+        monsterRangedAffinityValueLabel.setText(String.format("%.1f", currentMonster.getAffinityTo(Ranged.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
+        monsterMagicAffinityValueLabel.setText(String.format("%.1f", currentMonster.getAffinityTo(Magic.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
+        monsterSpecialAffinityValueLabel.setText(Integer.toString(currentMonster.getAffinityWeaknesses().getSpecialAffinityWeaknessValue()+HitchanceCalculator.getDefenderAffinityRaise()));
+        playerHitChanceValueLabel.setText(String.format("%.2f%%",HitchanceCalculator.getHitChance()));
+        
+        //main hand auto
+        System.out.println();
+        System.out.println("Calculating player main hand damage");
+        player.setAttackToMainHand();
+        List<Hit> hitList = DamageCalculator.calculateDamage(player, currentMonster);
+        setLabelWithSingleHit(playerMHDamageValueLabel,hitList,getMode());
+        
+        //off hand auto
+        System.out.println();
+        System.out.println("Calculating player off hand damage");
+        player.setAttackToOffHand();
+        hitList = DamageCalculator.calculateDamage(player, currentMonster);
+        setLabelWithSingleHit(playerOHDamageValueLabel,hitList,getMode());
+        	
+        //ability damage
+        System.out.println();
+        System.out.println("Calculating player ability damage");
+    	player.setAttackToAbility();
+    	hitList = DamageCalculator.calculateDamage(player, currentMonster);
+    	updateAbilityDamageLabels(hitList,getMode());
+        
+        
+        
+        
+        //monster hit chance
+        System.out.println();
+        System.out.println("recalculating monster hit chance");
+        HitchanceCalculator.calculateHitchance(currentMonster,player);
+        monsterTotalAccuracyValueLabel.setText(String.format("%.1f", HitchanceCalculator.getAttackerTotalAccuracy()));
+        playerToatlDefenseValueLabel.setText(String.format("%.1f", HitchanceCalculator.getDefenderTotalDefense()));
+        playerMeleeAffinityValueLabel.setText(String.format("%.1f", player.getAffinityTo(Melee.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
+        playerRangedAffinityValueLabel.setText(String.format("%.1f", player.getAffinityTo(Ranged.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
+        playerMagicAffinityValueLabel.setText(String.format("%.1f", player.getAffinityTo(Magic.getInstance())+HitchanceCalculator.getDefenderAffinityRaise()));
+        monsterHitChanceValueLabel.setText(String.format("%.2f%%",HitchanceCalculator.getHitChance()));
+        //monster damage
+        System.out.println();
+        System.out.println("recalculating monster damage");
+        hitList = DamageCalculator.calculateDamage(currentMonster,player);
+        setLabelWithSingleHit(monsterDamageValue,hitList,getMode());
+        
+    }
+    
+/*___________________________________________________________________________________________________________________
+ * support methods
+ * ___________________________________________________________________________________________________________________
+ */
+
+    private DamageMode getMode() {
+        if(maxAbilityRadioButton.isSelected()) {
+            return DamageMode.MAX;
+        }else if(aveAbilityRadioButton.isSelected()) {
+            return DamageMode.AVE;
+        }else if(minAbilityRadioButton.isSelected()) {
+            return DamageMode.MIN;
+        }else {
+            System.out.println("unknown radio button selected for hit mode!");
+            return DamageMode.MAX;
+        }
+    }
+
+    private int getAbilityLabelTextSize(int numberOfHits) {
+        if(numberOfHits<=5) {
+            return 26;
+        }else if(numberOfHits<=8) {
+            return 18;
+        }else if(numberOfHits<=12) {
+            return 13;
+        }else {
+            return 8;
+        }
+    }
+
+    private double getTotalDamage(List<Hit> hitList,DamageMode mode) {
+        double total = 0;
+        for(int i=0;i<hitList.size();i++) {
+            total+=hitList.get(i).getDamage(mode);
+        }
+        return total;
+    }
+    
+    
+/*___________________________________________________________________________________________________________________
+ * methods called by the interfaces
+ * ___________________________________________________________________________________________________________________
+ */
 
     public void selectedMonster(){
         setMonster(monsterChoiceComboBox.getValue());
@@ -1069,12 +1132,14 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
             //this slot may have gotten de-equiped due to two handed weapons not being able to be wielded with duel wield weapons worn equpiment has already taken care of this, so just update the box with what it has
             disableComboBoxTrigger = false;
         }
+        updateQuiver();
         updateAbilityComboBox();
         
         
         
         reCalculate();
     }
+
     public void selectedBody(){
         if(disableComboBoxTrigger){
             return;
@@ -1096,6 +1161,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
             //this slot may have gotten de-equiped due to two handed weapons not being able to be wielded with duel wield weapons worn equpiment has already taken care of this, so just update the box with what it has
             disableComboBoxTrigger = false;
         }
+        updateQuiver();
         updateAbilityComboBox();
         
         
@@ -1365,7 +1431,22 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
         reCalculate();
     }
     
-    
+    public void bitingComboBoxChanged() {
+        int stackValue = Integer.parseInt(bitingComboBox.getValue());
+
+        int oldValue = bitingStackValueReference.getValue();
+        if(oldValue==0&&stackValue>0){
+            player.getPlayerInventionPerkBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Biting));
+        }
+        if(oldValue>0&&stackValue==0){
+            player.getPlayerInventionPerkBuffs().removeBuff(BuffName.Biting);
+        }
+        
+        bitingStackValueReference.setValue(stackValue);
+        
+        updateBuffsView(player.getBuffs(),playerBuffHBox);
+        reCalculate();
+    }
     
 
 }

@@ -1,6 +1,7 @@
-package main;
+package calculations;
 
 import combatStyle.OffensiveCombatStyle;
+import main.DamageMode;
 
 //has a min and max hit that are affected by everything
 public class AutoAttackHit extends Hit{
@@ -17,11 +18,6 @@ public class AutoAttackHit extends Hit{
     @Override
     public double getMaxDamage() {
         return maxDamage;
-    }
-
-    @Override
-    public double getAveDamage() {
-        return (minDamage+maxDamage)/2;
     }
 
     @Override
@@ -69,6 +65,6 @@ public class AutoAttackHit extends Hit{
     
     @Override
     public String toString() {
-        return "Auto Attack Hit: min " + minDamage + ",max " + maxDamage;
+        return "Auto Attack Hit: min " + minDamage + ",max " + maxDamage + " critChance: " + getCritChance();
     }
 }

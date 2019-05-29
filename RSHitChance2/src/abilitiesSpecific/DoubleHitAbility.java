@@ -12,12 +12,12 @@ import abilities.PercentageRange;
 import abilities.PercentageRangeFlyweight;
 import buff.Buff;
 import buff.BuffName;
+import calculations.AbilityHit;
+import calculations.BleedHitSlantedAverage;
+import calculations.Hit;
 import combatStyle.OffensiveCombatStyle;
 import combatent.Combatent;
-import main.AbilityHit;
-import main.BleedHitSlantedAverage;
 import main.DamageMode;
-import main.Hit;
 
 public class DoubleHitAbility extends BaseAbility{
 
@@ -53,7 +53,7 @@ public class DoubleHitAbility extends BaseAbility{
     }
 
     @Override
-    public List<Hit> generateBaseDamageHitList(int baseDamage, OffensiveCombatStyle combatStyle) {
+    public List<Hit> generateBaseDamageHitList(double baseDamage, OffensiveCombatStyle combatStyle) {
         List<Hit> hitList = new ArrayList<>(2);
         hitList.add(new AbilityHit(combatStyle,baseDamage*range1.getMin(),baseDamage*range1.getMax()));
         hitList.add(new AbilityHit(combatStyle,baseDamage*range2.getMin(),baseDamage*range2.getMax()));

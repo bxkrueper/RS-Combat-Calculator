@@ -16,8 +16,8 @@ public interface EquipmentInterface extends Imageable{
     Slot getSlot();
     CombatStyle getCombatStyle();
     public int getLevel();
-    int getDamage();
-    int getArmor();
+    double getDamage();
+    double getArmor();
     Buff getBuff();
     int getSortingId();
     

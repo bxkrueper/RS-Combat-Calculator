@@ -1,5 +1,5 @@
 Name,"Picture (if empty, uses images/equipment/[name]",Slot,Combat Style,Level,Accuracy,Damage,Armor,Damage Reduction,Speed,Buff
-Kalphite defender,,OFF_HAND,Melee,90,2458,216,245,0,Fastest,Defender
-Kalphite repriser,,OFF_HAND,Ranged,90,2458,216,245,0,Fastest,Repriser
-Kalphite rebounder,,OFF_HAND,Magic,90,2458,216,245,0,Fastest,Rebounder
-Strykebow,,TWO_HAND,Arrows,85,2178,450,435,0,Average,None
+Kalphite defender,,OFF_HAND,Melee,90,2458,216,245.8,0,Fastest,Defender
+Kalphite repriser,,OFF_HAND,Ranged,90,2458,216,245.8,0,Fastest,Repriser
+Kalphite rebounder,,OFF_HAND,Magic,90,2458,216,245.8,0,Fastest,Rebounder
+Strykebow,,TWO_HAND,Arrows,85,2178,450.5,435.6,0.085,Average,None

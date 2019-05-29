@@ -120,6 +120,7 @@ Double_Damage_If_Opponent_Stunned,
 Slice,
 Precise,
 Equilibrium,
+Biting,
 Nex_Soft_Damage_Cap_Phase1234,
 Nex_Soft_Damage_Cap_Phase5
 }

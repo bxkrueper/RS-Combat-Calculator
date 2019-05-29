@@ -8,10 +8,11 @@ package combatent;
  */
 import java.util.ArrayList;
 import java.util.List;
+
+import calculations.AutoAttackHit;
+import calculations.ConstantHit;
+import calculations.Hit;
 import combatStyle.OffensiveCombatStyle;
-import main.AutoAttackHit;
-import main.ConstantHit;
-import main.Hit;
 
 public class MonsterAttack implements Attack{
     

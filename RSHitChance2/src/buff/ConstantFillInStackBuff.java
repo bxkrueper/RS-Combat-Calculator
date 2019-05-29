@@ -30,5 +30,10 @@ public abstract class ConstantFillInStackBuff extends ConstantFillInBuff impleme
     public String toString() {
         return getName() + " Stack: " + stack.getValue();
     }
+    
+    @Override
+    public String getDescription() {
+        return super.getDescription() + ". Stack value: " + getStackValue();
+    }
 
 }

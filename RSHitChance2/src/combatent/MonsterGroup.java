@@ -79,7 +79,7 @@ public class MonsterGroup implements Monster{
     }
 
     @Override
-    public int getAffinityTo(PrimaryCombatStyle cbs) {
+    public double getAffinityTo(PrimaryCombatStyle cbs) {
         return monsterArray[selected].getAffinityTo(cbs);
     }
     
@@ -108,7 +108,7 @@ public class MonsterGroup implements Monster{
     }
     
     @Override
-    public int getAccuracyPenaltyFromWrongArmor() {
+    public double getAccuracyPenaltyFromWrongArmor() {
         return monsterArray[selected].getAccuracyPenaltyFromWrongArmor();
     }
 
@@ -118,7 +118,7 @@ public class MonsterGroup implements Monster{
     }
 
     @Override
-    public int getNaturalArmor() {
+    public double getNaturalArmor() {
         return monsterArray[selected].getNaturalArmor();
     }
     
@@ -162,7 +162,7 @@ public class MonsterGroup implements Monster{
     }
 
 	@Override
-	public int getBaseDamage() {
+	public double getBaseDamage() {
 		return monsterArray[selected].getBaseDamage();
 	}
 	

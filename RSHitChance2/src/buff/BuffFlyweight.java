@@ -1,10 +1,13 @@
 package buff;
+import java.io.FileNotFoundException;
 /*
  * 
  */
 import java.util.HashMap;
 import java.util.Map;
 
+import abilities.Ability;
+import abilities.AbilityFileReader;
 import buffSpecific.AccuracyPotion;
 import buffSpecific.AccuracyPowerPotion;
 import buffSpecific.AffinityRaise;
@@ -13,6 +16,7 @@ import buffSpecific.BlackMaskAllStyles;
 import buffSpecific.BlackMaskOneStyle;
 import buffSpecific.BlackStoneArrows;
 import buffSpecific.Chargebow;
+import buffSpecific.Biting;
 import buffSpecific.DamageMultiplier;
 import buffSpecific.DamageRecievedMultiplier;
 import buffSpecific.Defender;
@@ -409,6 +413,9 @@ public class BuffFlyweight {
         buff = new Equilibrium();
         buffMap.put(buff.getName(), buff);
         
+        buff = new Biting();
+        buffMap.put(buff.getName(), buff);
+        
         buff = new ConstantFillInBuff(BuffName.Dragon_Rider_Amulet);//does nothing in this calculator but acts like a tag
         buffMap.put(buff.getName(), buff);
         
@@ -421,13 +428,13 @@ public class BuffFlyweight {
         buff = new Slice();
         buffMap.put(buff.getName(), buff);
         
-        buff = new SoftDamageCap(BuffName.Nex_Soft_Damage_Cap_Phase1234,5000,0.5);
+        buff = new SoftDamageCap(BuffName.Nex_Soft_Damage_Cap_Phase1234,5000,0.5,"Soft_Damage_Cap");
         buffMap.put(buff.getName(), buff);
         
-        buff = new SoftDamageCap(BuffName.Nex_Soft_Damage_Cap_Phase5,2000,0.25);
+        buff = new SoftDamageCap(BuffName.Nex_Soft_Damage_Cap_Phase5,2000,0.25,"Soft_Damage_Cap");
         buffMap.put(buff.getName(), buff);
         
-        buff = new ConstantFillInBuff(BuffName.Poison);//does nothing in this calculator but acts like a tag
+        buff = new ConstantFillInBuff(BuffName.Poison);//does nothing in this calculator but acts like a tag to tell if the monster is weak to poison
         buffMap.put(buff.getName(), buff);
         
         buff = new DamageRecievedMultiplier(BuffName.Reflect,0.5);
@@ -439,8 +446,30 @@ public class BuffFlyweight {
         buff = new ConstantFillInBuff(BuffName.Drain);//does nothing in this calculator but acts like a tag to tell if the monster is weak to drain
         buffMap.put(buff.getName(), buff);
         
+        addMoreInfo();
         
-        
+    }
+    
+    private static void addMoreInfo() {
+        String fileName = "data/buffs/Buff Info.csv";
+        BuffInfoFileReader buffInfoReader;
+        try {
+            buffInfoReader = new BuffInfoFileReader(fileName);
+            for(Object o:buffInfoReader){
+                String[] info = (String[]) o;
+                
+                BuffName buffName = BuffName.valueOf(info[0]);
+                String description = info[1];
+                
+                Buff buff = getBuff(buffName);
+                if(buff instanceof ConstantFillInBuff) {
+                    ConstantFillInBuff cfiBuff = (ConstantFillInBuff) buff;
+                    cfiBuff.setDescription(description);
+                }
+            }
+        } catch (FileNotFoundException e1) {
+            System.out.println("file not found: " + fileName);
+        }
     }
 
 
