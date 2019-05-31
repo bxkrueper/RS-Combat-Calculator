@@ -110,7 +110,7 @@ public class Player implements Combatent{
         
         PrimaryCombatStyle mainWeaponCombatStyle = (PrimaryCombatStyle) weapon.getCombatStyle();
         
-        if(mainWeaponCombatStyle.isSameGeneralPrimaryStyleAs(Melee.getInstance()) || weapon.getBuff()==BuffFlyweight.getBuff(BuffName.Chargebow) | mainWeaponCombatStyle==CombatStyleFlyweight.getCombatStyle("Thrown")){
+        if(mainWeaponCombatStyle.isSameGeneralPrimaryStyleAs(Melee.getInstance()) || weapon.getBuff()==BuffFlyweight.getBuff(BuffName.Chargebow,BuffFlyweight.Owner.LEFT) | mainWeaponCombatStyle==CombatStyleFlyweight.getCombatStyle("Thrown")){
             return true;
         }
         
@@ -194,7 +194,6 @@ public class Player implements Combatent{
     public Buffs getBuffs() {
         return allBuffs;
     }
-    
     
     public Buffs getPlayerInventionPerkBuffs() {
         return playerInventionPerkBuffs;
@@ -320,7 +319,7 @@ public class Player implements Combatent{
     
 	
 	//stat damage + weapon damage + bonus damage
-    private static double getBaseDamageFromWeapon(int level,WeaponInterface weapon, double bonuses, AmmoInterface quiverItem,boolean useingAbilities) {
+    private double getBaseDamageFromWeapon(int level,WeaponInterface weapon, double bonuses, AmmoInterface quiverItem,boolean useingAbilities) {
         double handiness = weapon.getHandinessMultiplier();
         System.out.println("handiness mult:" + handiness);
         
@@ -342,7 +341,7 @@ public class Player implements Combatent{
 
     
     
-    private static double getWeaponDamage(WeaponInterface weapon, AmmoInterface quiverItem,int powerLevel,boolean forAbilities){
+    private double getWeaponDamage(WeaponInterface weapon, AmmoInterface quiverItem,int powerLevel,boolean forAbilities){
         if(((OffensiveCombatStyle) weapon.getCombatStyle()).isSameGeneralOffensiveStyleAs(Melee.getInstance())){//melee
             System.out.println("Weapon damage: " + weapon.getDamage() + " Weapon speed: " + weapon.getWeaponSpeed() + " Melee Mod: " + weapon.getWeaponSpeed().meleeMod());
             if(forAbilities){
@@ -372,7 +371,7 @@ public class Player implements Combatent{
             }
             
             
-            if(weapon.getBuff()==BuffFlyweight.getBuff(BuffName.Chargebow) && (quiverItem.getBuff()==NullBuff.getInstance() || quiverItem.getCombatStyle()!=weapon.getCombatStyle())){
+            if(weapon.getBuff()==BuffFlyweight.getBuff(BuffName.Chargebow,BuffFlyweight.Owner.LEFT) && (quiverItem.getBuff()==NullBuff.getInstance() || quiverItem.getCombatStyle()!=weapon.getCombatStyle())){
                 //if there is a chargebow with no usable buff-imbued ammunition    assuming only bows have the charbow buff, not staffs
                 return minChoice1;
             }
@@ -388,6 +387,8 @@ public class Player implements Combatent{
     public Ability getAbility() {
         return currentAbility;
     }
+
+    
 
     
     

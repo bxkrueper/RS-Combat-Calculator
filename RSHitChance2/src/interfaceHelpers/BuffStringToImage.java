@@ -27,7 +27,7 @@ public class BuffStringToImage implements StringToImage{
     
     @Override
     public Image getImage(String string) {
-        return BuffFlyweight.getBuff(string).getImage();
+        return BuffFlyweight.getBuff(string,BuffFlyweight.Owner.LEFT).getImage();//left or right doesn't matter. its just a picture
     }
 
     

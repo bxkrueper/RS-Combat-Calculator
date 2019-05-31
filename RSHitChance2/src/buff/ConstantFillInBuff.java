@@ -61,14 +61,19 @@ public class ConstantFillInBuff implements Buff{
         return name.toString().replace('_', ' ');
     }
     
-    //defaults to nice name if description not set
+    //defaults to "" if description not set
     @Override
     public String getDescription() {
         if(description==null) {
-            return this.getNiceName();
+            return "";
         }else {
-            return this.getNiceName() + ": " + description;
+            return description;
         }
+    }
+    
+    @Override
+    public String getToolTipString() {
+        return getNiceName() + ": " + getDescription();
     }
 
     //if picture name was set, uses that, otherwise default to the picture with the same name as name

@@ -67,7 +67,7 @@ public class AbilityFactory {
         if(split[0].contentEquals("None")) {
             return NullBuff.getInstance();
         }else {
-            return BuffFlyweight.getBuff(BuffName.valueOf(split[0]));
+            return BuffFlyweight.getBuff(BuffName.valueOf(split[0]),BuffFlyweight.Owner.LEFT);
         }
         //what if you try to delete a buffs by name?
 //        else {

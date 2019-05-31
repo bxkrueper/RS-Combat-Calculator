@@ -2,38 +2,31 @@ package buff;
 
 public abstract class ConstantFillInStackBuff extends ConstantFillInBuff implements StackBuff{
     
-    private StackValueReference stack;//this is a reference to the stack value so that interface classes can use the reference to make changes easily
-
+    private int stackValue;
+    
     public ConstantFillInStackBuff(BuffName name) {
         super(name);
-        this.stack = new StackValueReference(0);
-    }
-
-    @Override
-    public StackValueReference getStackReference() {
-        return stack;
+        this.stackValue = 0;
     }
     
     @Override
     public int getStackValue(){
-        return stack.getValue();
+        return stackValue;
     }
 
     @Override
-    public void setStackReference(StackValueReference stack) {
-        this.stack = stack;
+    public void setStackValue(int newValue) {
+        this.stackValue = newValue;
     }
-
-    
     
     @Override
     public String toString() {
-        return getName() + " Stack: " + stack.getValue();
+        return getName() + " Stack: " + getStackValue();
     }
     
     @Override
-    public String getDescription() {
-        return super.getDescription() + ". Stack value: " + getStackValue();
+    public String getToolTipString() {
+        return getNiceName() + ": Stack: " + stackValue + " " + getDescription();
     }
 
 }

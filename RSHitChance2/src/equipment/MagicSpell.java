@@ -57,7 +57,7 @@ public class MagicSpell extends Equipment implements AmmoInterface{
             int minLevel = Integer.parseInt(strArray[3]);
             int maxLevel = Integer.parseInt(strArray[4]);
             String buffString = strArray[5];
-            Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString));
+            Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString),BuffFlyweight.Owner.LEFT);
 
             
             

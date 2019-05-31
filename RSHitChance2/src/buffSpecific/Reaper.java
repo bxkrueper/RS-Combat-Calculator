@@ -5,6 +5,7 @@ package buffSpecific;
 import buff.Buff;
 import buff.BuffName;
 import buff.ConstantFillInStackBuff;
+import buff.StackBuff;
 import combatent.Combatent;
 
 public class Reaper extends ConstantFillInStackBuff{
@@ -20,7 +21,9 @@ public class Reaper extends ConstantFillInStackBuff{
     }
 
     @Override
-    public Buff makeNew() {
-        return new Reaper();
+    public StackBuff makeNew() {
+        ConstantFillInStackBuff buff = new Reaper();
+        buff.setDescription(getDescription());
+        return buff;
     }
 }

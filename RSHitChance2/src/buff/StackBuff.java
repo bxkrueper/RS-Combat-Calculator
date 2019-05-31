@@ -4,8 +4,7 @@ package buff;
  */
 
 public interface StackBuff extends Buff{
-    StackValueReference getStackReference();
     int getStackValue();
-    void setStackReference(StackValueReference stack);
-    Buff makeNew();
+    void setStackValue(int newValue);
+    StackBuff makeNew();
 }

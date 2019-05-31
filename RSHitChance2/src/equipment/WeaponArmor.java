@@ -56,7 +56,7 @@ public class WeaponArmor extends Equipment implements WeaponInterface, ArmorInte
             double damageReduction = Double.parseDouble(strArray[8]);
             WeaponSpeed speed = WeaponSpeed.valueOf(strArray[9]);
             String buffString = strArray[10];
-            Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString));
+            Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString),BuffFlyweight.Owner.LEFT);
 
             
             

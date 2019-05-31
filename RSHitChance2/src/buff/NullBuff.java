@@ -44,6 +44,11 @@ public class NullBuff implements Buff, DontAddToBuffs{
     }
     
     @Override
+    public String getToolTipString() {
+        return "does nothing";
+    }
+    
+    @Override
     public double addAccuracyLevelsToOwner(Combatent owner, Combatent opponent) {
         return 0;
     }
@@ -120,6 +125,8 @@ public class NullBuff implements Buff, DontAddToBuffs{
     @Override
     public void affectOpponentFinalHitList(List<Hit> list,Combatent owner, Combatent opponent) {
     }
+
+    
 
     
 

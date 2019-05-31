@@ -149,7 +149,7 @@ public class MonsterFactory {
         
         Buffs buffs = new Buffs();
         for(String buffStr:buffStrings){
-            buffs.addBuff(BuffFlyweight.getBuff(BuffName.valueOf(buffStr)));
+            buffs.addBuff(BuffFlyweight.getBuff(BuffName.valueOf(buffStr),BuffFlyweight.Owner.RIGHT));
         }
         
         if(buffs.getListSize()==1){

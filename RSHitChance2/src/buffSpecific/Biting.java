@@ -5,6 +5,7 @@ import java.util.List;
 import buff.Buff;
 import buff.BuffName;
 import buff.ConstantFillInStackBuff;
+import buff.StackBuff;
 import calculations.Hit;
 import combatent.Combatent;
 //stack value is the tier of biting. 1 means add 2%, 2 means add 4%...
@@ -18,8 +19,10 @@ public class Biting extends ConstantFillInStackBuff{
     }
 
     @Override
-    public Buff makeNew() {
-        return new Biting();
+    public StackBuff makeNew() {
+        ConstantFillInStackBuff buff = new Biting();
+        buff.setDescription(getDescription());
+        return buff;
     }
     
     public void affectOwnerBaseHitList(List<Hit> list,Combatent owner, Combatent opponent) {

@@ -1,10 +1,9 @@
-/abilities/
 /abilitiesSpecific/
-/combatent/
 /buff/
-/buffSpecific/
-/main/
-/combatStyle/
+/calculations/
+/combatent/
 /equipment/
 /interfaceHelpers/
-/calculations/
+/main/
+/buffSpecific/
+/abilities/

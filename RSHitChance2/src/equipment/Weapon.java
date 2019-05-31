@@ -46,7 +46,7 @@ public class Weapon extends Equipment implements WeaponInterface{
             double damage = Double.parseDouble(strArray[6]);
             WeaponSpeed speed = WeaponSpeed.valueOf(strArray[7]);
             String buffString = strArray[8];
-            Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString));
+            Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString),BuffFlyweight.Owner.LEFT);
 
             
             

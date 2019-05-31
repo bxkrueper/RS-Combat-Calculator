@@ -37,7 +37,7 @@ public class OtherEquipment extends Equipment{
             double damage = Double.parseDouble(strArray[4]);
             double armor = Double.parseDouble(strArray[5]);
             String buffString = strArray[6];
-            Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString));
+            Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString),BuffFlyweight.Owner.LEFT);
 
             
             

@@ -25,7 +25,6 @@ import buff.Buffs;
 import buff.DontShowOnBuffBar;
 import buff.NullBuff;
 import buff.StackBuff;
-import buff.StackValueReference;
 import buffSpecific.BlackStoneArrows;
 import buffSpecific.Reaper;
 import calculations.DamageCalculator;
@@ -266,12 +265,6 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     private Buff potionBuff;
     private Buff prayerBuff;
     private Buff familiarBuff;
-    private StackValueReference curseStackValueReference;
-    private StackValueReference reaperStackValueReference;
-    private StackValueReference blackStoneStackValueReference;
-    private StackValueReference preciseStackValueReference;
-    private StackValueReference equilibriumStackValueReference;
-    private StackValueReference bitingStackValueReference;
     
     private EquipmentFilter meleeFilter;
     private EquipmentFilter rangedFilter;
@@ -316,36 +309,19 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
         prayerBuff = NullBuff.getInstance();
         familiarBuff = NullBuff.getInstance();
         
-        curseStackValueReference = new StackValueReference((int) prayerSlider.getValue());
-        reaperStackValueReference = new StackValueReference((int) reaperSlider.getValue());
-        blackStoneStackValueReference = new StackValueReference((int) blackstoneArrowSlider.getValue());
-        preciseStackValueReference = new StackValueReference(Integer.parseInt(preciseComboBox.getValue()));
-        equilibriumStackValueReference = new StackValueReference(Integer.parseInt(equilibriumComboBox.getValue()));
-        bitingStackValueReference = new StackValueReference(Integer.parseInt(bitingComboBox.getValue()));
         
-        StackBuff malevolence = (StackBuff) BuffFlyweight.getBuff(BuffName.Malevolence);
-        StackBuff desolation = (StackBuff) BuffFlyweight.getBuff(BuffName.Desolation);
-        StackBuff affliction = (StackBuff) BuffFlyweight.getBuff(BuffName.Affliction);
-        StackBuff turmoil = (StackBuff) BuffFlyweight.getBuff(BuffName.Turmoil);
-        StackBuff anguish = (StackBuff) BuffFlyweight.getBuff(BuffName.Anguish);
-        StackBuff torment = (StackBuff) BuffFlyweight.getBuff(BuffName.Torment);
-        StackBuff reaperBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Reaper_Necklace);
-        StackBuff blackStoneArrowBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Black_Stone_Arrows);
-        StackBuff preciseStoneArrowBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Precise);
-        StackBuff equilibriumStoneArrowBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Equilibrium);
-        StackBuff bitingBuff = (StackBuff) BuffFlyweight.getBuff(BuffName.Biting);
-        
-        malevolence.setStackReference(curseStackValueReference);
-        desolation.setStackReference(curseStackValueReference);
-        affliction.setStackReference(curseStackValueReference);
-        turmoil.setStackReference(curseStackValueReference);
-        anguish.setStackReference(curseStackValueReference);
-        torment.setStackReference(curseStackValueReference);
-        reaperBuff.setStackReference(reaperStackValueReference);
-        blackStoneArrowBuff.setStackReference(blackStoneStackValueReference);
-        preciseStoneArrowBuff.setStackReference(preciseStackValueReference);
-        equilibriumStoneArrowBuff.setStackReference(equilibriumStackValueReference);
-        bitingBuff.setStackReference(bitingStackValueReference);
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Malevolence,BuffFlyweight.Owner.LEFT)).setStackValue((int) prayerSlider.getValue());
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Desolation,BuffFlyweight.Owner.LEFT)).setStackValue((int) prayerSlider.getValue());
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Affliction,BuffFlyweight.Owner.LEFT)).setStackValue((int) prayerSlider.getValue());
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Turmoil,BuffFlyweight.Owner.LEFT)).setStackValue((int) prayerSlider.getValue());
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Anguish,BuffFlyweight.Owner.LEFT)).setStackValue((int) prayerSlider.getValue());
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Torment,BuffFlyweight.Owner.LEFT)).setStackValue((int) prayerSlider.getValue());
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Reaper_Necklace,BuffFlyweight.Owner.LEFT)).setStackValue((int) reaperSlider.getValue());
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Precise,BuffFlyweight.Owner.LEFT)).setStackValue(Integer.parseInt(preciseComboBox.getValue()));
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Equilibrium,BuffFlyweight.Owner.LEFT)).setStackValue(Integer.parseInt(equilibriumComboBox.getValue()));
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Biting,BuffFlyweight.Owner.LEFT)).setStackValue(Integer.parseInt(bitingComboBox.getValue()));
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Black_Stone_Arrows,BuffFlyweight.Owner.RIGHT)).setStackValue((int) blackstoneArrowSlider.getValue());
+
     }
 
     private Player makePlayer() {
@@ -553,11 +529,11 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     //////put in csv file?
     private List<Buff> makeListOffamiliars() {
         List<Buff> list = new ArrayList<>();
-        list.add(BuffFlyweight.getBuff(BuffName.No_Familiar));
-        list.add(BuffFlyweight.getBuff(BuffName.Blood_Nihil));
-        list.add(BuffFlyweight.getBuff(BuffName.Shadow_Nihil));
-        list.add(BuffFlyweight.getBuff(BuffName.Smoke_Nihil));
-        list.add(BuffFlyweight.getBuff(BuffName.Ice_Nihil));
+        list.add(BuffFlyweight.getBuff(BuffName.No_Familiar,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Blood_Nihil,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Shadow_Nihil,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Smoke_Nihil,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Ice_Nihil,BuffFlyweight.Owner.LEFT));
         
         return list;
     }
@@ -565,17 +541,17 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     //////put in csv file?
     private List<Buff> makeListOfPrayers() {
         List<Buff> list = new ArrayList<>();
-        list.add(BuffFlyweight.getBuff(BuffName.No_Prayer));
-        list.add(BuffFlyweight.getBuff(BuffName.Malevolence));
-        list.add(BuffFlyweight.getBuff(BuffName.Desolation));
-        list.add(BuffFlyweight.getBuff(BuffName.Affliction));
-        list.add(BuffFlyweight.getBuff(BuffName.Turmoil));
-        list.add(BuffFlyweight.getBuff(BuffName.Anguish));
-        list.add(BuffFlyweight.getBuff(BuffName.Torment));
-        list.add(BuffFlyweight.getBuff(BuffName.Piety));
-        list.add(BuffFlyweight.getBuff(BuffName.Rigour));
-        list.add(BuffFlyweight.getBuff(BuffName.Augury));
-        list.add(BuffFlyweight.getBuff(BuffName.Chivalry));
+        list.add(BuffFlyweight.getBuff(BuffName.No_Prayer,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Malevolence,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Desolation,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Affliction,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Turmoil,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Anguish,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Torment,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Piety,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Rigour,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Augury,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Chivalry,BuffFlyweight.Owner.LEFT));
         
         return list;
     }
@@ -583,14 +559,14 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     //////put in csv file?
     private List<Buff> makeListOfPotions() {
         List<Buff> list = new ArrayList<>();
-        list.add(BuffFlyweight.getBuff(BuffName.No_Potion));
-        list.add(BuffFlyweight.getBuff(BuffName.Supreme_Overload));
-        list.add(BuffFlyweight.getBuff(BuffName.Overload));
-        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Attack_Potion));
-        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Strength_Potion));
-        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Defense_Potion));
-        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Ranging_Potion));
-        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Magic_Potion));
+        list.add(BuffFlyweight.getBuff(BuffName.No_Potion,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Supreme_Overload,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Overload,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Attack_Potion,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Strength_Potion,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Defense_Potion,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Ranging_Potion,BuffFlyweight.Owner.LEFT));
+        list.add(BuffFlyweight.getBuff(BuffName.Extreme_Magic_Potion,BuffFlyweight.Owner.LEFT));
         
         return list;
     }
@@ -660,7 +636,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
         ObservableList<Node> list = monsterWeaknessesHBox.getChildren();
         list.clear();
         for(BuffName name:currentMonster.getVulnerabilities().getVulnList()){
-            Buff buff = BuffFlyweight.getBuff(name);
+            Buff buff = BuffFlyweight.getBuff(name,BuffFlyweight.Owner.RIGHT);
             Label label = new Label();
             label.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
             label.setTooltip(new Tooltip(buff.getNiceName()));
@@ -673,12 +649,11 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     private void updateBuffsView(Buffs buffs, HBox hBox) {
         ObservableList<Node> list = hBox.getChildren();
         list.clear();
-        for(BuffName name:buffs){
-            Buff buff = BuffFlyweight.getBuff(name);
+        for(Buff buff:buffs){
             if(!(buff instanceof DontShowOnBuffBar)){
                 Label label = new Label();
                 label.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                String toolTipText = buff.getDescription();
+                String toolTipText = buff.getToolTipString();
                 label.setTooltip(new Tooltip(toolTipText));
                 ImageView imageView = new ImageView(buff.getImage());
                 label.setGraphic(imageView);
@@ -1216,7 +1191,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
             return;
         }
         Buffs playerOtherBuffs = player.getPlayerOtherBuffs();
-        Buff selectedPotion = BuffFlyweight.getBuff(potionComboBox.getValue());
+        Buff selectedPotion = BuffFlyweight.getBuff(potionComboBox.getValue(),BuffFlyweight.Owner.LEFT);
         
         playerOtherBuffs.removeBuff(potionBuff.getName());
         potionBuff = selectedPotion;
@@ -1231,7 +1206,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
             return;
         }
         Buffs playerOtherBuffs = player.getPlayerOtherBuffs();
-        Buff selectedPrayer = BuffFlyweight.getBuff(statPrayerComboBox.getValue());
+        Buff selectedPrayer = BuffFlyweight.getBuff(statPrayerComboBox.getValue(),BuffFlyweight.Owner.LEFT);
         
         playerOtherBuffs.removeBuff(prayerBuff.getName());
         prayerBuff = selectedPrayer;
@@ -1252,7 +1227,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
             return;
         }
         Buffs playerOtherBuffs = player.getPlayerOtherBuffs();
-        Buff selectedFamiliar = BuffFlyweight.getBuff(familiarComboBox.getValue());
+        Buff selectedFamiliar = BuffFlyweight.getBuff(familiarComboBox.getValue(),BuffFlyweight.Owner.LEFT);
         
         playerOtherBuffs.removeBuff(familiarBuff.getName());
         familiarBuff = selectedFamiliar;
@@ -1266,7 +1241,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     public void clickedQuakeCheckBox(){
         if(quakeCheckBox.isSelected()){
-            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Quake));
+            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Quake,BuffFlyweight.Owner.RIGHT));
         }else{
             currentMonster.getEditableBuffs().removeBuff(BuffName.Quake);
         }
@@ -1276,7 +1251,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
 
     public void clickedGuthixStaffSpecCheckBox(){
         if(guthixStaffSpecCheckBox.isSelected()){
-            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Guthix_Staff_Spec));
+            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Guthix_Staff_Spec,BuffFlyweight.Owner.RIGHT));
         }else{
             currentMonster.getEditableBuffs().removeBuff(BuffName.Guthix_Staff_Spec);
         }
@@ -1286,7 +1261,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     public void clickedSWHSpecCheckBox(){
         if(swhSpecCheckBox.isSelected()){
-            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Status_Warhammer_Spec));
+            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Status_Warhammer_Spec,BuffFlyweight.Owner.RIGHT));
         }else{
             currentMonster.getEditableBuffs().removeBuff(BuffName.Status_Warhammer_Spec);
         }
@@ -1296,7 +1271,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     public void clickedVulnerabilityCheckBox(){
         if(vulnerabilityCheckBox.isSelected()){
-            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Vulnerability));
+            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Vulnerability,BuffFlyweight.Owner.RIGHT));
         }else{
             currentMonster.getEditableBuffs().removeBuff(BuffName.Vulnerability);
         }
@@ -1306,7 +1281,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     public void clickedEnfeebleCheckBox(){
         if(enfeebleCheckBox.isSelected()){
-            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Enfeeble));
+            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Enfeeble,BuffFlyweight.Owner.RIGHT));
         }else{
             currentMonster.getEditableBuffs().removeBuff(BuffName.Enfeeble);
         }
@@ -1316,7 +1291,7 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     public void clickedStaggerCheckBox(){
         if(staggerCheckBox.isSelected()){
-            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Stagger));
+            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Stagger,BuffFlyweight.Owner.RIGHT));
         }else{
             currentMonster.getEditableBuffs().removeBuff(BuffName.Stagger);
         }
@@ -1328,14 +1303,20 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     public void curseSliderChanged(){
         int stackValue = (int) prayerSlider.getValue();
-        curseStackValueReference.setValue(stackValue);
+        //all curse stacks are updated
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Malevolence,BuffFlyweight.Owner.LEFT)).setStackValue(stackValue);
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Desolation,BuffFlyweight.Owner.LEFT)).setStackValue(stackValue);
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Affliction,BuffFlyweight.Owner.LEFT)).setStackValue(stackValue);
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Turmoil,BuffFlyweight.Owner.LEFT)).setStackValue(stackValue);
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Anguish,BuffFlyweight.Owner.LEFT)).setStackValue(stackValue);
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Torment,BuffFlyweight.Owner.LEFT)).setStackValue(stackValue);
         updateBuffsView(player.getBuffs(),playerBuffHBox);//for the tool tip stack info
         reCalculate();
     }
     
     public void reaperSliderChanged(){
         int stackValue = (int) reaperSlider.getValue();
-        reaperStackValueReference.setValue(stackValue);
+        ((StackBuff) BuffFlyweight.getBuff(BuffName.Reaper_Necklace,BuffFlyweight.Owner.LEFT)).setStackValue(stackValue);
         reaperStackValueLabel.setText(Integer.toString(stackValue));
         updateBuffsView(player.getBuffs(),playerBuffHBox);//for the tool tip stack info
         reCalculate();
@@ -1343,16 +1324,17 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     public void blackStoneArrowSliderChanged(){
         int stackValue = (int) blackstoneArrowSlider.getValue();
-        int oldValue = blackStoneStackValueReference.getValue();
+        StackBuff buff = (StackBuff) BuffFlyweight.getBuff(BuffName.Black_Stone_Arrows,BuffFlyweight.Owner.RIGHT);
+        int oldValue = buff.getStackValue();
         
         if(oldValue==0&&stackValue>0){
-            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Black_Stone_Arrows));
+            currentMonster.getEditableBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Black_Stone_Arrows,BuffFlyweight.Owner.RIGHT));
         }
         if(oldValue>0&&stackValue==0){
             currentMonster.getEditableBuffs().removeBuff(BuffName.Black_Stone_Arrows);
         }
         
-        blackStoneStackValueReference.setValue(stackValue);
+        buff.setStackValue(stackValue);
         blackstoneArrowStackValueLabel.setText(Integer.toString(stackValue));
         updateBuffsView(currentMonster.getBuffs(),monsterBuffHBox);
         reCalculate();
@@ -1398,17 +1380,17 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     public void preciseComboBoxChanged() {
         int stackValue = Integer.parseInt(preciseComboBox.getValue());
+        StackBuff buff = (StackBuff) BuffFlyweight.getBuff(BuffName.Precise,BuffFlyweight.Owner.LEFT);
         
-        
-        int oldValue = preciseStackValueReference.getValue();
+        int oldValue = buff.getStackValue();
         if(oldValue==0&&stackValue>0){
-            player.getPlayerInventionPerkBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Precise));
+            player.getPlayerInventionPerkBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Precise,BuffFlyweight.Owner.LEFT));
         }
         if(oldValue>0&&stackValue==0){
             player.getPlayerInventionPerkBuffs().removeBuff(BuffName.Precise);
         }
         
-        preciseStackValueReference.setValue(stackValue);
+        buff.setStackValue(stackValue);
         
         updateBuffsView(player.getBuffs(),playerBuffHBox);
         reCalculate();
@@ -1416,16 +1398,17 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     public void equilibriumComboBoxChanged() {
         int stackValue = Integer.parseInt(equilibriumComboBox.getValue());
+        StackBuff buff = (StackBuff) BuffFlyweight.getBuff(BuffName.Equilibrium,BuffFlyweight.Owner.LEFT);
 
-        int oldValue = equilibriumStackValueReference.getValue();
+        int oldValue = buff.getStackValue();
         if(oldValue==0&&stackValue>0){
-            player.getPlayerInventionPerkBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Equilibrium));
+            player.getPlayerInventionPerkBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Equilibrium,BuffFlyweight.Owner.LEFT));
         }
         if(oldValue>0&&stackValue==0){
             player.getPlayerInventionPerkBuffs().removeBuff(BuffName.Equilibrium);
         }
         
-        equilibriumStackValueReference.setValue(stackValue);
+        buff.setStackValue(stackValue);
         
         updateBuffsView(player.getBuffs(),playerBuffHBox);
         reCalculate();
@@ -1433,16 +1416,17 @@ public class RSHitChance2Controller implements Initializable{//put a space betwe
     
     public void bitingComboBoxChanged() {
         int stackValue = Integer.parseInt(bitingComboBox.getValue());
+        StackBuff buff = (StackBuff) BuffFlyweight.getBuff(BuffName.Biting,BuffFlyweight.Owner.LEFT);
 
-        int oldValue = bitingStackValueReference.getValue();
+        int oldValue = buff.getStackValue();
         if(oldValue==0&&stackValue>0){
-            player.getPlayerInventionPerkBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Biting));
+            player.getPlayerInventionPerkBuffs().addBuff(BuffFlyweight.getBuff(BuffName.Biting,BuffFlyweight.Owner.LEFT));
         }
         if(oldValue>0&&stackValue==0){
             player.getPlayerInventionPerkBuffs().removeBuff(BuffName.Biting);
         }
         
-        bitingStackValueReference.setValue(stackValue);
+        buff.setStackValue(stackValue);
         
         updateBuffsView(player.getBuffs(),playerBuffHBox);
         reCalculate();

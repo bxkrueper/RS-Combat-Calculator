@@ -49,8 +49,8 @@ public class DamageCalculator {
 		System.out.println("Hits after damage from extra power levels: " + hitList.toString());
 		//apply precise and equilibrium. This is not done in the buff's methods because precise must be applied first and there is no guarantee it is in the right order
 		for(int i=0;i<hitList.size();i++) {
-            int precise = ((StackBuff) BuffFlyweight.getBuff(BuffName.Precise)).getStackValue();
-            int equilibrium = ((StackBuff) BuffFlyweight.getBuff(BuffName.Equilibrium)).getStackValue();
+            int precise = getPrecise(attacker);
+            int equilibrium = getEquilibrium(attacker);
             double minBeforePE = hitList.get(i).getMinDamage();
             double maxBeforePE = hitList.get(i).getMaxDamage();
             double minMultiplier = minDamageWithPreciseEquilibriumMultiplier(precise,equilibrium,minBeforePE,maxBeforePE);
@@ -67,7 +67,35 @@ public class DamageCalculator {
 
 	
 
-	
+	private static int getPrecise(Combatent attacker) {
+        StackBuff stackBuff = (StackBuff) attacker.getBuffs().getSpecificBuff(BuffName.Precise);
+        if(stackBuff==null) {
+            return 0;
+        }else {
+            return stackBuff.getStackValue();
+        }
+    }
+
+    private static int getEquilibrium(Combatent attacker) {
+        StackBuff stackBuff = (StackBuff) attacker.getBuffs().getSpecificBuff(BuffName.Equilibrium);
+        if(stackBuff==null) {
+            return 0;
+        }else {
+            return stackBuff.getStackValue();
+        }
+    }
+
+
+
+
+
+
+    
+
+
+
+
+
 
     private static double effectMultiplier(Combatent attacker, Combatent defender) {
 		double multiplier = 1;

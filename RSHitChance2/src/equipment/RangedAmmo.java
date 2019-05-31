@@ -35,7 +35,7 @@ public class RangedAmmo extends Equipment implements AmmoInterface{
             int level = Integer.parseInt(strArray[3]);
             double damage = Double.parseDouble(strArray[4]);
             String buffString = strArray[5];
-            Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString));
+            Buff buff = buffString.equals("None")?NullBuff.getInstance():BuffFlyweight.getBuff(BuffName.valueOf(buffString),BuffFlyweight.Owner.LEFT);
 
             
             

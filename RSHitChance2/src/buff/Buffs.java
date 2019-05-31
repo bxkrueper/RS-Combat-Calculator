@@ -13,7 +13,7 @@ import combatent.Combatent;
 import javafx.scene.image.Image;
 import resources.ImageFlyweight;
 
-public class Buffs implements Buff, Iterable<BuffName>{
+public class Buffs implements Buff, Iterable<Buff>{
     
     private List<Buff> buffList;
     
@@ -66,6 +66,12 @@ public class Buffs implements Buff, Iterable<BuffName>{
     ///this should be no need to call this
     @Override
     public String getDescription() {
+        return "this is a Buff Group";
+    }
+    
+  ///this should be no need to call this
+    @Override
+    public String getToolTipString() {
         return "this is a Buff Group";
     }
 
@@ -217,12 +223,22 @@ public class Buffs implements Buff, Iterable<BuffName>{
     }
 
     public boolean contains(BuffName buffName) {
-        for(BuffName currentBuffName:this){
-            if(currentBuffName.equals(buffName)){
+        for(Buff currentBuff:this){
+            if(currentBuff.getName().equals(buffName)){
                 return true;
             }
         }
         return false;
+    }
+    
+    //returns null if not found
+    public Buff getSpecificBuff(BuffName buffName) {
+        for(Buff currentBuff:this){
+            if(currentBuff.getName().equals(buffName)){
+                return currentBuff;
+            }
+        }
+        return null;
     }
     
 
@@ -232,16 +248,16 @@ public class Buffs implements Buff, Iterable<BuffName>{
     }
 
     @Override
-    public Iterator<BuffName> iterator() {
+    public Iterator<Buff> iterator() {
         return new BuffsIterator();
     }
     
     //returns only actual Buffs. Goes into other BuffGroups instead of returning them
-    private class BuffsIterator implements Iterator<BuffName>{
+    private class BuffsIterator implements Iterator<Buff>{
         
-        private BuffName nextUp;
+        private Buff nextUp;
         private int currentIndex;
-        private Iterator<BuffName> currentIterator;//is null if there is no sub-iterator wording through a nested BuffGroup
+        private Iterator<Buff> currentIterator;//is null if there is no sub-iterator wording through a nested BuffGroup
 
         public BuffsIterator(){
             this.currentIndex = -1;
@@ -250,7 +266,7 @@ public class Buffs implements Buff, Iterable<BuffName>{
         }
         
         //prepares the next non-group Buff to return
-        private BuffName getNextUp() {
+        private Buff getNextUp() {
             if(currentIterator!=null){//if it is working through a nested-group
                 if(currentIterator.hasNext()){
                     return currentIterator.next();
@@ -278,7 +294,7 @@ public class Buffs implements Buff, Iterable<BuffName>{
                     return getNextUp();//still need to return a buff. Move on recursively
                 }
             }else{
-                return currentBuff.getName();//simply return the buff at the currentIndex
+                return currentBuff;//simply return the buff at the currentIndex
             }
         }
 
@@ -288,13 +304,15 @@ public class Buffs implements Buff, Iterable<BuffName>{
         }
 
         @Override
-        public BuffName next() {
-            BuffName toReturn = nextUp;
+        public Buff next() {
+            Buff toReturn = nextUp;
             nextUp = getNextUp();//prepares the next buff to return before returning the one that was ready
             return toReturn;
         }
         
     }
+
+    
 
     
 

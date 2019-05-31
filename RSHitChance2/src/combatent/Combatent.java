@@ -1,5 +1,6 @@
 package combatent;
 import abilities.Ability;
+import buff.BuffFlyweight;
 /*
  * //anyone that plans on fighting. Intended subclasses are player and monster
  */

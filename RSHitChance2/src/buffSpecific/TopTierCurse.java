@@ -7,6 +7,7 @@ import buff.Buff;
 import buff.BuffName;
 import buff.ConstantFillInStackBuff;
 import buff.OwnerUsingGeneralPrimaryCombatStyleCondition;
+import buff.StackBuff;
 import combatStyle.PrimaryCombatStyle;
 import combatent.Combatent;
 import combatent.Monster;
@@ -94,7 +95,9 @@ public class TopTierCurse extends ConstantFillInStackBuff{
     }
 
       @Override
-      public Buff makeNew() {
-          return new TopTierCurse(getName(),combatStyle,levelBoost,damageMultiplier);
+      public StackBuff makeNew() {
+          ConstantFillInStackBuff buff = new TopTierCurse(getName(),combatStyle,levelBoost,damageMultiplier);
+          buff.setDescription(getDescription());
+          return buff;
       }
   }

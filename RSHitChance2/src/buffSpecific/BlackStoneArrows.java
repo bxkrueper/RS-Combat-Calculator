@@ -3,6 +3,7 @@ package buffSpecific;
 import buff.Buff;
 import buff.BuffName;
 import buff.ConstantFillInStackBuff;
+import buff.StackBuff;
 import combatent.Combatent;
 
 public class BlackStoneArrows extends ConstantFillInStackBuff{
@@ -23,7 +24,9 @@ public class BlackStoneArrows extends ConstantFillInStackBuff{
     }
 
     @Override
-    public Buff makeNew() {
-        return new BlackStoneArrows();
+    public StackBuff makeNew() {
+        ConstantFillInStackBuff buff = new BlackStoneArrows();
+        buff.setDescription(getDescription());
+        return buff;
     }
 }

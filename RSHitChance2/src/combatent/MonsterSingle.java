@@ -29,6 +29,8 @@ public class MonsterSingle implements Monster{
     final static Buffs editableBuffs = new Buffs();//these are the buffs applied by the player in the interface like quake and blackstone arrows. They don't change when the monster changes
     private Buffs allBuffs;//includes natural and editable buffs. this is the buff returned for combat calculations
     
+    
+    
     public MonsterSingle(String name, String pictureName, String wikiLink, MonsterStats stats,Attacks attacks,MonsterAffinityWeaknesses affinityWeaknesses,Vulnerabilities vulnerabilities,Buff naturalBuffs){
         this.name = name;
         this.pictureName = pictureName;

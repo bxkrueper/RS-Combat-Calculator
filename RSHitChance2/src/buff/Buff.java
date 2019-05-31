@@ -16,7 +16,7 @@ public interface Buff extends Imageable{
     BuffName getName();
     String getNiceName();
     String getDescription();
-    
+    String getToolTipString();
     
     //potions, prayers, ect
     double addAccuracyLevelsToOwner(Combatent owner,Combatent opponent);
