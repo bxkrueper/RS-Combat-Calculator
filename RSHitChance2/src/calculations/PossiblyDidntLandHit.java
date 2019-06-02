@@ -19,13 +19,32 @@ public class PossiblyDidntLandHit extends Hit{
     }
 
     @Override//theses bleeds do not crit
-    public double getAveDamage() {
-        return maxDamage*chanceOfLanding;
+    public double getAveDamageWithCap() {
+        return applyNoCritHitCap(maxDamage)*chanceOfLanding;
     }
 
     @Override
     public double getMinDamage() {
         return 0;
+    }
+    
+    //bleeds only use the normal hit cap
+    public double getMaxDamageWithCap() {
+        if(getMaxDamage()>this.getHitCapNoCrit()) {
+            return this.getHitCapNoCrit();
+        }else {
+            return getMaxDamage();
+        }
+    }
+    
+    @Override
+    public void setCritChance(double critChance) {
+        //bleeds do not crit
+    }
+    
+    @Override
+    public void addToCritChance(double toAdd) {
+      //bleeds do not crit
     }
 
     @Override

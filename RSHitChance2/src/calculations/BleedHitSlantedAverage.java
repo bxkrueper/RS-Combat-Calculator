@@ -11,9 +11,11 @@ public class BleedHitSlantedAverage extends BleedHit{
     }
 
     @Override//bleeds do not crit
-    public double getAveDamage() {
+    public double getAveDamageWithCap() {
         double nonMinChance = 1-chanceOfHittingMin;
-        return (getMinDamage()*chanceOfHittingMin+((getMinDamage()+getMaxDamage())/2)*nonMinChance);
+        double minDamageWithCap = applyNoCritHitCap(getMinDamage());
+        double maxDamageWithCap = applyNoCritHitCap(getMaxDamage());
+        return (minDamageWithCap*chanceOfHittingMin+((minDamageWithCap+maxDamageWithCap)/2)*nonMinChance);
     }
     
     @Override

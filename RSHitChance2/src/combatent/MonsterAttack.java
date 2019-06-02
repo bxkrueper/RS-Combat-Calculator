@@ -48,9 +48,15 @@ public class MonsterAttack implements Attack{
         System.out.println("Monster base max hit: " + maxHit);
         List<Hit> hitList = new ArrayList<>(1);
         if(isAuto) {
-            hitList.add(new AutoAttackHit(combatStyle,1,maxHit));
+            Hit autoHit = new AutoAttackHit(combatStyle,1,maxHit);
+            autoHit.setHitCapNoCrit(Integer.MAX_VALUE);//monster hits do not have a hit cap
+            autoHit.setHitCapWithCrit(Integer.MAX_VALUE);
+            hitList.add(autoHit);
         }else {
-            hitList.add(new ConstantHit(combatStyle,maxHit));
+            Hit constantHit = new ConstantHit(combatStyle,maxHit);
+            constantHit.setHitCapNoCrit(Integer.MAX_VALUE);
+            constantHit.setHitCapWithCrit(Integer.MAX_VALUE);
+            hitList.add(constantHit);
         }
         return hitList;
     }

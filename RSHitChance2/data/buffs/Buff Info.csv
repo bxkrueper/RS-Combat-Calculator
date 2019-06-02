@@ -1,4 +1,89 @@
 BuffName,Description
+Reflect,take half damage
+Black_Stone_Arrows, -.75% armor per stack
+Reaper_Necklace, +0.1% hitchance per stack
+Guthix_Staff_Spec, +2 affinity
+Status_Warhammer_Spec, +5 affinity
+Quake, +2 affinity and -5% defense levels
+Vulnerability,takes + 10% damage
+Enfeeble,deals 10% less damage
+Stagger, -10% hitchance
+Overload,attack power and defense levels + 15% of max +3
+Supreme_Overload,attack power and defense levels + 16% of max +4
+Chivalry, +7% attack and defense levels + 7% melee damage
+Piety, +8% attack and defense levels + 8% melee damage
+Rigour, +8% ranged and defense levels + 8% ranged damage
+Augury, +8% magic and defense levels + 8% magic damage
+Turmoil, +10% attack and defense levels + 10% melee damage. Opponent looses 6 + stack attack and defense levels
+Anguish, +10% ranged and defense levels + 10% ranged damage. Opponent looses 6 + stack ranged and defense levels
+Torment, +10% magic and defense levels + 10% magic damage. Opponent looses 6 + stack magic and defense levels
+Malevolence, +12% attack and defense levels + 12% melee damage. Opponent looses 6 + stack attack and defense levels
+Desolation, +12% ranged and defense levels + 12% ranged damage. Opponent looses 6 + stack ranged and defense levels
+Affliction, +12% magic and defense levels + 12% magic damage. Opponent looses 6 + stack magic and defense levels
+Defender, +3% melee accuracy
+Repriser, +3% ranged accuracy
+Rebounder, +3% magic accuracy
+Brawler_Aura, +3% melee accuracy
+Sharpshooter_Aura, +3% ranged accuracy
+Runic_Accuracy_Aura, +3% magic accuracy
+Greater_Brawler_Aura, +5% melee accuracy
+Greater_Sharpshooter_Aura, +5% ranged accuracy
+Greater_Runic_Accuracy_Aura, +5% magic accuracy
+Master_Brawler_Aura, +7% melee accuracy
+Master_Sharpshooter_Aura, +7% ranged accuracy
+Master_Runic_Accuracy_Aura, +7% magic accuracy
+Supreme_Brawler_Aura, +10% melee accuracy
+Supreme_Sharpshooter_Aura, +10% ranged accuracy
+Supreme_Runic_Accuracy_Aura, +10% magic accuracy
+Berserker_Aura, +10% melee accuracy +10% attack and strength levels +10% melee damage -15% defense levels +15% damage recieved
+Reckless_Aura, +10% ranged accuracy +10% ranged levels +10% ranged damage -15% defense levels +15% damage recieved
+Maniacal_Aura, +10% magic accuracy +10% magic levels +10% magic damage -15% defense levels +15% damage recieved
+Scrimshaw_of_Attack, +2% melee accuracy
+Scrimshaw_of_Ranging, +2% ranged accuracy
+Scrimshaw_of_Magic, +2% magic accuracy
+Supeior_Scrimshaw_of_Attack, +4% melee accuracy
+Supeior_Scrimshaw_of_Ranging, +4% ranged accuracy
+Supeior_Scrimshaw_of_Magic, +4% magic accuracy
+Scrimshaw_of_Cruelty, +5% ranged damage
+Scrimshaw_of_the_Elements, +5% magic damage
+Supeior_Scrimshaw_of_Cruelty, +6.66% ranged damage
+Supeior_Scrimshaw_of_the_Elements, +6.66% magic damage
+Blood_Nihil, +5% melee accuracy
+Shadow_Nihil, +5% ranged accuracy
+Smoke_Nihil, +5% magic accuracy
+Ice_Nihil, +5% magic accuracy
+Black_Mask, +12.5% melee accuracy and damage against slayer targets
+Focus_Sight, +12.5% ranged accuracy and damage against slayer targets
+Hexcrest, +12.5% magic accuracy and damage against slayer targets
+Slayer_Helmet_All, +12.5% accuracy and damage against slayer targets
+Reinforced_Slayer_Helmet, +13% accuracy and damage against slayer targets
+Strong_Slayer_Helmet, +13.5% accuracy and damage against slayer targets
+Mighty_Slayer_Helmet, +14% accuracy and damage against slayer targets
+Corrupted_Slayer_Helmet, +14.5% accuracy and damage against slayer targets
+Hexhunter, + 12.5% damage and + 10% hitchance against magic based monsters
+Keris,
+Balmung,
+Upgraded_Balmung,
+Silverlight,
+Upgraded_Silverlight,
+Salve_Amulet, + 15% accuray and damage vs undead
+Salve_Amulet_E, + 20% accuray and damage vs undead
+Dragonbane,
+Dragonbane_Arrows, + 25% damage and + 30% hitchance against dragons
+Dragonbane_Bolts, + 25% damage and + 30% hitchance against dragons
+Mahjarrat_Aura, +5% damage
+Desert_Amulet_3,
+Spirit_Shield_Absorbsion, -30% damage taken
+TokKulZo, +10% damage against volcanic creatures
+Ultimate_Ability_Hit_Chance_Boost, +25% hitchance
+Dragon_Rider_Amulet, +10% damage with dragonbreath + a 10% chance of doing 3 bleed hits that each do 10% of original damage
+Dragon_Breath,
+Double_Damage_If_Opponent_Stunned,
+Slice,
+Precise,increases minimum hit by 1.5%*rank of max
+Equilibrium,increases minimum hit by 3%*rank and decreases max hit by 1%*rank
 Biting, +2% crit chance per rank
 Chargebow,supplies its own ammo equal to its tier
 Strength_Cape_Perk,adds 3 hits to dismember
+Nex_Soft_Damage_Cap_Phase1234,damage past 5000 gets cut by 50%
+Nex_Soft_Damage_Cap_Phase5,damage past 2000 get cut by 75%

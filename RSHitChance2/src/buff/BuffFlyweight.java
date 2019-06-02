@@ -529,6 +529,10 @@ public class BuffFlyweight {
                 String[] info = (String[]) o;
                 
                 BuffName buffName = BuffName.valueOf(info[0]);
+                if(info.length<2) {
+                    //no description
+                    continue;
+                }
                 String description = info[1];
                 
                 Buff buff = buffMap.get(buffName);

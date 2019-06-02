@@ -49,7 +49,11 @@ public class Onslaught extends BaseAbility{
         for(int i=0;i<MAX_NUMBER_OF_HITS;i++) {
             double minMultiplier = baseRange.getMin()+increaseRange.getMin()*i;
             double maxMultiplier = baseRange.getMax()+increaseRange.getMax()*i;
-            hitList.add(new AbilityHit(combatStyle,baseDamage*minMultiplier,baseDamage*maxMultiplier));/////cap of 30000?
+            Hit hit = new AbilityHit(combatStyle,baseDamage*minMultiplier,baseDamage*maxMultiplier);
+            hit.setHitCapNoCrit(30000);
+            hit.setHitCapWithCrit(30000);
+            ////////////////////////////////////onslaught always visably crits
+            hitList.add(hit);
       //////not affected by dmg ults
         }
         return hitList;

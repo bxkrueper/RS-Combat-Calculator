@@ -18,16 +18,35 @@ public class BleedHit extends Hit{
     public double getMaxDamage() {
         return maxDamage;
     }
+    
+    //bleeds only use the normal hit cap
+    public double getMaxDamageWithCap() {
+        if(getMaxDamage()>this.getHitCapNoCrit()) {
+            return this.getHitCapNoCrit();
+        }else {
+            return getMaxDamage();
+        }
+    }
 
     
     @Override//bleeds do not crit
-    public double getAveDamage() {
-        return (minDamage+maxDamage)/2;
+    public double getAveDamageWithCap() {
+        return (applyNoCritHitCap(minDamage)+applyNoCritHitCap(maxDamage))/2;
     }
 
     @Override
     public double getMinDamage() {
         return minDamage;
+    }
+    
+    @Override
+    public void setCritChance(double critChance) {
+        //bleeds do not crit
+    }
+    
+    @Override
+    public void addToCritChance(double toAdd) {
+      //bleeds do not crit
     }
 
     @Override

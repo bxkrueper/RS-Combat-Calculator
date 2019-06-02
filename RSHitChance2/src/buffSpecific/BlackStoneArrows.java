@@ -8,7 +8,7 @@ import combatent.Combatent;
 
 public class BlackStoneArrows extends ConstantFillInStackBuff{
 //stack is expected to be between 0 and 20 (inclusive)
-    
+    private final double ratePerStack = 0.0075;
     public BlackStoneArrows() {
         super(BuffName.Black_Stone_Arrows);
     }

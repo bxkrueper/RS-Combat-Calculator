@@ -67,4 +67,4 @@ Bash,DEFENSE,8,BASIC,SHIELD,15,Simple 20 100,None
 Debilitate,DEFENSE,55,THRESHOLD,NONE,30,Simple 20 100,None
 Sacrifice,CONSTITUTION,10,BASIC,NONE,30,Simple 20 100,None
 Tuska's Wrath,CONSTITUTION,50,BASIC,NONE,15,Simple 30 110,None
-Onslaught,CONSTITUTION,90,ULTIMATE,MH,120,Onslaught,None
+Onslaught,CONSTITUTION,90,ULTIMATE,MH,120,Onslaught,Ultimate_Ability_Hit_Chance_Boost
